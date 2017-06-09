@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HTML 表单元素</title>
+<meta charset="utf-8">
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="this is my page">
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+</head>
+
+<body>
+	<form action="toSubmit.jsp" method="post">
+		<select name="cars">
+			<option value="volvo">Volvo</option>
+			<option value="saab">Saab</option>
+			<option value="fiat">Fiat</option>
+			<option value="audi" selected="selected">Audi</option>
+		</select> <br>
+		<textarea name="message" rows="10" cols="30">
+The cat was playing in the garden.
+</textarea>
+		<br> <input type="submit" value="提交">
+	</form>
+	<hr>
+	<input type="button" onclick="alert('Hello world!')" value="Click Me!">
+	<hr>
+	
+	<form action="toSubmit.jsp" method="post">
+		browers<input list="browers" name="brower">
+		<datalist id="browers">
+			<option value="Internet Explorer">
+			<option value="Firefox">
+			<option value="Chrome">
+			<option value="Opera">
+			<option value="Safari">
+		</datalist><input type="submit" value="提交">
+	</form>
+	<p>h5 新标签datalist</p>
+	<hr>
+	<hr>
+
+
+
+</body>
+</html>

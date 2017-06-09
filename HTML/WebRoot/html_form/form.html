@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>form.html</title>
+	<meta charset="utf-8">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+  	<form action="abc.do" method="post">
+  		First name:<br>
+  		<input type="text" name="firstname" >
+  		<br>
+  		Lastname:<br>
+  		<input type="text" name="lastname" >
+  		<br>
+  			</form>
+<p>请注意表单本身是不可见的。</p>
+
+<p>同时请注意文本字段的默认宽度是 20 个字符。</p>
+<hr>
+<form >
+	<input type="radio" name="sex" value="male" checked="checked">Male<br>
+	<input type="radio" name="sex" value="female">Female
+</form>
+<hr>
+
+<form action="/HTML/html_form/toSubmit.jsp" method="post">
+	姓:<br>
+	<input type="text" name="firstname" value="姚">
+	<br>
+	名:<br>
+		<input type="text" name="lastname" value="磊"><br>
+		<input type="radio" name="sex" value="male" checked="checked">Male
+				<input type="radio" name="sex" value="female">Female
+		<br>
+		<input type="checkbox" name="loves" value="fishing">钓鱼<br>
+		<input type="checkbox" name="loves" value="cooking">烹饪<br>
+		<input type="checkbox" name="loves" value="hit">打人<br>
+		<input type="submit" value="OK">
+</form>
+<hr>
+<form  action="/HTML/html_form/toSubmit.jsp" method="post">
+	<fieldset>
+		<legend>Personal information:</legend>
+		姓:<br>
+	<input type="text" name="firstname" value="姚">
+	<br>
+	名:<br>
+		<input type="text" name="lastname" value="磊"><br>
+		<input type="radio" name="sex" value="male" checked="checked">Male
+				<input type="radio" name="sex" value="female">Female
+		<br>
+		<input type="checkbox" name="loves" value="fishing" checked="checked">钓鱼<br>
+		<input type="checkbox" name="loves" value="cooking" checked="checked">烹饪<br>
+		<input type="checkbox" name="loves" value="hit" checked="checked">打人<br>
+		<input type="submit" value="OK">
+	</fieldset>
+</form>
+<p>fieldset</p>
+<hr>
+  
+  </body>
+</html>
