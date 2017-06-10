@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>属性选择器</title>
+
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="this is my page">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<style>
+[title] {
+	color: red;
+}
+
+[id=p1] {
+	background-color: #cccccc;
+	color: blue;
+}
+
+[id~=baidu] {
+	text-decoration: line-through;
+}
+
+input[type="text"] {
+	width: 150px;
+	display: block;
+	margin-bottom: 10px;
+	background-color: yellow;
+	font-family: Verdana, Arial;
+}
+
+input[type="submit"] {
+	width: 120px;
+	margin-left: 35px;
+	display: block;
+	font-family: Verdana, Arial;
+}
+</style>
+</head>
+
+<body>
+
+	<h1>可以应用样式：</h1>
+	<h2 title="Hello World">Hello World</h2>
+	<a title="baidu" href="http://www.baidu.com">百度</a>
+	<hr>
+
+	<h1>无法应用样式：</h1>
+	<h2>Hello World</h2>
+	<a href="http://www.baidu.com">百度</a>
+	<hr>
+	<p id="p1">属性值正确的段落</p>
+	<p id="p2">属性值不正确的段落</p>
+	<p>注：属性值相同时</p>
+	<hr>
+
+	<a id="baidu" href="javascript:;">百度</a>
+	<br>
+	<a id="baidu yixia" href="javascript:;">百度一下</a>
+	<p>注：属性值中的单词被包含时</p>
+	<hr>
+	<form action="/HTML/html_form/toSubmit.jsp" method="post">
+		<input type="text" name="lastname" value="Bill" size="20"> <input
+			type="text" name="firstname" value="Gates" size="20"> <input
+			type="submit" value="Example Button">
+	</form>
+	<p>注：属性选择器在为不带有 class 或 id 的表单设置样式时特别有用</p>
+</body>
+</html>

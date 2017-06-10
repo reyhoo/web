@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>class_selector.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+    	
+    	.red div{
+    		color:red;
+    	}
+    	p.blue{
+    		color:blue;
+    	}
+    	
+    	
+    	#yellow div{
+    	color:yellow;
+    	}
+    	p#grey{
+    	color:grey;
+    	}
+    </style>
+
+  </head>
+  
+  <body>
+  
+  <div class="red">我是一个Div
+  <div class="red">我的div里面的div</div>
+  	<p class="red">我的一个段落</p></div>
+  	<p>注：类选择器派生元素代表该类元素的子元素拥有该特性。
+  	<hr>
+  	<a></a>
+  	
+  	<p class="blue">我的蓝色的
+  	<p class="blue">
+  		<p>我不是蓝色的
+  	</p>
+  		<p>注：元素派生类选择器代表该类的该元素拥有该特性。
+  	<hr>
+  	 <div id="yellow">我是一个Div
+  <div >我的div里面的div</div>
+  	<p >我的一个段落</p></div>
+  	<p>注：ID选择器派生元素代表该ID元素的子元素拥有该特性。
+  	<hr>
+  	<a></a>
+  	
+  	<p id="grey">我的灰色的
+  	<p id="grey">
+  		<p>我不是灰色的
+  	</p>
+  		<p>注：元素派生ID选择器代表该ID元素拥有该特性。相当于直接用ID选择器。
+  	<hr>
+  	
+  </body>
+</html>
