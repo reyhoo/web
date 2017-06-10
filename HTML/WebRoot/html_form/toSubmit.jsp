@@ -22,7 +22,7 @@
 	height:50px;
 	background-color:#cccccc;
 	line-height:50px;
-	font-family: fantasy;
+	font-family:sans-serif;
 	font-size: 20px;
 	margin: 5px;
 	}

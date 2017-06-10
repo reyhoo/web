@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>表单H5InputTypes</title>
+	<meta charset="utf-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<style type="text/css">
+	p{
+		color:red;
+		font-weight: bold;
+	}
+</style>
+  </head>
+  
+  <body>
+  <form action="toSubmit.jsp">
+  数量（1 到 5 之间）：<input type="number" name="num" min="1" max="5"><br><br>
+  <input type="submit"><br>
+  </form>
+  	<hr>
+  	 <form action="toSubmit.jsp">
+  num:<input type="number" name="num" min="0" max="100" step="10" value="30" ><br><br>
+  <input type="submit"><br>
+  </form>
+  <p>10的倍数增长，最大100</p>
+  	<hr>
+  	<p>
+根据浏览器支持：<br>
+当您填写输入字段时会弹出日期选择器。
+</p>
+<form action="toSubmit.jsp" method="post">
+  生日：
+  <input type="date" name="bday" >
+  <input type="submit">
+</form>
+  	<hr>
+  	<form action="toSubmit.jsp" method="post">
+请输入 1980-01-01 之前的日期：<br>
+<input type="date" name="bday" max="1979-12-31"><br><br>
+请输入 2000-01-01 之后的日期：<br>
+<input type="date" name="bday" min="2000-01-02"><br><br>
+<input type="submit"> 
+</form>
+  	
+  	<hr>
+  	
+<form action="toSubmit.jsp" method="post">
+  Select your favorite color:
+  <input type="color" name="favcolor" value="#ff0000">
+  <input type="submit">
+</form>
+  	<hr>
+  	<form action="toSubmit.jsp" method="post">
+  Points:
+  <input type="range" name="points" min="0" max="10">
+  <input type="submit">
+</form>
+  	<hr>
+  	<form action="toSubmit.jsp">
+  生日（月和年）：
+  <input type="month" name="bdaymonth">
+  <input type="submit">
+</form>
+	<hr>
+	<form action="toSubmit.jsp">
+  Select a week:
+  <input type="week" name="year_week">
+  <input type="submit">
+</form>
+	<hr>
+<form action="toSubmit.jsp">
+  E-mail:
+  <input type="email" name="email">
+  <input type="submit">
+</form>
+
+	<hr>
+	<hr>
+	<hr>
+  </body>
+</html>
