@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>css表格样式</title>
+
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="this is my page">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<style type="text/css">
+p{
+	color:red;
+	font-weight:bolder;
+}
+table.e1,th.e1,td.e1 {
+	border: 1px solid blue;
+}
+table.e2,th.e2,td.e2 {
+	border: 2px solid #ff0000;
+}
+th.e2{
+	height: 50px;
+	color:white;
+	background-color: #00ff00;
+}
+td.e2{
+	text-align: center;
+	padding: 5px;
+}
+table.e2{
+	width:30%;
+	border-collapse: collapse;
+}
+</style>
+</head>
+
+<body>
+
+	<table class="e1">
+		<tr>
+			<th class="e1">Firstname</th>
+			<th class="e1">Lastname</th>
+		</tr>
+		<tr>
+			<td class="e1">Bill</td>
+			<td class="e1">Gates</td>
+		</tr>
+		<tr>
+			<td class="e1">Steven</td>
+			<td class="e1">Jobs</td>
+		</tr>
+	</table>
+	<p>注：table,th,tb都有单独的边框
+	<hr>
+<table class="e2">
+	<tr><th class="e2">Firstname<th class="e2">Lastname
+	<tr><td class="e2">Bill<td class="e2">Gates
+	<tr><td class="e2">Steven<td class="e2">Jobs
+	
+</table>
+<p style="white-space: pre-wrap;">注：table{border-collapse: collapse},可将表格边框折叠为单一边框
+</body>
+</html>
