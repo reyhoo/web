@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>css绝对定位</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<style>
+
+	*{
+	padding:0;
+	margin:0;
+	}
+	div.div0{
+		background-color: #cccccc;
+	}
+	div.div1{
+		background-color: red;
+		margin: 0 20px;
+		width:100px;
+		height:100px;
+		float: left;
+	}
+	div.div2{
+		background-color: red;
+			margin: 0 20px;
+		width:200px;
+		height:200px;		float: left;
+		position:relative;
+		left:20px;
+		top:20px;
+		
+	}
+	div{
+	z-index:0;
+	}
+	div.div3{
+		background-color: red;
+			margin: 0 20px;
+		width:100px;
+		height:100px;		float: left;
+	}
+	div.div4{clear:both;
+	}
+	div.inner{width:50px;
+		height:50px;	
+		background-color: yellow;
+		position: absolute;
+		left:20px;
+		z-index:-1;
+		top:20px;
+	}
+</style>
+  </head>
+  
+  <body>
+
+	<div class="div0">
+		<div class="div1">div1</div>
+		<div class="div2">div2
+			<div class="inner">inner</div>
+			<p>div2.2
+		</div>
+		<div class="div3">div3</div>
+		<div class="div4">div4</div>
+	</div>
+	<p style="margin: 10px 0;">div2（相对定位）相对于来的位置偏移
+	<p style="margin: 10px 0;">inner（绝对定位）相对于包含块偏移(div2),<b>注：相对于最近的已定位祖先元素</b>
+  </body>
+</html>
