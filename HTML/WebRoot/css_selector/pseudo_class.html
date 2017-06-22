@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>pseudo_class.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<style type="text/css">
+	a:link{color:red;}
+	a:visited{color:#cccccc;}
+	a:hover{color:yellow;}
+	a:active{color:#ff00ff;}
+	a{
+		text-decoration: none;
+	}
+	a.one:link {color: #ff0000}
+a.one:visited {color: #0000ff}
+a.one:hover {color: #ffcc00}
+
+a.two:link {color: #ff0000}
+a.two:visited {color: #0000ff}
+a.two:hover {font-size: 150%}
+
+a.three:link {color: #ff0000}
+a.three:visited {color: #0000ff}
+a.three:hover {background: #66ff66}
+
+a.four:link {color: #ff0000}
+a.four:visited {color: #0000ff}
+a.four:hover {font-family: monospace}
+
+a.five:link {color: #ff0000; text-decoration: none}
+a.five:visited {color: #0000ff; text-decoration: none}
+a.five:hover {text-decoration: underline}
+
+
+
+input:focus{
+	background-color: yellow;
+}
+p:first-child{
+	font-weight: bold;
+}
+li:first-child{
+	text-transform: uppercase;
+}
+q:lang(no){
+quotes: "~" "~"
+}
+</style>
+  </head>
+  
+  <body>
+  
+<p><b><a href="/HTML/index.jsp" target="_blank">这是一个链接。</a></b></p>
+<p><b>注释：</b>在 CSS 定义中，a:hover 必须位于 a:link 和 a:visited 之后，这样才能生效！</p>
+<p><b>注释：</b>在 CSS 定义中，a:active 必须位于 a:hover 之后，这样才能生效！</p>
+  <hr>
+  <p>请把鼠标移动到这些链接上，以查看效果：</p>
+
+<p><b><a class="one" href="/HTML/index.jsp" target="_blank">这个链接改变颜色</a></b></p>
+<p><b><a class="two" href="/HTML/index.jsp" target="_blank">这个链接改变字体大小</a></b></p>
+<p><b><a class="three" href="/HTML/index.jsp" target="_blank">这个链接改变背景颜色</a></b></p>
+<p><b><a class="four" href="/HTML/index.jsp" target="_blank">这个链接改变字体系列</a></b></p>
+<p><b><a class="five" href="/HTML/index.jsp" target="_blank">这个链接改变文本装饰</a></b></p>
+  <hr>
+  <fieldset>
+  <legend>focus</legend>
+  <form action="/HTML/html_form/toSubmit.jsp" method="post">
+First name: <input type="text" name="fname" /><br />
+Last name: <input type="text" name="lname" /><br />
+<input type="submit" value="Submit" />
+</form>
+  </fieldset>
+  <hr>
+  <div>
+<p>These are the necessary steps:</p>
+<ul>
+<li>Intert Key</li>
+<li>Turn key <strong>clockwise</strong></li>
+<li>Push accelerator</li>
+</ul>
+<p>Do <em>not</em> push the brake at the same time as the accelerator.</p>
+</div>
+<hr>
+<p>:lang 伪类允许您为不同的语言定义特殊的规则。在下面的例子中，在下面的例子中，:lang 类为带有值为 "no" 的 lang 属性的 q 元素定义引号的类型：</p>
+
+<p>一些文本 <q>段落中的引用</q> 一些文本。</p>
+  </body>
+</html>

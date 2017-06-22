@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>attr_selector.htm</title>
+
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="this is my page">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<style>
+p[class~="important"] {
+	color: red;
+}
+p[class*="ex"] {
+	color: blue;
+}
+</style>
+</head>
+
+<body>
+	<h1>属性选择器中'*'和'~'区别</h1>
+	<h1>可以应用样式：</h1>
+	<p class="important warning">This is a paragraph.包含单词匹配</p>
+	<p class="important">This is a paragraph.</p>
+	<p class="importantdd">This is a paragraph.包含子串不匹配</p>
+
+	<hr />
+
+	<h1>无法应用样式：</h1>
+	<p class="ex">This is a paragraph.</p>
+	<p class="exdd">This is a paragraph.包含子串匹配</p>
+<p style="color:red;font-weight: bold;">注：~是指属性值中包含指定的单词时匹配
+<p style="color:red;font-weight: bold;">注：*是指属性值中包含指定的子串时匹配 <br>
+<form method="post" action="/HTML/html_form/toSubmit.jsp" >
+<!-- <input type="file" name="file1"><br> -->
+<input type="text" name="userId" value="哈哈"><br>
+<input type="text" name="love" value="dfsfsd"><br>
+<input type="submit">
+</form>
+
+</body>
+</html>
