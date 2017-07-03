@@ -23,6 +23,7 @@ public class UploadServlet extends HttpServlet {
 	public void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.getSession();
+		System.out.println("==================start======================");
 		Enumeration<String> headerNames = request.getHeaderNames();
 		while(headerNames.hasMoreElements()){
 			String ele = headerNames.nextElement();

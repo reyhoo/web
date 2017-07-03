@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript 简介</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<script type="text/javascript">
+
+	function myFun1(text){
+		var p1 = document.getElementById("p1");
+		p1.innerHTML = text;
+	}
+	function changeImage(){
+		
+		var m1 = document.getElementById("m1");
+		if(m1.src.match("bulbon")){
+			m1.src ="img/eg_bulboff.gif";
+		}else{
+			m1.src ="img/eg_bulbon.gif";
+		}
+	}
+	function changeFontColor(){
+		var p2 = document.getElementById("p2");
+		p2.style="color:red;font-weight:bold;";
+	
+	}
+</script>
+  </head>
+  
+  <body>
+  
+<p>
+JavaScript 能够直接写入 HTML 输出流中：
+</p>
+
+<script>
+document.write("<h1 style=\"color:red;\">This is a heading</h1>");
+document.write("<p style='background:yellow;'>This is a paragraph.</p>");
+
+</script>
+
+<p>
+您只能在 HTML 输出流中使用 <strong>document.write</strong>。
+如果您在文档已加载后使用它（比如在函数中），会覆盖整个文档。
+</p>
+  <hr>
+  <p>
+点击弹框
+</p>
+<input type="button" value="Click Me!" onclick="alert('Hello world')"></input>
+  
+  <hr>
+  
+    <p>
+点击改变标签内容
+</p>
+    <p id="p1">default</p>
+
+<input type="button" value="Click Me!" onclick="myFun1('Hello JavaScript')"></input>
+  
+  <hr>
+  <img alt="" src="img/eg_bulboff.gif" onclick="changeImage()" id="m1">
+  
+<p>点击灯泡来点亮或熄灭这盏灯</p>
+   <hr>
+     <button onclick="changeFontColor()" >Click</button>
+  
+<p id="p2">JavaScript 能改变 HTML 元素的样式。</p>
+   <hr>
+   <p>请输入数字。如果输入值不是数字，浏览器会弹出提示框。</p>
+
+<input id="demo" type="text">
+
+<script>
+function myFunction()
+{
+var x=document.getElementById("demo").value;
+if(x==""||isNaN(x))
+	{
+	alert("Not Numeric");
+	}
+}
+</script>
+
+<button type="button" onclick="myFunction()">点击这里</button>
+   <hr>
+  </body>
+</html>
