@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript 语句</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+  <h1>My Web Page</h1>
+
+<p id="demo">A Paragraph.</p>
+
+<div id="myDIV">A DIV.</div>
+  	<script>
+  		document.getElementById("demo").innerHTML="Hello World";
+  		document.getElementById("myDIV").innerHTML="How are you?";
+  	</script>
+  	<hr>
+  	<p id="myPar">I am a paragraph.</p>
+<div id="myDiv">I am a div.</div>
+
+<p>
+<button type="button" onclick="myFunction()">点击这里</button>
+</p>
+<script type="text/javascript">
+	function myFunction(){
+			document.getElementById("myPar").innerHTML="Hello \
+			World";
+  		document.getElementById("myDiv").innerHTML="How are you?";
+	}
+</script>
+<p>折行用"\"
+  </body>
+</html>

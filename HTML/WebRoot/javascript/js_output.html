@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript 输出</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+  	<h1>请使用 document.write() 仅仅向文档输出写内容。
+如果在文档已完成加载后执行 document.write，整个 HTML 页面将被覆盖：</h1>
+
+
+  	<script type="text/javascript">
+  		document.write("<p style='color:red;'>hello javascript</p>");
+  	</script>
+  	<button type="button" onclick="myFun();">Click</button>
+  	<script>
+  		function myFun(){
+  				document.write("<p style='color:red;'>hello javascript</p>");
+  		}
+  	</script>
+  </body>
+</html>
