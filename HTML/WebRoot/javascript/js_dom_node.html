@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript HTML DOM 元素（节点）</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+  	<div id="div1">
+<p id="p1">这是一个段落。</p>
+<p id="p2">这是另一个段落。</p>
+</div>
+<script>
+	var para = document.createElement('p');
+	var node = document.createTextNode('这是新段落');
+	para.appendChild(node);
+	document.getElementById('div1').appendChild(para);
+	//setTimeout(myFun(), 2000);
+	setTimeout(myFun1, 2000);
+	
+	function myFun() {
+		var parent = document.getElementById('div1');
+		var c = document.getElementById('p1');
+		parent.removeChild(c);
+	}
+	function myFun1() {
+		var c = document.getElementById('p1');
+		c.parentNode.removeChild(c);
+	}
+</script>
+<hr>
+
+  </body>
+</html>

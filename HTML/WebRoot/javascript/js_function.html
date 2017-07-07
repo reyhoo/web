@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript 函数</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+		<script>
+			function myFunction(){
+				alert('Hello world');
+			}
+			function myFunction(name,job){
+				alert("Welcome " + name + ", the " + job);
+			}
+			function compute(a,b){
+				globalSize = 100;
+				return a * b;
+			}
+		</script>
+  </head>
+  
+  <body>
+  <button onclick="myFunction()" >myFunction</button><br>
+  <button onclick='myFunction("Bill Gates","CEO")' >myFunction(name,job)</button><br>
+  <button onclick='myFunction("姚磊","Android开发")' >myFunction(name,job)</button><br>
+  3 * 4 = <script>
+  	document.write(compute(3, 4));
+  </script><br>
+  <script>
+  	document.write(globalSize);
+  </script>
+  </body>
+</html>

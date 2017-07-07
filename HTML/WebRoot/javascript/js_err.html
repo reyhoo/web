@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>js_err.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<script>
+	function testError(){
+		try{
+		var btn = document.getElementById("tn");
+		btn.style.color = 'red';
+		}catch(err){
+			alert(err);
+		}
+	}
+	function myFunction(){
+		try{
+		
+		var txt = document.getElementById('demo').value;
+		try{
+		if(txt == '')throw '值为空';
+		if(isNaN(txt))throw '不是数字';
+		if(txt>10)     throw '太大';
+		if(txt<5)      throw '太小';
+		var msgP = document.getElementById('mess');
+		msgP.innerHTML = 'ok';
+		}catch(msg){
+			var msgP = document.getElementById('mess');
+			msgP.innerHTML = msg;
+		}
+		
+		}catch(err){
+			alert('errMsg:'+err);
+		}
+	}
+</script>
+  </head>
+  
+  <body>
+
+	<button onclick="testError()" id="btn">错误测试</button>
+	<hr>
+	<p>请输入 5 到 10 之间的数字：</p>
+<input id="demo" type="text">
+<button type="button" onclick="myFunction()">测试输入值</button>
+<p id="mess"></p>
+  </body>
+</html>

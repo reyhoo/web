@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript HTML DOM 事件</title>
+
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="this is my page">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<script>
+	function changeText(id) {
+		id.innerHTML = 'THS';
+	}
+	function displayDate() {
+		document.getElementById('demo').innerHTML = Date();
+	}
+	
+	function checkCookies() {
+		if (navigator.cookieEnabled == true) {
+			alert("已启用 cookie");
+		} else {
+			alert("未启用 cookie");
+		}
+	}
+	function myFunction(){
+		var x = document.getElementById('fname');
+		x.value = x.value.toUpperCase();
+	}
+</script>
+</head>
+
+<body onload="checkCookies()">
+
+	<h1 onclick="this.innerHTML='谢谢!'">请点击该文本</h1>
+	<hr>
+	<h1 onclick="changeText(this)">请点击该文本(function实现)</h1>
+	<hr>
+	<p>
+		点击按钮就可以执行 <em>displayDate()</em> 函数。
+	</p>
+
+	<button onclick="displayDate()">点击这里</button>
+	<br><br>
+	<button id='myBtn'>点击这里(通过ID找到元素设置点击事件)</button>
+	<script>
+		document.getElementById('myBtn').onclick = function(){
+			displayDate();
+		};
+	</script>
+<p id="demo"></p>
+<hr>
+请输入英文字符：<input type="text" id="fname" onchange="myFunction()">
+<p>当您离开输入字段时，会触发将输入文本转换为大写的函数。</p>
+<hr>
+<div onmouseover="mOver(this)" onmouseout="mOut(this)" style='background-color: green;width:120px;height:20px;padding:40px;color:#ffffff;
+text-align: center'>把鼠标移到上面</div>
+<script>
+	function mOver(e){
+		e.innerHTML = '谢谢';
+	}
+	function mOut(e){
+		e.innerHTML = '把鼠标移到上面';
+	}
+</script><hr>
+<div onmousedown="mDown(this)" onmouseup="mUp(this)" style="background-color:green;color:#ffffff;width:90px;height:20px;padding:40px;font-size:12px;">请点击这里</div>
+	<script>
+	function mDown(e){
+		e.style.backgroundColor = '#1ec5e5';
+		e.innerHTML = '请释放鼠标按钮';
+	}
+	function mUp(e){
+		e.style.backgroundColor = 'green';
+		e.innerHTML = '请按下鼠标按钮';
+	}
+	</script>
+	<hr>
+	<img id="myimage" onmousedown="lighton()" onmouseup="lightoff()" src="img/eg_bulboff.gif" />
+<p>按住鼠标不放可以点亮这盏灯！</p>
+<script>
+	function lighton(){
+		document.getElementById('myimage').src='img/eg_bulbon.gif';
+	}
+	function lightoff(){
+		document.getElementById('myimage').src='img/eg_bulboff.gif';
+		}
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>js_for.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+   <script>
+cars=["BMW","Volvo","Saab","Ford"];
+var i=1,len=cars.length;
+for (; i<len; i++)
+{
+document.write(cars[i] + "<br>");
+}
+</script>
+<hr>
+<script>
+cars=["BMW","Volvo","Saab","Ford"];
+var i=0,len=cars.length;
+for (; i<len; )
+{
+document.write(cars[i] + "<br>");
+i++;
+}
+</script><hr>
+<p>点击下面的按钮，循环遍历对象 "person" 的属性。</p>
+<button onclick="myFunction()">点击这里</button>
+<p id="demo"></p>
+<script>
+	
+	function myFunction() {
+		
+		var x;
+		var txt = "";
+		var person = {
+			fname : "Bill",
+			lname : "Gates",
+			age : 56
+		};
+		
+		for(x in person){
+			txt = txt + person[x];
+		}
+		document.getElementById('demo').innerHTML = txt;
+	}
+</script>
+  </body>
+</html>

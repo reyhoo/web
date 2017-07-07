@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>js_validate.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<script>
+
+
+function validate_email(field,alerttxt)
+{
+with (field)
+{
+var apos=value.indexOf("@");
+var dotpos=value.lastIndexOf(".");
+if (apos<1||dotpos-apos<2) 
+  {alert(alerttxt);return false;}
+else {return true;}
+}
+}
+	function validate_form(thisform){
+		with(thisform){
+			if (!validate_required(email,"Email must be filled out!")){
+   				 email.focus();return false;
+  			}
+  			if (!validate_email(email,"Email format is error!")){
+   				 email.focus();return false;
+  			}
+		}
+	}
+	function validate_required(field,alertTxt){
+		with(field){
+			  if (value==null||value==""){
+				alert(alertTxt);
+				return false;
+			  }else{
+			  	return true;
+			  }
+  
+		}
+	}
+</script>
+  </head>
+  
+  <body>
+  <fieldset>
+  	<legend>表单验证</legend>
+  	<form action="/HTML/html_form/toSubmit.jsp" method='post' onsubmit="return validate_form(this);">
+  		Email: <input type="text" name="email" size="30">
+<input type="submit" value="Submit"> 
+  	</form>
+  </fieldset>
+  </body>
+</html>

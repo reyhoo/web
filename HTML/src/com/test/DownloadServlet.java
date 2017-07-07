@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class DownloadServlet extends HttpServlet {
-
+public static void main(String[] args) {
+}
 	
 	public void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
