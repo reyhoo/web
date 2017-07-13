@@ -8,10 +8,72 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     
     <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
-
+<style>
+	div{}
+</style>
   </head>
   
   <body>
-
+	<script>
+	
+		var person = new Object();
+		person.firstname = 'Bill';
+		person.lastname = 'Gates';
+		person.age = 56;
+		person.eyecolor = 'blue';
+		for(name in person){
+			document.write(name + ':'+person[name] + '<br>');
+		}
+	
+	</script>
+	<hr>
+	<script>
+		var p = {firstname:'sun',lastname:'biao',age:24,eyecolor:'black'};
+		for(name in p){
+			document.write(name + ':'+ p[name] + '<br>');
+		}</script>
+	<hr>
+	<script>
+		function person(lastname,firstname,age,eyecolor){
+			this.lastname = lastname;
+			this.firstname = firstname;
+			this.age = age;
+			this.eyecolor = eyecolor;
+		}
+		var myFather = new person('xiaoli','yao',50,'black');
+		myFather.firstname = 'YAO';
+		myFather.height = 56;
+		for(name in myFather){
+			document.write(name + ':'+ myFather[name] + '<br>');
+		}
+	</script><hr>
+	<script>
+		function Student(id,name,sex){
+			this.id = id;
+			this.name = name;
+			this.sex = sex;
+			this.sayHello = sayHello;
+			this.changeName=changeName;
+			function changeName(n){
+				this.name = n;
+			}
+			function sayHello(){
+				var msg = '我是'+this.name;
+				alert(msg);
+			}
+		}
+		
+		var stu = new Student(1,'Tom','male');
+		for(i in stu){
+			document.write(i + ':'+ stu[i] + '<br>');
+		}
+		stu.sayHello();
+		stu.changeName('jerry');
+		for(i in stu){
+			document.write(i + ':'+ stu[i] + '<br>');
+		}
+		stu.sayHello();
+	</script>
+	
   </body>
 </html>
