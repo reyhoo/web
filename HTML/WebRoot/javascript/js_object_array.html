@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript Array（数组）对象</title>
+
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="this is my page">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<style>
+	h4{
+		color:red;
+	}
+</style>
+</head>
+
+<body>
+	<h4>new Array()</h4>
+	<script>
+		var mycars = new Array();
+		mycars[0] = "Saab";
+		mycars[1] = "Volvo";
+		mycars[2] = "BMW";
+		for (i=0;i<mycars.length;i++){
+			document.write(mycars[i] + "<br />");
+		}
+		
+	</script>
+	<hr>
+	<h4>for...in</h4>
+	<script>
+	for (x in mycars){
+		document.write(mycars[x] + "<br />");
+	}
+	</script>
+	<hr>
+	<h4>合并两个数组-concat</h4>
+	<script type="text/javascript">
+		var arr  = new Array;
+		arr[0] = 'arr.0';
+		arr[1] = 'arr.1';
+		arr[2] = 'arr.2';
+		var arr2  = new Array;
+		arr2[0] = 'arr2.0';
+		arr2[1] = 'arr2.1';
+		arr2[2] = 'arr2.2';
+		document.write(arr.concat(arr2) + "<br />");
+		document.write(arr + "<br />");
+		document.write(arr2 + "<br />");
+	</script>	
+	<hr>
+	<h4>用数组的元素组成字符串-join</h4>
+	<script type="text/javascript">
+		var names = new Array(3);
+		names[0] = "George";
+		names[1] = "John";
+		names[2] = "Thomas";
+		document.write(names + "<br />");
+		document.write(names.join() + "<br />");
+		document.write(names.join('-') + "<br />");
+	</script>
+	<hr>
+	<h4>文字数组 - sort()</h4>
+	<script>
+		arr = new Array(6);
+		arr[0] = "George";
+		arr[1] = "John";
+		arr[2] = "Thomas";
+		arr[3] = "James";
+		arr[4] = "Adrew";
+		arr[5] = "Martin";
+		document.write('arr排序前:'+arr);
+		document.write('<br>');
+		document.write('arr.sort:'+arr.sort());
+		document.write('<br>');
+		document.write('arr排序后:'+arr);
+	</script>
+	<hr>
+	<h4>数字数组 - sort()</h4>
+	<script>
+	function sortNumber(a,b){
+		//return a-b; 利用js变量弱类型转换
+		//return parseInt(a, 10)-parseInt(b, 10);//利用转换函数
+		return Number(a)-Number(b);//强制类型转换
+	}
+		var nums = new Array();
+		nums[0] = '0';
+		nums[1] = '2';
+		nums[2] = '10';
+		nums[3] = '100';
+		nums[4] = '30';
+		nums[5] = '40';
+		nums[6] = '8';
+		nums[7] = '7';
+		document.write('nums排序前:'+nums);
+		document.write('<br>');
+		document.write('nums.sort:'+nums.sort());
+		document.write('<br>');
+		document.write('nums排序后:'+nums);
+		document.write('<br>');
+		document.write('nums.sort(sortNumber):'+nums.sort(sortNumber));
+		document.write('<br>');
+		document.write('nums(sortNumber)排序后:'+nums);
+	</script>
+</body>
+</html>
