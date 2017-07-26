@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS 计时</title>
+
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="this is my page">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<script>
+	function showTimeoutAlert(){
+	
+		var t = setTimeout("alert('我是延时5秒的弹框！')", 5000);
+	}
+	function timedText(){
+		var t1 = setTimeout("showText('2 秒')", 2000);
+		var t2 = setTimeout("showText('4 秒')", 4000);
+		var t3 = setTimeout("showText('6 秒')", 6000);
+	}
+	function showText(text){
+		document.getElementById("text1").value = text;
+	}
+	
+	c = 0;
+	var t;
+	function timedCount(isClick){
+	try{
+		if(isClick && t){
+			return;
+		}
+		document.getElementById('text2').value=c;
+		c=c+1;
+		t = setTimeout("timedCount(false)",1000);
+	}catch(err){
+		alert(err);
+	}
+		
+	}
+	function timedCountStop(){
+		clearTimeout(t);
+		document.getElementById('text2').value='';
+		t = null;
+		c = 0;
+	}
+	function startTime(){
+		var today = new Date();
+		
+		var h = today.getHours().toString();
+		var m = today.getMinutes().toString();
+		var s = today.getSeconds().toString();
+		h = checkTime(h);
+		m = checkTime(m);
+		s = checkTime(s);
+		document.getElementById("d1").innerHTML = h+":"+m+":"+s ;
+		setTimeout("startTime()", 500);
+	}
+	function checkTime(txt){
+		if(txt.length == 1){
+			return '0'+txt;
+		}
+		return txt;
+	}
+</script>
+</head>
+
+<body onload="startTime();">
+	<button onclick="showTimeoutAlert();">显示定时警告框</button>
+	<p>请点击上面的按钮。警告框会在 5 秒后显示。</p>
+	<hr>
+	<button onclick="timedText()">显示计时的文本</button>
+	<input type="text" id="text1">
+	<hr>
+
+	<input type="button" value="开始计时！" onClick="timedCount(true)">&nbsp;
+	<button onclick="timedCountStop()">结束计时</button>
+	<input type="text" id="text2">
+
+	<p>请点击上面的按钮。输入框会从 0 开始一直进行计时。</p>
+	<hr>
+	<div id="d1" style='font-weight:bolder;color:red;'></div>
+</body>
+</html>

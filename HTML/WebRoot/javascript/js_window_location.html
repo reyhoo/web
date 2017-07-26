@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript window location</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+  <script>
+   	document.write('protocol:'+location.protocol + '<br>');
+  	document.write('host:'+location.host + '<br>');
+  	document.write('hostname:'+location.hostname + '<br>');
+  	document.write('port:'+location.port + '<br>');
+  	document.write('pathname:'+location.pathname + '<br>');
+  	document.write('href:'+location.href + '<br>');
+  </script>
+  <hr>
+  
+  <button onclick='location.assign("http://www.baidu.com")'>加载新页面</button><br><br>
+  <a href='http://www.baidu.com'>加载新页面</a>
+  </body>
+</html>
