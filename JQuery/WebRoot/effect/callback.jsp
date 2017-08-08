@@ -8,13 +8,18 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script src="<%=appPath %>/js/jquery.js"></script>
     <script>
-    	$(function(){
-    	
+    	$(document).ready(function(){
+    		$('button').click(function(){
+    			$('p').hide(1000,function(){
+    				alert('p is now hidden!!!');
+    			});
+    		});
     	});
     </script>
   </head>
   
   <body>
-  <a href="http://docs.jquery.com/Downloading_jQuery#Download_jQuery"> 你好  <%=session.getAttribute("name1") %> </a><br>
+  	<button type="button">Hide</button>
+<p>This is a paragraph with little content.</p>
   </body>
 </html>
