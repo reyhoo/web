@@ -20,6 +20,13 @@ public class PostJsonServlet extends HttpServlet{
 		byte[] buff = new byte[1024 * 3];
 		int count;
 		int totalCount = 0;
+//		try {
+//			Thread.sleep(5000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		System.out.println(Thread.currentThread());
 		while(totalCount<contentLenght 
 //				&&(count = in.read(buff))!=-1
 				){
@@ -27,9 +34,11 @@ public class PostJsonServlet extends HttpServlet{
 			totalCount +=count;
 			out.write(buff, 0, count);
 		}
+//		String line = null;
+//		line.length();
 		String result = new String(out.toByteArray(),"UTF-8");
 		resp.setContentType("text/*;charset=utf-8");
-		resp.getWriter().print("{\"requestData\":"+result+"}");
+		resp.getWriter().print("{\"requestData\":"+((result == null||"".equals(result))?"{}":result)+"}");
 		resp.getWriter().close();
 	}
 }
