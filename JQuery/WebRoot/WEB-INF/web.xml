@@ -15,6 +15,14 @@
   	<servlet-name>MyServlet</servlet-name>
   	<url-pattern>/hello</url-pattern>
   </servlet-mapping>
+    <servlet>
+  	<servlet-name>PostJsonServlet</servlet-name>
+  	<servlet-class>com.test.PostJsonServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PostJsonServlet</servlet-name>
+  	<url-pattern>/postJson</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>

@@ -23,7 +23,7 @@ public class MyServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println(request.getCharacterEncoding());
-//		response.setContentType("text/html;charset=utf-8");
+		response.setContentType("text/html;charset=utf-8");
 		System.out.println(request.getHeader("User-Agent"));
 		request.setCharacterEncoding("utf-8");
 		String name = request.getParameter("name");
@@ -36,7 +36,7 @@ public class MyServlet extends HttpServlet {
 		System.out.println(sex);
 		HttpSession session = request.getSession();
 		session.setAttribute("name1", name);
-		response.getWriter().print("success");
+		response.getWriter().print("name="+name);
 		response.getWriter().close();
 //		response.sendRedirect("http://127.0.0.1:8088/JQuery/index.jsp");
 	}
