@@ -17,5 +17,9 @@ public class TestDeptJDBCDao {
 		DeptDao deptDao = (DeptDao) cxt.getBean("deptDao");
 		List<Dept> list = deptDao.findAll();
 		System.out.println(list);
+		Dept dept = deptDao.findById(2);
+		System.out.println(dept);
+//		dept.setLoc("上海南京东路");
+//		deptDao.update(dept);
 	}
 }
