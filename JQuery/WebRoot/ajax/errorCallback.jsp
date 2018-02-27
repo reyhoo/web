@@ -13,17 +13,17 @@
     		jq.ajax({
     		type:"POST" //GET POST
     		,url:"/JQuery/postJson" //链接
-    		,data:JSON.stringify({name:"姚磊"}) //POST请求的数据，可以为String或Object
+    		,data:{"name":"姚磊","age":10,"memo":"上"}//POST请求的数据，可以为String或Object
     		,dataType:"json"
     		,beforeSend:function(xhr){
     		
-    		alert((typeof xhr)== 'object');
+    		//alert((typeof xhr)== 'object');
     		}
     		,success:function(response,statusTxt,xhr){
-				alert(xhr.responseText +"\nname:"+ response.requestData.name);
+			//	alert(xhr.responseText +"\nname:"+ response.requestData.name);
     		}
     		,error:function(xhr){
-    			alert("status:"+xhr.status+"\nresponse:"+xhr.responseText);
+    		//	alert("status:"+xhr.status+"\nresponse:"+xhr.responseText);
     		}
     		});
     	});

@@ -1,5 +1,6 @@
 package com.test;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -18,6 +19,8 @@ public class MyServlet extends HttpServlet {
 		
 		
 		System.out.println(URLDecoder.decode("Ò¦ÀÚ", "iso-8859-1"));
+		
+	
 	}
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)

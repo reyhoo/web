@@ -19,9 +19,18 @@
   	<servlet-name>PostJsonServlet</servlet-name>
   	<servlet-class>com.test.PostJsonServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>DownloadServlet</servlet-name>
+    <servlet-class>com.test.DownloadServlet</servlet-class>
+  </servlet>
+
   <servlet-mapping>
   	<servlet-name>PostJsonServlet</servlet-name>
   	<url-pattern>/postJson</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DownloadServlet</servlet-name>
+    <url-pattern>/download</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
