@@ -15,8 +15,13 @@ public class ProductList extends Observable {
 	
 	public static ProductList getInstance(){
 		if(instance == null){
-			instance = new ProductList();
-			instance.productList = new ArrayList<String>();
+			synchronized (ProductList.class) {
+				if(instance == null){
+					instance = new ProductList();
+					instance.productList = new ArrayList<String>();
+				}
+			}
+			
 		}
 		return instance;
 	}
