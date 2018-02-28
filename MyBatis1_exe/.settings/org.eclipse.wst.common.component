@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="MyBatis1_exe">
+        <wb-resource deploy-path="/" source-path="/WebRoot"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="context-root" value="/MyBatis1_exe"/>
+        <property name="java-output-path" value="/MyBatis1_exe/WebRoot/WEB-INF/classes"/>
+    </wb-module>
+</project-modules>
