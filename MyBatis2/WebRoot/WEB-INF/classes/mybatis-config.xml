@@ -15,9 +15,20 @@
 	<!-- <properties resource="jdbc.properties" ></properties> -->
 	<!-- 在代码中动态传递的，SqlSessionFactoryUtils.java中有 -->
 	<!-- 三个有一个就行了,如果三个都有，优先级由高到低是程序传递，properties文件里的，properties子元素的-->
+	<!-- <settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings> -->
 	<typeAliases>
-		<typeAlias type="com.mybatis2.pojo.Role" alias="role"/>
+		<!-- <typeAlias type="com.mybatis2.pojo.Role" alias="role"/> -->
+		<package name="com.mybatis2.pojo"/>
 	</typeAliases>
+
+	<typeHandlers>
+		<!-- <typeHandler handler="com.mybatis2.handler.MyBooleanHandler" javaType="boolean"
+		jdbcType="INTEGER" 
+		></typeHandler> -->
+		<package name="com.mybatis2.handler"></package><!-- javaType和jdbctype用注解中类上配置 -->
+	</typeHandlers>
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC"/>
@@ -31,5 +42,6 @@
 	</environments>
 	<mappers>
 		<mapper resource="com/mybatis2/mapper/RoleMapper.xml"/>
+		<mapper resource="com/mybatis2/mapper/UserMapper.xml"/>
 	</mappers>
 </configuration>

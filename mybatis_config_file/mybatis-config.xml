@@ -20,7 +20,7 @@
 	</settings> -->
 	<typeAliases>
 		<!-- <typeAlias type="com.mybatis2.pojo.Role" alias="role"/> -->
-		<package name="com.mybatis2.pojo"/>
+		<package name="com.mybatis2.pojo"/><!-- 别名为类的首字母小写，出现重名用注解中类上配置不同的别名 -->
 	</typeAliases>
 
 	<typeHandlers>

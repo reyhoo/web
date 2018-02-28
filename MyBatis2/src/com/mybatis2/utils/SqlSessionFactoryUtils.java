@@ -2,6 +2,7 @@ package com.mybatis2.utils;
 
 import java.util.Properties;
 
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
@@ -30,6 +31,10 @@ public class SqlSessionFactoryUtils {
 			}
 		}
 		return sSqlSessionFactory;
+	}
+	
+	public static SqlSession openSession(){
+		return getSqlSessionFactory().openSession();
 	}
 	public static void main(String[] args) {
 		System.out.println(getSqlSessionFactory().openSession().selectOne("getRole",1l));
