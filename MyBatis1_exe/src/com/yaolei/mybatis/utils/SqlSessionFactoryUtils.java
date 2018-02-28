@@ -24,7 +24,7 @@ public class SqlSessionFactoryUtils {
 						in = SqlSessionFactoryUtils.class
 								.getResourceAsStream(resource);
 						sSqlSessionFactory = new SqlSessionFactoryBuilder()
-								.build(new InputStreamReader(in, "utf-8"));
+								.build(in);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+<!-- 在xml直接配置properties -->
+	<!-- <properties>
+		<property name="database.driver" value="com.mysql.jdbc.Driver"/>
+		<property name="database.url" value="jdbc:mysql://localhost:3306/ssm?useUnicode=true&amp;characterEncoding=utf8"/>
+		<property name="database.username" value="root"/>
+		<property name="database.password" value=""/> 
+	</properties> -->
+	<!-- 在properties文件中配置properties -->
+	<!-- <properties resource="jdbc.properties" ></properties> -->
+	<!-- 在代码中动态传递的，SqlSessionFactoryUtils.java中有 -->
+	<!-- 三个有一个就行了,如果三个都有，优先级由高到低是程序传递，properties文件里的，properties子元素的-->
+	<typeAliases>
+		<typeAlias type="com.mybatis2.pojo.Role" alias="role"/>
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="${database.driver}"/>
+				<property name="url" value="${database.url}"/>
+				<property name="username" value="${database.username}"/>
+				<property name="password" value="${database.password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="com/mybatis2/mapper/RoleMapper.xml"/>
+	</mappers>
+</configuration>
