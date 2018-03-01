@@ -7,13 +7,13 @@
 		<setting name="mapUnderscoreToCamelCase"  value="true"></setting>
 	</settings>
 	<typeAliases>
-		<typeAlias type="com.mybatis2.exe.pojo.User" alias="user"/>
-		<typeAlias type="com.mybatis2.exe.pojo.SexEnum" alias="sexEnum" />
+		<package name="com.mybatis2.exe.pojo"/>
 	</typeAliases>
 	<typeHandlers>
-		<typeHandler handler="com.mybatis2.exe.handler.SexEnumTypeHandler" 
+		<!--  <typeHandler handler="com.mybatis2.exe.handler.SexEnumTypeHandler" 
 		jdbcType="INTEGER" javaType="sexEnum"
-		></typeHandler>
+		></typeHandler> -->
+		 <package name="com.mybatis2.exe.handler"/> 
 	</typeHandlers>
 	
 	<environments default="development">
@@ -27,4 +27,7 @@
 			</dataSource>
 		</environment>
 	</environments>
+	<mappers>
+		<mapper resource="com/mybatis2/exe/mapper/UserMapper.xml"/>
+	</mappers>
 </configuration>

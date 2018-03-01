@@ -7,15 +7,15 @@ import com.mybatis2.exe.pojo.User;
 public interface UserMapper {
 
 	
-	int insert(User user);
+	int insert(User u);
 	
-	int delete(Long id);
+	int delete(Long i);
 	
 	int update(User user);
 	
-	User getById(Long id);
+	User getById(Long _id);
 	
 	List<User> findAll();
 	
-	List<User> findByName(String name);
+	List<User> findByName(String n);
 }

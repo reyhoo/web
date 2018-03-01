@@ -1,5 +1,11 @@
 package com.mybatis2.exe.pojo;
 
+import org.apache.ibatis.type.JdbcType;
+import org.apache.ibatis.type.MappedJdbcTypes;
+import org.apache.ibatis.type.MappedTypes;
+
+
+
 public enum SexEnum {
 	MALE(1,"ÄÐ"),FEMALE(0,"Å®");
 	

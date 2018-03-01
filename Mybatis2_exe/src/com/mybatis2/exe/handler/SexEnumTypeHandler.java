@@ -6,11 +6,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.apache.ibatis.type.JdbcType;
+import org.apache.ibatis.type.MappedJdbcTypes;
+import org.apache.ibatis.type.MappedTypes;
 import org.apache.ibatis.type.TypeHandler;
 import org.apache.log4j.Logger;
 
 import com.mybatis2.exe.pojo.SexEnum;
 
+
+@MappedJdbcTypes(JdbcType.INTEGER)
+@MappedTypes(SexEnum.class)
 public class SexEnumTypeHandler implements TypeHandler<SexEnum> {
 
 	private Logger logger = Logger.getLogger(SexEnumTypeHandler.class);

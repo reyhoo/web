@@ -48,8 +48,6 @@ public class SexEnumTypeHandler implements TypeHandler<SexEnum> {
 			JdbcType arg3) throws SQLException {
 		logger.info(arg2);
 		arg0.setInt(arg1, arg2.getId());
-		
-		
 	}
 
 }
