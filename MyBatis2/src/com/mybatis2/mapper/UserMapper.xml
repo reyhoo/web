@@ -5,12 +5,11 @@
 
     <resultMap type="user" id="userMapper">
     	<result property="id" column="id" />
-    	<result property="userName" column="user_name" />
+    	<result property="userName" column="name" />
     	<result property="sex" column="sex" typeHandler="com.mybatis2.handler.SexEnumTypeHandler"/>
     </resultMap>
-
-	<select id="findAll" resultType="user">
-		select id ,user_name userName,sex from t_user
+	<select id="findAll" resultMap="userMapper">
+		select id ,user_name name,sex from t_user
 	</select>
 	<insert id="insert" parameterType="user">
 		insert into t_user (user_name,sex) values 
