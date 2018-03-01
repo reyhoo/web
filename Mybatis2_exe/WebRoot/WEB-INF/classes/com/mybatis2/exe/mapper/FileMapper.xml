@@ -5,13 +5,13 @@
 	
 	<resultMap type="testFile" id="file">
 		<id property="id" column="id" />
-		<id property="content" column="c" 
+		<id property="content" column="c"  
 		typeHandler="org.apache.ibatis.type.BlobTypeHandler"
 		/>
 	</resultMap>
 	
 	<select id="getFile" resultMap="file" parameterType="_long">
-		select id,content c from t_file where id = #{id}
+		select id,content c from t_file where id = #{id}<!-- 这里content重命名了 , resultMap里的column也要变 -->
 	</select>
 	<insert id="insertFile" parameterType="testFile">
 		insert into t_file (content) values(#{content,typeHandler=org.apache.ibatis.type.BlobTypeHandler})
