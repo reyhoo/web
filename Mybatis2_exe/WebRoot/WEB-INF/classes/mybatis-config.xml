@@ -29,5 +29,6 @@
 	</environments>
 	<mappers>
 		<mapper resource="com/mybatis2/exe/mapper/UserMapper.xml"/>
+		<mapper resource="com/mybatis2/exe/mapper/FileMapper.xml"/>
 	</mappers>
 </configuration>
