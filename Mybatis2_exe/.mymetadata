@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="Mybatis2_exe"
+  id="myeclipse.1519879737463"
+  context-root="/Mybatis2_exe"
+  j2ee-spec="5.0"
+  archive="Mybatis2_exe.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
