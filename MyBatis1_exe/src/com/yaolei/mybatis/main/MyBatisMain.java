@@ -18,28 +18,29 @@ public class MyBatisMain {
 		try{
 			sqlSession = SqlSessionFactoryUtils.openSqlSession();
 			RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
+			roleMapper.getRole(1l);
 			
 //			Role role = roleMapper.getRole(1l);
 //			log.debug(role);
-			
-			Role role = new Role();
-			role.setNote("Ò¦ÀÚ±¸×¢±¸×¢");
-			role.setRoleName("Ò¦ÀÚ");
-			try {
-				int count = roleMapper.insertRole(role);
-				System.out.println(count);
-				sqlSession.commit();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+////			
+//			Role role = new Role();
+//			role.setNote("Ò¦ÀÚ±¸×¢±¸×¢");
+//			role.setRoleName("Ò¦ÀÚ");
+//			try {
+//				int count = roleMapper.insertRole(role);
+//				System.out.println(count);
+//				sqlSession.commit();
+//			} catch (Exception e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			List<Role> list = roleMapper.findRoles("Ò¦");
-			
-//			list.get(0).setRoleName("Ò¦¹þ¹þ¹þ¹þ");
-			
-			roleMapper.deleteRole(list.get(0).getId());
-//			roleMapper.updateRole(list.get(0));
-			sqlSession.commit();
+//			
+////			list.get(0).setRoleName("Ò¦¹þ¹þ¹þ¹þ");
+//			
+//			roleMapper.deleteRole(list.get(0).getId());
+////			roleMapper.updateRole(list.get(0));
+//			sqlSession.commit();
 			log.error(list);
 		}catch(Exception e){
 			e.printStackTrace();

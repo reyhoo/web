@@ -10,11 +10,11 @@
  <!--    	<result property="isStu" column="is_stu" jdbcType="INTEGER" javaType="boolean" /> -->
     	<result property="isStu" column="is_stu" typeHandler="com.mybatis2.handler.MyBooleanHandler" />
     </resultMap>
-	<select id="getRole" parameterType="long" resultType="role">
-		select id ,role_name roleName,note,is_stu isStu from t_role where id=#{id}
+	<select id="getRole" parameterType="long" resultMap="roleMapper">
+		select id ,role_name,note,is_stu from t_role where id=#{id}
 	</select>
-	<select id="findAll" resultType="role">
-		select id ,role_name roleName,note,is_stu isStu from t_role
+	<select id="findAll" resultMap="roleMapper">
+		select id ,role_name,note,is_stu from t_role
 	</select>
 	<insert id="insert" parameterType="role">
 		insert into t_role (role_name,note,is_stu) values 

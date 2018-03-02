@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="MyBatis_mapper"
+  id="myeclipse.1519960070401"
+  context-root="/MyBatis_mapper"
+  j2ee-spec="5.0"
+  archive="MyBatis_mapper.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

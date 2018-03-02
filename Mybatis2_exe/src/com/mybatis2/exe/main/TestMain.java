@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.mybatis2.exe.mapper.FileMapper;
 import com.mybatis2.exe.mapper.UserMapper;
+import com.mybatis2.exe.pojo.SexEnum;
 import com.mybatis2.exe.pojo.TestFile;
 import com.mybatis2.exe.pojo.User;
 import com.mybatis2.exe.utils.SqlSessionFactoryUtils;
@@ -37,8 +38,8 @@ public class TestMain {
 //		user.setUserName("lucy");
 //		userMapper.insert(user);
 //		session.commit();
-//		List<User> list = userMapper.findAll();
-		List<User> list = userMapper.findByName("l");
+		List<User> list = userMapper.findAll();
+//		List<User> list = userMapper.findByName("l");
 		System.out.println(list);
 		
 		
@@ -56,7 +57,7 @@ public class TestMain {
 //		}
 //		fileMapper.insertFile(file);
 //		session.commit();
-		System.out.println(fileMapper.getFile(1l).id);
-		System.out.println(new String(fileMapper.getFile(1l).content,"utf-8"));
+//		System.out.println(fileMapper.getFile(1l).id);
+//		System.out.println(new String(fileMapper.getFile(1l).content,"utf-8"));
 	}
 }

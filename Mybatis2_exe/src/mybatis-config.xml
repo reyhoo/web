@@ -3,9 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<settings>
+	<!-- <settings>
 		<setting name="mapUnderscoreToCamelCase"  value="true"></setting>
-	</settings>
+	</settings> -->
 	<typeAliases>
 		<package name="com.mybatis2.exe.pojo"/>
 	</typeAliases>
@@ -27,8 +27,14 @@
 			</dataSource>
 		</environment>
 	</environments>
+	<databaseIdProvider type="DB_VENDOR">
+		<property name="Oracle" value="oracle"/>
+		<property name="MySQL" value="mysql"/>
+		<property name="DB2" value="db2"/>
+	</databaseIdProvider>
 	<mappers>
-		<mapper resource="com/mybatis2/exe/mapper/UserMapper.xml"/>
-		<mapper resource="com/mybatis2/exe/mapper/FileMapper.xml"/>
+		<package name="com.mybatis2.exe.mapper"/>
+		<!-- <mapper resource="com/mybatis2/exe/mapper/UserMapper.xml"/>
+		<mapper resource="com/mybatis2/exe/mapper/FileMapper.xml"/> -->
 	</mappers>
 </configuration>

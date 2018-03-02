@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yaolei.mybatis.mapper.RoleMapper">
 	<insert id="insertRole" parameterType="role">
-		insert into t_role (role_name,note) values (#{roleName},#{note})
+		insert into t_role (id,role_name,note) values (T_ROLE_ID_SEQ.nextval,#{roleName},#{note})
 	</insert>
 	<delete id="deleteRole" parameterType="long">
 		delete from t_role where id=#{id}

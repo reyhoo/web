@@ -40,8 +40,14 @@
 			</dataSource>
 		</environment>
 	</environments>
+	<databaseIdProvider type="DB_VENDOR">
+		<property name="Oracle" value="oracle"/>
+		<property name="MySQL" value="mysql"/>
+		<property name="DB2" value="db2"/>
+	</databaseIdProvider>
 	<mappers>
-		<mapper resource="com/mybatis2/mapper/RoleMapper.xml"/>
-		<mapper resource="com/mybatis2/mapper/UserMapper.xml"/>
+		<!-- <mapper resource="com/mybatis2/mapper/RoleMapper.xml"/>
+		<mapper resource="com/mybatis2/mapper/UserMapper.xml"/> -->
+		<package name="com.mybatis2.mapper"></package>
 	</mappers>
 </configuration>

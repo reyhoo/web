@@ -27,6 +27,7 @@ public class MainTest {
 //		System.out.println(list);
 		SqlSession session = SqlSessionFactoryUtils.openSession();
 		UserMapper userMapper = session.getMapper(UserMapper.class);
+		RoleMapper roleMapper = session.getMapper(RoleMapper.class);
 		User user = new User();
 //		user.setUserName("tom");
 //		user.setSex(SexEnum.MALE);
@@ -37,5 +38,6 @@ public class MainTest {
 //		userMapper.insert(user);
 //		session.commit();
 		System.out.println(userMapper.findAll());
+		System.out.println(roleMapper.findAll());
 	}
 }
