@@ -34,13 +34,13 @@ public class TestMain {
 //		roleMapper.findRolesByMix(role, page);
 //		session.close();
 		
-		Role role = new Role();
-		role.setNote("tom note");
-		role.setRoleName("jerry");
-		roleMapper.insertRoleWithCustomId(role);
-		session.commit();
-		
-		System.out.println(role.getId());
+//		Role role = new Role();
+//		role.setNote("tom note");
+//		role.setRoleName("jerry");
+//		roleMapper.insertRoleWithCustomId(role);
+//		session.commit();
+//		
+//		System.out.println(role.getId());
 	}
 	
 }

@@ -3,7 +3,17 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.mapper.mapper.RoleMapper">
 
-	
+	<sql id="roleCols">
+		id,role_name,note
+	</sql>
+	<sql id="roleCols2">
+		${role}.id,${role}.role_name,${role}.note
+	</sql>
+	<resultMap type="role" id="roleMap">
+		<id property="id" column="id" />
+		<result property="roleName" column="role_name" />
+		<result property="note" column="note" />
+	</resultMap>
 	<insert id="insertRole"  useGeneratedKeys="true" keyProperty="role.id">
 		insert into t_role(role_name,note)values(#{role.roleName},#{role.note})
 	</insert>
@@ -11,32 +21,32 @@
 		<selectKey keyProperty="role.id" resultType="long" order="BEFORE" >
 			select if(max(id)=null,1,max(id)+10) from t_role
 		</selectKey>
-		insert into t_role (id,role_name,note) values(#{role.id},#{role.roleName},#{role.note})
+		insert into t_role (<include refid="roleCols"></include>) values(#{role.id},#{role.roleName},#{role.note})
 	</insert>
-	<select id="findRolesByMap" parameterType="map" resultType="role">
-		select id,role_name roleName,note from t_role where 
+	<select id="findRolesByMap" parameterType="map" resultMap="roleMap">
+		select <include refid="roleCols"></include> from t_role where 
 		role_name like concat('%',#{roleName},'%') 
 		and note like concat('%',#{note},'%')
 	</select>
-	<select id="findRolesByAnnotation" resultType="role">
-		select id,role_name roleName,note from t_role where 
+	<select id="findRolesByAnnotation" resultMap="roleMap">
+		select <include refid="roleCols"></include> from t_role where 
 		role_name like concat('%',#{roleName},'%') 
 		and note like concat('%',#{note},'%')
 	</select>
-	<select id="findRolesByBean" parameterType="role" resultType="role">
-		select id,role_name roleName,note from t_role where 
+	<select id="findRolesByBean" parameterType="role" resultMap="roleMap">
+		select <include refid="roleCols"></include> from t_role where 
 		role_name like concat('%',#{roleName},'%') 
 		and note like concat('%',#{note},'%')
 	</select>
-	<select id="findRolesByMix" resultType="role">
-		select id,role_name roleName,note from t_role where 
+	<select id="findRolesByMix" resultMap="roleMap">
+		select <include refid="roleCols"></include> from t_role where 
 		role_name like concat('%',#{param.roleName},'%') 
 		and note like concat('%',#{param.note},'%') 
 		limit #{page.start} , #{page.limit}
 	</select>
-		<select id="findRolesByBounds" resultType="role">
-		select id,role_name roleName,note from t_role where 
-		role_name like concat('%',#{roleName},'%') 
-		and note like concat('%',#{note},'%')
+		<select id="findRolesByBounds" resultMap="roleMap">
+		select <include refid="roleCols2"><property name="role" value="r"/></include> from t_role r where 
+		r.role_name like concat('%',#{roleName},'%') 
+		and r.note like concat('%',#{note},'%')
 	</select>
 </mapper>
