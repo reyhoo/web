@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.cascade.mapper.EmployeeMapper">
+
+	<resultMap type="employee" id="employeeMap">
+		<id property="id" column="id" />
+		<result property="realName" column="real_name"/>
+		<result property="sex" column="sex" typeHandler="com.mybatis.cascade.handler.SexEnumTypeHandler"/>
+		<result property="birthday" column="birthday"/>
+		<result property="mobile" column="mobile"/>
+		<result property="position" column="position"/>
+		<result property="note" column="note"/>
+		<association property="workCard" column="id"
+			select="com.mybatis.cascade.mapper.WorkCardMapper.getWorkCardByEmpId">
+		</association>
+		<collection property="employeeTaskList" column="id" 
+		 	select="com.mybatis.cascade.mapper.EmployeeTaskMapper.getEmployeeTaskListByEmpId">
+		</collection>
+		<discriminator javaType="_int" column="sex" >
+			<case value="1" resultMap="maleEmployeeMap"></case>
+			<case value="0" resultMap="femaleEmployeeMap"></case>
+		</discriminator>
+	</resultMap>
+	
+	<resultMap type="femaleEmployee" id="femaleEmployeeMap" extends="employeeMap">
+		<association property="femaleHealthForm" column="id"
+			select="com.mybatis.cascade.mapper.FemaleHealthFormMapper.getFemaleHealthFormByEmpId"
+		></association>
+	</resultMap>
+	<resultMap type="maleEmployee" id="maleEmployeeMap" extends="employeeMap">
+		<association property="maleHealthForm" column="id"
+			select="com.mybatis.cascade.mapper.MaleHealthFormMapper.getMaleHealthFormByEmpId"
+		></association>
+	</resultMap>
+	<select id="getEmployeeById" resultMap="employeeMap" parameterType="long" >
+		select id,real_name,sex,birthday,mobile,position,note from t_employee where id=#{id}
+	</select>
+	
+</mapper>

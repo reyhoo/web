@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="MyBatisCascade"
+  id="myeclipse.1520062945468"
+  context-root="/MyBatisCascade"
+  j2ee-spec="5.0"
+  archive="MyBatisCascade.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

@@ -47,6 +47,6 @@
 		<select id="findRolesByBounds" resultMap="roleMap">
 		select <include refid="roleCols2"><property name="role" value="r"/></include> from t_role r where 
 		r.role_name like concat('%',#{roleName},'%') 
-		and r.note like concat('%',#{note},'%')
+		and r.note is null or r.note like concat('%',#{note},'%')
 	</select>
 </mapper>

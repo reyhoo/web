@@ -21,7 +21,7 @@ public class TestMain {
 //		
 		
 		RowBounds rowBounds = new RowBounds(0,5);
-		List<Role> list = roleMapper.findRolesByBounds("findRolesByBounds", "findRolesByBoundsnote",rowBounds);
+		List<Role> list = roleMapper.findRolesByBounds("h", "12121212",rowBounds);
 		System.out.println(list);
 
 		//		Role role = new Role();
@@ -35,8 +35,7 @@ public class TestMain {
 //		session.close();
 		
 //		Role role = new Role();
-//		role.setNote("tom note");
-//		role.setRoleName("jerry");
+//		role.setRoleName("hhhhhhhhhhhhhhhh");
 //		roleMapper.insertRoleWithCustomId(role);
 //		session.commit();
 //		
