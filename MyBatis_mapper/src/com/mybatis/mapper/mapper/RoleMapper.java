@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 import com.mybatis.mapper.pojo.PageParam;
 import com.mybatis.mapper.pojo.Role;
@@ -16,6 +17,12 @@ import com.mybatis.mapper.pojo.Role;
  */
 public interface RoleMapper {
 
+	/***
+	 * 在映射xml中用useGeneratedKeys属性设置获取id,回传到role的id属性中
+	 * @param role
+	 * @return
+	 */
+	int insertRole(@Param("role")Role role);
 	/**
 	 * 传入参数为map时,将多个参数put进map里
 	 * 
@@ -41,4 +48,13 @@ public interface RoleMapper {
 	
 	
 	List<Role>findRolesByMix(@Param("param")Role role,@Param("page")PageParam pageParam);
+	
+	/**
+	 * 用RowBounds实现分页，这种方式适合是把全量数据查询出来，然后再在结果集中取出想要的数据，适合数据量小的情况
+	 * @param roleName
+	 * @param note
+	 * @param rowBounds
+	 * @return
+	 */
+	List<Role>findRolesByBounds(@Param("roleName")String roleName,@Param("note")String note,RowBounds rowBounds);
 }

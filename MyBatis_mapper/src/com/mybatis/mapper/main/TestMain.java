@@ -1,8 +1,10 @@
 package com.mybatis.mapper.main;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 
 import com.mybatis.mapper.mapper.RoleMapper;
@@ -21,17 +23,27 @@ public class TestMain {
 //		roleMapper.findRolesByMap(map);
 //		
 		
+		RowBounds rowBounds = new RowBounds(0,5);
+		List<Role> list = roleMapper.findRolesByBounds("findRolesByBounds", "findRolesByBoundsnote",rowBounds);
+		System.out.println(list);
 
-		//		roleMapper.findRolesByAnnotation("findRolesByAnnotation", "findRolesByAnnotationnote");
+		//		Role role = new Role();
+//		role.setRoleName("findRolesByMix");
+//		role.setNote("findRolesByMixnote");
+////		roleMapper.findRolesByBean(role);
+//		PageParam page = new PageParam();
+//		page.setLimit(5);
+//		page.setStart(0);
+//		roleMapper.findRolesByMix(role, page);
+//		session.close();
+		
 		Role role = new Role();
-		role.setRoleName("findRolesByMix");
-		role.setNote("findRolesByMixnote");
-//		roleMapper.findRolesByBean(role);
-		PageParam page = new PageParam();
-		page.setLimit(5);
-		page.setStart(0);
-		roleMapper.findRolesByMix(role, page);
-		session.close();
+		role.setNote("tom note");
+		role.setRoleName("tom4");
+		roleMapper.insertRole(role);
+		session.commit();
+		
+		System.out.println(role.getId());
 	}
 	
 }
