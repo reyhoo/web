@@ -7,6 +7,12 @@
 	<insert id="insertRole"  useGeneratedKeys="true" keyProperty="role.id">
 		insert into t_role(role_name,note)values(#{role.roleName},#{role.note})
 	</insert>
+	<insert id="insertRoleWithCustomId">
+		<selectKey keyProperty="role.id" resultType="long" order="BEFORE" >
+			select if(max(id)=null,1,max(id)+10) from t_role
+		</selectKey>
+		insert into t_role (id,role_name,note) values(#{role.id},#{role.roleName},#{role.note})
+	</insert>
 	<select id="findRolesByMap" parameterType="map" resultType="role">
 		select id,role_name roleName,note from t_role where 
 		role_name like concat('%',#{roleName},'%') 

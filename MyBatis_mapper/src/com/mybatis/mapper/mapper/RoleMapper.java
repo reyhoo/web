@@ -17,6 +17,11 @@ import com.mybatis.mapper.pojo.Role;
  */
 public interface RoleMapper {
 
+	
+	
+	
+	int insertRoleWithCustomId(@Param("role")Role role);
+	
 	/***
 	 * 在映射xml中用useGeneratedKeys属性设置获取id,回传到role的id属性中
 	 * @param role

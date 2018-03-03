@@ -1,14 +1,11 @@
 package com.mybatis.mapper.main;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 
 import com.mybatis.mapper.mapper.RoleMapper;
-import com.mybatis.mapper.pojo.PageParam;
 import com.mybatis.mapper.pojo.Role;
 import com.mybatis.mapper.utils.SqlSessionFactoryUtils;
 
@@ -39,8 +36,8 @@ public class TestMain {
 		
 		Role role = new Role();
 		role.setNote("tom note");
-		role.setRoleName("tom4");
-		roleMapper.insertRole(role);
+		role.setRoleName("jerry");
+		roleMapper.insertRoleWithCustomId(role);
 		session.commit();
 		
 		System.out.println(role.getId());
