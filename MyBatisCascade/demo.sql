@@ -1,15 +1,17 @@
-drop table if exists t_female_health_form;
-drop table if exists t_male_health_form;
+drop table if exists t_employee_task;
 drop table if exists t_task;
 drop table if exists t_work_card;
-drop table if exists t_employee_task;
+drop table if exists t_female_health_form;
+drop table if exists t_male_health_form;
 drop table if exists t_employee;
+
 create table t_employee(
 id bigint not null auto_increment,
 real_name varchar(60) not null,
 sex int(2) not null,
 birthday date not null,
 mobile varchar(20) not null,
+email varchar(60) not null,
 position varchar(20) not null,
 note varchar(256),
 constraint pk_t_emp primary key(id)

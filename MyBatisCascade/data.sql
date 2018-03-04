@@ -1,6 +1,6 @@
-INSERT INTO t_employee	(real_name,sex,birthday,mobile,POSITION,note) VALUES('tom',1,NOW(),'1515151515','manager','is a good man');
-INSERT INTO t_employee	(real_name,sex,birthday,mobile,POSITION,note) VALUES('lucy',0,NOW(),'15151515','hr','is a good girl');
-INSERT INTO t_employee	(real_name,sex,birthday,mobile,POSITION,note) VALUES('jerry',1,NOW(),'110','coder','is a bad man');
+INSERT INTO t_employee	(real_name,sex,birthday,email,mobile,POSITION,note) VALUES('tom',1,NOW(),'tom@qq.com','1515151515','manager','is a good man');
+INSERT INTO t_employee	(real_name,sex,birthday,email,mobile,POSITION,note) VALUES('lucy',0,NOW(),'lucy@qq.com','15151515','hr','is a good girl');
+INSERT INTO t_employee	(real_name,sex,birthday,email,mobile,POSITION,note) VALUES('jerry',1,NOW(),'jerry@qq.com','110','coder','is a bad man');
 
 INSERT INTO t_work_card(emp_id,real_name,department,mobile,POSITION,note)
 VALUES(1,'tom','caiwu','1515151515','manager','is a good man');

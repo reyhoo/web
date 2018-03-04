@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.cascade.exe.mapper.MaleHealthFormMapper">
+
+<resultMap type="maleHealthForm" id="maleHealthFormMap">
+	<id property="id" column="id"/>
+	<result property="empId" column="emp_id"></result>
+	<result property="heart" column="heart"></result>
+	<result property="liver" column="liver"></result>
+	<result property="spleen" column="spleen"></result>
+	<result property="lung" column="lung"></result>
+	<result property="kidney" column="kidney"></result>
+	<result property="prostate" column="prostate"></result>
+	<result property="note" column="note"></result>
+</resultMap>
+	<select id="getMaleHealthFormByEmpId" parameterType="long" resultMap="maleHealthFormMap">
+		select * from t_male_health_form where emp_id=#{id}
+	</select>
+</mapper>
