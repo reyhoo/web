@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.cascade.mapper.EmployeeMapper2">
+
+	<resultMap type="employee" id="employeeMap2">
+		<id property="id" column="id"/>
+		<result property="realName" column="real_name"/>
+		<result property="sex" column="sex"/>
+		<result property="birthday" column="birthday"/>
+		<result property="mobile" column="mobile"/>
+		<result property="email" column="email"/>
+		<result property="position" column="position"/>
+		<result property="note" column="note"/>
+		<association property="workCard" javaType="workCard">
+			<id property="id" column="wc_id"/>
+			<result property="empId" column="id" />
+			<result property="department" column="wc_department" />
+			<result property="realName" column="wc_real_name" />
+			<result property="mobile" column="wc_mobile" />
+			<result property="position" column="wc_position" />
+			<result property="note" column="wc_note" />
+		</association>
+		<collection property="employeeTaskList" ofType="employeeTask">
+			<id property="id" column="et_id"/>
+			<result property="empId" column="id" />
+			<result property="note" column="et_note" />
+			<result property="taskName" column="et_task_name" />
+			<association property="task" javaType="task">
+				<id property="id" column="t_id" />
+				<result property="context" column="t_context" />
+				<result property="note" column="t_note" />
+				<result property="title" column="t_title" />
+			</association>
+		</collection>
+		<discriminator javaType="_int" column="sex">
+			<case value="1" resultMap="maleEmployeeMap2"></case>
+			<case value="0" resultMap="femaleEmployeeMap2"></case>
+		</discriminator>
+	</resultMap>
+	<resultMap type="maleEmployee" id="maleEmployeeMap2" extends="employeeMap2">
+		<association property="maleHealthForm" javaType="maleHealthForm">
+		
+			<id property="id" column="h_id" />
+			<result property="empId" column="id" />
+			<result property="heart" column="h_heart" />
+			<result property="liver" column="h_liver" />
+			<result property="spleen" column="h_spleen" />
+			<result property="lung" column="h_lung" />
+			<result property="kidney" column="h_kidney" />
+			<result property="note" column="h_note" />
+			<result property="prostate" column="h_prostate"/>
+		</association>
+	</resultMap>
+	<resultMap type="femaleEmployee" id="femaleEmployeeMap2" extends="employeeMap2">
+		<association property="femaleHealthForm" javaType="femaleHealthForm" >
+			<id property="id" column="h_id" />
+			<result property="empId" column="id" />
+			<result property="heart" column="h_heart" />
+			<result property="liver" column="h_liver" />
+			<result property="spleen" column="h_spleen" />
+			<result property="lung" column="h_lung" />
+			<result property="kidney" column="h_kidney" />
+			<result property="note" column="h_note" />
+			<result property="uterus" column="h_uterus"/>
+		</association>
+	</resultMap>
+	<select id="getEmployeeById" parameterType="long" resultMap="employeeMap2">
+		SELECT emp.*,wc.id wc_id,wc.department wc_department,wc.real_name wc_real_name,wc.mobile wc_mobile,wc.position wc_position,wc.note wc_note,
+		et.id et_id,et.note et_note,et.task_id et_task_id,et.task_name et_task_name,t.id t_id,t.context t_context,t.note t_note,t.title t_title,
+		IF(emp.sex = 1,mhf.id,fhf.id) h_id,
+		IF(emp.sex = 1,mhf.heart,fhf.heart) h_heart,
+		IF(emp.sex = 1,mhf.liver,fhf.liver) h_liver,
+		IF(emp.sex = 1,mhf.spleen,fhf.spleen) h_spleen,
+		IF(emp.sex = 1,mhf.lung,fhf.lung) h_lung,
+		IF(emp.sex = 1,mhf.kidney,fhf.kidney) h_kidney,
+		IF(emp.sex = 1,mhf.note,fhf.note) h_note,
+		mhf.prostate h_prostate,fhf.uterus h_uterus
+		FROM t_employee emp
+		LEFT JOIN t_work_card wc ON emp.id = wc.emp_id 
+		LEFT JOIN t_female_health_form fhf ON emp.id = fhf.emp_id 
+		LEFT JOIN t_male_health_form mhf ON emp.id = mhf.emp_id 
+		LEFT JOIN t_employee_task et ON emp.id = et.emp_id 
+		LEFT JOIN t_task t ON et.task_id = t.id 
+		WHERE emp.id =  #{id}
+	</select>
+	
+</mapper>
