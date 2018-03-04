@@ -12,7 +12,10 @@
 		<result property="position" column="position"></result>
 		<result property="note" column="note"></result>
 		<association property="workCard" column="id" select="com.mybatis.cascade.exe.mapper.WorkCardMapper.getWorkCardByEmpId"></association>
-		<collection property="employeeTaskList" column="id" fetchType="eager" select="com.mybatis.cascade.exe.mapper.EmployeeTaskMapper.getEmployeeTaskListByEmpId"></collection>
+		<collection property="employeeTaskList" column="id" fetchType="eager"
+		 select="com.mybatis.cascade.exe.mapper.EmployeeTaskMapper.getEmployeeTaskListByEmpId">
+		 <!--fetchType eager表示先加载雇员信息，再加载任务列表，lazy表示调用列表时才查数据库,fetchType属性会忽略全局的lazyLoadingEnabled和aggressiveLazyLoading属性 -->
+		 </collection>
 		<discriminator javaType="_int" column="sex">
 			<case value="1" resultMap="maleEmployeeMap"></case>
 			<case value="0" resultMap="femaleEmployeeMap"></case>
