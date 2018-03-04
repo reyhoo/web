@@ -8,7 +8,7 @@
 		<result property="empId" column="emp_id" />
 		<result property="taskName" column="task_name" />
 		<result property="note" column="note" />
-		<association property="task" column="task_id" select="com.mybatis.cascade.exe.mapper.TaskMapper.getTask"></association>
+		<association property="task" column="task_id" fetchType="eager" select="com.mybatis.cascade.exe.mapper.TaskMapper.getTask"></association>
 	</resultMap>
 	<select id="getEmployeeTaskListByEmpId" parameterType="long" resultMap="EmployeeTaskMap">
 		select * from t_employee_task where emp_id=#{id}

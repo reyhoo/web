@@ -12,7 +12,7 @@
 		<result property="position" column="position"></result>
 		<result property="note" column="note"></result>
 		<association property="workCard" column="id" select="com.mybatis.cascade.exe.mapper.WorkCardMapper.getWorkCardByEmpId"></association>
-		<collection property="employeeTaskList" column="id" select="com.mybatis.cascade.exe.mapper.EmployeeTaskMapper.getEmployeeTaskListByEmpId"></collection>
+		<collection property="employeeTaskList" column="id" fetchType="eager" select="com.mybatis.cascade.exe.mapper.EmployeeTaskMapper.getEmployeeTaskListByEmpId"></collection>
 		<discriminator javaType="_int" column="sex">
 			<case value="1" resultMap="maleEmployeeMap"></case>
 			<case value="0" resultMap="femaleEmployeeMap"></case>
