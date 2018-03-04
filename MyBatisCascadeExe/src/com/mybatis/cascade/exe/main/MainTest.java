@@ -21,7 +21,7 @@ public class MainTest {
 //		} catch (InterruptedException e) {
 //			e.printStackTrace();
 //		}
-		System.err.println(emp.getEmail());
+//		System.err.println(emp.getEmail());
 //		sLogger.info("=============================================");
 ////		try {
 ////			Thread.sleep(2000);
@@ -36,6 +36,8 @@ public class MainTest {
 //		e.printStackTrace();
 //	}
 //		emp.getEmployeeTaskList().get(0).getTask();
-		System.err.println();
+		System.err.println(emp.getEmail());
+		emp = employeeMapper.getEmployeeById(2l);
+		System.err.println(emp);
 	}
 }

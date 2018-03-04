@@ -14,5 +14,7 @@ public class MainTest {
 		EmployeeMapper employeeMapper = session.getMapper(EmployeeMapper.class);
 		Employee emp = employeeMapper.getEmployeeById(1l);
 		System.err.println(emp);
+		emp = employeeMapper.getEmployeeById(1l);
+		System.err.println(emp);
 	}
 }

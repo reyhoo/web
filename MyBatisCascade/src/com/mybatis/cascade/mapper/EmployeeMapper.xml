@@ -33,7 +33,7 @@
 			select="com.mybatis.cascade.mapper.MaleHealthFormMapper.getMaleHealthFormByEmpId"
 		></association>
 	</resultMap>
-	<select id="getEmployeeById" resultMap="employeeMap" parameterType="long" >
+	<select id="getEmployeeById" resultMap="employeeMap" parameterType="long" flushCache="true"><!-- 默认是(false)开启一级缓存 -->
 		select id,real_name,sex,birthday,mobile,position,note from t_employee where id=#{id}
 	</select>
 	
