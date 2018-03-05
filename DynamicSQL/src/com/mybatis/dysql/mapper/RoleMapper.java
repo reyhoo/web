@@ -12,4 +12,12 @@ public interface RoleMapper {
 	List<Role> getRoleByRoleName(@Param("roleName")String r);
 	List<Role> getRoleByBean(Role r);
 	List<Role> findsRoles(@Param("roleName") String roleName,@Param("note") String note);
+	/**
+	 * ”√trim±Í«©
+	 * @param roleName
+	 * @param note
+	 * @return
+	 */
+	List<Role> findsRolesByTrim(@Param("roleName") String roleName,@Param("note") String note);
+	
 }

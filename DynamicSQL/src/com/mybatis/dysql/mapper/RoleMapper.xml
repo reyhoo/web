@@ -35,7 +35,7 @@
 	<!-- select 可以自动去掉多余的and或or -->
 	<select id="findsRoles" resultMap="roleMap">
 		select <include refid="cols"></include> from t_role
-		<where>
+		<where> 
 			<if test="roleName != null and roleName != ''">
 				and role_name like concat('%',#{roleName},'%')
 			</if>
@@ -46,5 +46,17 @@
 	</select>
 	
 	
+	<!-- trim跟where效果一样， prefixOverrides如果是多个用'|'隔开-->
+	<select id="findsRolesByTrim" resultMap="roleMap">
+		select <include refid="cols"></include> from t_role
+		<trim prefix="where" prefixOverrides="and|or">
+			<if test="roleName != null and roleName != ''">
+				and role_name like concat('%',#{roleName},'%')
+			</if>
+			<if test="note != null and note != ''">
+				or note like concat('%',#{note},'%')
+			</if>
+		</trim>
+	</select>
 	
 </mapper>

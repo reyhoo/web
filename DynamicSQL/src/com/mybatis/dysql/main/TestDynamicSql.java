@@ -30,8 +30,12 @@ public class TestDynamicSql {
 		
 		
 		
-		//where
-		List<Role> list = roleMapper.findsRoles("", "role1");
+//		//where
+//		List<Role> list = roleMapper.findsRoles("dsfasdfasd", "role0");
+//		System.out.println(list);
+		
+		//trim
+		List<Role> list = roleMapper.findsRolesByTrim("dfd", "role22222");
 		System.out.println(list);
 		
 	}
