@@ -35,8 +35,15 @@ public class TestDynamicSql {
 //		System.out.println(list);
 		
 		//trim
-		List<Role> list = roleMapper.findsRolesByTrim("dfd", "role22222");
-		System.out.println(list);
+//		List<Role> list = roleMapper.findsRolesByTrim("dfd", "role22222");
+//		System.out.println(list);
 		
+		
+		//set
+		Role role = new Role();
+		role.setId(1l);
+		role.setNote("Ò¦ÀÚnote");
+		roleMapper.updateRole(role);
+		session.commit();
 	}
 }

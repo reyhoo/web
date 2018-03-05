@@ -59,4 +59,18 @@
 		</trim>
 	</select>
 	
+	<!-- set 当某一字段为空时，去掉对应sql-->
+	<update id="updateRole" parameterType="role">
+		update t_role
+		<set>
+			<if test="roleName != null and roleName != ''">
+				role_name=#{roleName},
+			</if>
+			<if test="note != null and note != ''">
+				note=#{note}
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+	
 </mapper>

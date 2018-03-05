@@ -20,4 +20,6 @@ public interface RoleMapper {
 	 */
 	List<Role> findsRolesByTrim(@Param("roleName") String roleName,@Param("note") String note);
 	
+	
+	int updateRole(Role role);
 }
