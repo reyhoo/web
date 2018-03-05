@@ -73,4 +73,41 @@
 		where id=#{id}
 	</update>
 	
+	
+	<update id="updateRoleByTrim" parameterType="role">
+		update t_role
+		<trim prefix="set" suffixOverrides=",">
+			<if test="roleName != null and roleName != ''">
+				role_name=#{roleName},
+			</if>
+			<if test="note != null and note != ''">
+				note=#{note}
+			</if>
+		</trim>
+		where id=#{id}
+	</update>
+	<update id="updateUser" parameterType="user">
+		update t_user
+		<trim prefix="set" suffixOverrides=",">
+			<if test="userName != null and userName != ''">
+				user_name=#{userName},
+			</if>
+			<if test="realName != null and realName != ''">
+				real_name=#{realName},
+			</if>
+			<if test="sex != null">
+				sex=#{sex,typeHandler=com.mybatis.dysql.handler.SexEnumTypeHandler},
+			</if>
+			<if test="mobile != null and mobile != ''">
+				mobile=#{mobile},
+			</if>
+			<if test="email != null and email != ''">
+				email=#{email},
+			</if>
+			<if test="note != null and note != ''">
+				note=#{note},
+			</if>
+		</trim>
+		where id=#{id}
+	</update>
 </mapper>

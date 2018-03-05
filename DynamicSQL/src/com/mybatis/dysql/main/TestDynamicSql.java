@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.mybatis.dysql.mapper.RoleMapper;
 import com.mybatis.dysql.pojo.Role;
+import com.mybatis.dysql.pojo.SexEnum;
+import com.mybatis.dysql.pojo.User;
 import com.mybatis.dysql.utils.SqlSessionFactoryUtils;
 
 public class TestDynamicSql {
@@ -40,10 +42,18 @@ public class TestDynamicSql {
 		
 		
 		//set
-		Role role = new Role();
-		role.setId(1l);
-		role.setNote("Ò¦ÀÚnote");
-		roleMapper.updateRole(role);
+//		Role role = new Role();
+//		role.setId(1l);
+//		role.setNote("Ò¦ÀÚnote");
+//		roleMapper.updateRoleByTrim(role);
+//		session.commit();
+		
+		User user = new User();
+		user.setNote("yaoleiyaoleoyaolei");
+		user.setSex(SexEnum.MALE);
+		user.setId(1l);
+		roleMapper.updateUser(user);
 		session.commit();
+		
 	}
 }

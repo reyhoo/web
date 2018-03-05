@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.mybatis.dysql.pojo.Role;
+import com.mybatis.dysql.pojo.User;
 
 public interface RoleMapper {
 
@@ -22,4 +23,8 @@ public interface RoleMapper {
 	
 	
 	int updateRole(Role role);
+	
+	int updateRoleByTrim(Role role);
+	
+	int updateUser(User user);
 }

@@ -9,6 +9,9 @@
 	<typeAliases>
 		<package name="com.mybatis.dysql.pojo"/>
 	</typeAliases>
+	<typeHandlers>
+		<package name="com.mybatis.dysql.handler"/>
+	</typeHandlers>
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC"></transactionManager>
