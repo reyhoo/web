@@ -11,4 +11,5 @@ public interface RoleMapper {
 	
 	List<Role> getRoleByRoleName(@Param("roleName")String r);
 	List<Role> getRoleByBean(Role r);
+	List<Role> findsRoles(@Param("roleName") String roleName,@Param("note") String note);
 }

@@ -8,6 +8,7 @@
 		<result property="roleName" column="role_name"></result>
 		<result property="note" column="note"/>
 	</resultMap>
+	<!-- if  -->
 	<sql id="cols">id,role_name,note</sql>
 	<select id="getRoleByRoleName" resultMap="roleMap">
 		select <include refid="cols"></include> from t_role where 1=1 
@@ -15,6 +16,7 @@
 		and role_name like concat('%',#{roleName},'%')
 		</if>
 	</select>
+	<!-- choose,when,otherwise -->
 	<select id="getRoleByBean" parameterType="role" resultMap="roleMap">
 		select <include refid="cols"></include> from t_role where 1=1 
 		<choose>
@@ -29,4 +31,20 @@
 			</otherwise>
 		</choose>
 	</select>
+	
+	<!-- select 可以自动去掉多余的and或or -->
+	<select id="findsRoles" resultMap="roleMap">
+		select <include refid="cols"></include> from t_role
+		<where>
+			<if test="roleName != null and roleName != ''">
+				and role_name like concat('%',#{roleName},'%')
+			</if>
+			<if test="note != null and note != ''">
+				or note like concat('%',#{note},'%')
+			</if>
+		</where>
+	</select>
+	
+	
+	
 </mapper>
