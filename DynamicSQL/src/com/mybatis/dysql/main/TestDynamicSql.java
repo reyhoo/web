@@ -1,5 +1,6 @@
 package com.mybatis.dysql.main;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -48,12 +49,35 @@ public class TestDynamicSql {
 //		roleMapper.updateRoleByTrim(role);
 //		session.commit();
 		
-		User user = new User();
-		user.setNote("yaoleiyaoleoyaolei");
-		user.setSex(SexEnum.MALE);
-		user.setId(1l);
-		roleMapper.updateUser(user);
-		session.commit();
+		//trim as set
+//		User user = new User();
+////		user.setNote("yaoleiyaoleoyaolei");
+//		user.setSex(SexEnum.MALE);
+//		user.setId(1l);
+//		roleMapper.updateUser(user);
+//		session.commit();
 		
+		
+		//foreach
+//		List<Role>list = new ArrayList<Role>();
+//		Role role = new Role();
+//		role.setId(1l);
+//		list.add(role);
+//		role = new Role();
+//		role.setId(2l);
+//		list.add(role);
+//		role = new Role();
+//		role.setId(3l);
+//		list.add(role);
+//		System.out.println(roleMapper.findRolesByList(list));
+		
+//		List<Long>list = new ArrayList<Long>();
+//		list.add(1l);
+//		list.add(2l);
+//		list.add(3l);
+//		System.out.println(roleMapper.findRolesByIdList(list));
+		
+		//bind
+		System.out.println(roleMapper.findRolesByBind("l", "ÀÚ"));
 	}
 }

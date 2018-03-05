@@ -46,7 +46,7 @@
 	</select>
 	
 	
-	<!-- trim跟where效果一样， prefixOverrides如果是多个用'|'隔开-->
+	<!-- trim跟where效果一样，前面加where，第一个项的'and|or'去掉    prefixOverrides如果是多个用'|'隔开-->
 	<select id="findsRolesByTrim" resultMap="roleMap">
 		select <include refid="cols"></include> from t_role
 		<trim prefix="where" prefixOverrides="and|or">
@@ -73,7 +73,7 @@
 		where id=#{id}
 	</update>
 	
-	
+	<!-- trim用作set时的用法 ,前面加set，最后一个项的','去掉-->
 	<update id="updateRoleByTrim" parameterType="role">
 		update t_role
 		<trim prefix="set" suffixOverrides=",">
@@ -110,4 +110,42 @@
 		</trim>
 		where id=#{id}
 	</update>
+	
+	
+	<!-- foreach的用法 ，item是对象时-->
+	<select id="findRolesByList" resultMap="roleMap" parameterType="role">
+		select <include refid="cols"></include> from t_role
+		where id in
+		<foreach collection="roleList" item="roleBean" index="index" 
+		open="(" separator="," close=")"
+		>
+		#{roleBean.id}
+		</foreach>
+	</select>
+		<!-- foreach的用法 ，item是基础类型时-->
+	<select id="findRolesByIdList" resultMap="roleMap" parameterType="long">
+		select <include refid="cols"></include> from t_role
+		where id in
+		<foreach collection="idList" item="id" index="index" 
+		open="(" separator="," close=")"
+		>
+		#{id}
+		</foreach>
+	</select>
+	
+	
+	<!-- bind 定义上下文变量 -->
+	<select id="findRolesByBind" resultMap="roleMap">
+		select <include refid="cols"></include> from t_role
+		<trim prefix="where" prefixOverrides="and|or">
+			<if test="roleName != null and roleName != ''">
+				<bind name="pattern_roleName" value="'%' + roleName + '%'"/>
+				and role_name like #{pattern_roleName}
+			</if>
+			<if test="note != null and note != ''">
+				<bind name="pattern_note" value="'%' + note + '%'"/>
+				and note like #{pattern_note}
+			</if>
+		</trim>
+	</select>
 </mapper>

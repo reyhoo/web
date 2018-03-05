@@ -27,4 +27,11 @@ public interface RoleMapper {
 	int updateRoleByTrim(Role role);
 	
 	int updateUser(User user);
+	
+	List<Role>findRolesByList(@Param("roleList")List<Role>list);
+	
+	List<Role>findRolesByIdList(@Param("idList")List<Long>list);
+	
+	
+	List<Role>findRolesByBind(@Param("roleName")String roleName,@Param("note")String note);
 }
