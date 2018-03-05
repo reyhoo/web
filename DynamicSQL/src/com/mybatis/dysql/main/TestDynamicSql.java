@@ -14,9 +14,15 @@ public class TestDynamicSql {
 	public static void main(String[] args) {
 		SqlSession session = SqlSessionFactoryUtils.openSession();
 		RoleMapper roleMapper = session.getMapper(RoleMapper.class);
-		List<Role> list = roleMapper.getRoleByRoleName("2");
+		//if
+//		List<Role> list = roleMapper.getRoleByRoleName("2");
+//		System.out.println(list);
+		//choose when otherwise
+		Role role = new Role();
+		role.setId(1l);
+//		role.setRoleName("10");
+		List<Role> list = roleMapper.getRoleByBean(role);
 		System.out.println(list);
-		
 		
 	}
 }

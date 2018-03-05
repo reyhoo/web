@@ -11,8 +11,22 @@
 	<sql id="cols">id,role_name,note</sql>
 	<select id="getRoleByRoleName" resultMap="roleMap">
 		select <include refid="cols"></include> from t_role where 1=1 
-		<if test="roleName != null and roleName != ''">
+		<if test="roleName != null and roleName !='' ">
 		and role_name like concat('%',#{roleName},'%')
 		</if>
+	</select>
+	<select id="getRoleByBean" parameterType="role" resultMap="roleMap">
+		select <include refid="cols"></include> from t_role where 1=1 
+		<choose>
+			<when test="id != null and id > 0">
+				and id=#{id}
+			</when>
+			<when test="roleName != null and roleName != ''">
+				and role_name like concat('%',#{roleName},'%')
+			</when>
+			<otherwise>
+				and note is not null
+			</otherwise>
+		</choose>
 	</select>
 </mapper>
