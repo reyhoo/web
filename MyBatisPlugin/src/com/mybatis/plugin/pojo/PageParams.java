@@ -1,6 +1,6 @@
-package com.mybatis.plugin.plugin;
+package com.mybatis.plugin.pojo;
 
-public class PageParam {
+public class PageParams {
 
 	
 	private Integer page;

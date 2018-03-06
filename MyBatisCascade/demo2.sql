@@ -23,10 +23,6 @@ constraint fk_ur_u foreign key(user_id) references t_user(id) on delete restrict
 foreign key(role_id) references t_role(id) on delete restrict on update restrict
 );
 
-insert into t_user(user_name,real_name,sex,mobile,email,note)values('tom','tom.y',1,'110','tom@163.com','tomtomtomtom');
-insert into t_user(user_name,real_name,sex,mobile,email,note)values('jerry','jerry.z',1,'112','jerry@163.com','jerryjerry');
-insert into t_user(user_name,real_name,sex,mobile,email,note)values('lucy','lucy.w',0,'119','lucy@163.com','lucylucy');
-insert into t_user(user_name,real_name,sex,mobile,email,note)values('lily','lily.w',0,'15129237121','lily@163.com','lilylilylily');
 
 
 insert into t_role(role_name,note)values('role1','role111111111111111111111111111111');

@@ -15,9 +15,15 @@
 		<typeHandler handler="com.mybatis.plugin.handler.SexEnumTypeHandler"></typeHandler>
 	</typeHandlers>
 
-	<plugins>
-		<plugin interceptor=""></plugin>
-	</plugins>
+	 <plugins>
+		<plugin interceptor="com.mybatis.plugin.plugin.PagePlugin">
+			<property name="default.page" value="1"/>
+			<property name="default.pageSize" value="20"/>
+			<property name="default.useFlag" value="true"/>
+			<property name="default.checkFlag" value="false"/>
+			<property name="default.cleanOrderBy" value="false"/>
+		</plugin>
+	</plugins> 
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC"></transactionManager>
