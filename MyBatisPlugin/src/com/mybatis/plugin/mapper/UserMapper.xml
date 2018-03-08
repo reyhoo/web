@@ -6,8 +6,8 @@
 	
 	<resultMap type="user" id="userMap">
 		<id property="id" column="id"/>
-		<result property="userName" column="user_name"/>
-		<result property="realName" column="real_name"/>
+		<result property="userName" column="USER_NAME"/>
+		<result property="realName" column="REAL_NAME"/>
 		<result property="sex" column="sex"/>
 		<result property="mobile" column="mobile"/>
 		<result property="email" column="email"/>
@@ -43,7 +43,8 @@
 	
 		<select id="findWithCondition" resultMap="userMap">
 		select * from t_user
-		<trim prefix="where" prefixOverrides="and">
+		<trim prefix="where binary" prefixOverrides="and">
+			and user_name like '%user%'
 			<if test="maxId != null and maxId > 0">
 				and id &lt;= #{maxId}
 			</if>
