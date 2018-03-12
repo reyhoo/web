@@ -7,8 +7,7 @@
 
 	<bean id="role1" class="com.spring.ass.pojo.Role" c:_0="1"
 		c:_1="role_name_1" c:_2="role_note_1"></bean>
-	<bean id="role2" class="com.spring.ass.pojo.Role" p:id="2"
-		p:roleName="role_name_2" p:note="role_note_2"></bean>
+	
 
 	<bean id="user1" class="com.spring.ass.pojo.User" p:id="1"
 	p:userName="user_name_1" p:note="user_note_1"
@@ -16,7 +15,8 @@
 	<bean id="user2" class="com.spring.ass.pojo.User" p:id="2"
 	p:userName="user_name_2" p:note="user_note_2"
 	></bean>
-
+<bean id="role2" class="com.spring.ass.pojo.Role" p:id="2"
+		p:roleName="role_name_2" p:note="role_note_2" p:user-ref="user2"></bean>
 	<util:list id="list">
 		<ref bean="role1"/>
 		<ref bean="role2"/>

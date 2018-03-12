@@ -6,6 +6,7 @@ public class Role {
 	private String roleName;
 	private String note;
 	
+	private User user;
 	
 	
 	
@@ -40,10 +41,19 @@ public class Role {
 		this.note = note;
 	}
 
+	public User getUser() {
+		return user;
+	}
+	
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+
 	@Override
 	public String toString() {
 		return "Role [id=" + id + ", roleName=" + roleName + ", note=" + note
-				+ "]";
+				+ ", user=" + user + "]";
 	}
 
 	@Override
