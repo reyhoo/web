@@ -7,7 +7,7 @@ import com.spring.ass.pojo.Role;
 import com.spring.ass.pojo.User;
 import com.spring.ass.pojo.UserRoleAssembly;
 
-public class TestXmlNsAssembly {
+public class TestXmlnsAssembly {
 
 	public static void main(String[] args) {
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
