@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<bean id="role1" class="com.spring.ass.pojo.Role" c:_0="1"
+		c:_1="role_name_1" c:_2="role_note_1"></bean>
+	<bean id="role2" class="com.spring.ass.pojo.Role" p:id="2"
+		p:roleName="role_name_2" p:note="role_note_2"></bean>
+
+	<bean id="user1" class="com.spring.ass.pojo.User" p:id="1"
+	p:userName="user_name_1" p:note="user_note_1"
+	></bean>
+	<bean id="user2" class="com.spring.ass.pojo.User" p:id="2"
+	p:userName="user_name_2" p:note="user_note_2"
+	></bean>
+
+	<util:list id="list">
+		<ref bean="role1"/>
+		<ref bean="role2"/>
+	</util:list>
+	<util:map id="map">
+		<entry key-ref="role1"  value-ref="user1"></entry>
+		<entry key-ref="role2"  value-ref="user2"></entry>
+	</util:map>
+	
+	<util:set id="set">
+		<ref bean="role1"/>
+		<ref bean="role2"/>
+	</util:set>
+	
+	<bean id="userRoleAssembly" class="com.spring.ass.pojo.UserRoleAssembly"
+	p:id="1" p:list-ref="list" p:set-ref="set" p:map-ref="map"
+	></bean>
+</beans>

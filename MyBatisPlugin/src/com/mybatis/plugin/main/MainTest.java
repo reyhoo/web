@@ -56,10 +56,10 @@ public class MainTest {
 					new FileInputStream("hello")));
 			String line = reader.readLine();
 			System.out.println("--------------------------");
-			byte[] bytes = Base64.decodeBase64("123");
+			byte[] bytes = Base64.decodeBase64("MTIzNDU2Nzg5");
 			
 			
-//			FileOutputStream out  = new FileOutputStream("1.png");
+//			FileOutputStream out  = new FileOutputStream("hello1");
 //			out.write(bytes);
 			System.out.println(encodeSha512(bytes));
 			System.out.println("--------------------------");
@@ -80,43 +80,61 @@ public class MainTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		String s = "appId=662C9F07E8256DBEE053F0FE83908A24&appCustomerId=003&token=bindFace-662C9F07E8256DBEE053F0FE83908A24-003-c03987ba20284b69-20180309150358&pic=123";
+		System.out.println(s);
+		try {
+			System.out.println(hmacSHA256(s,"662C9F07E8256DBEE053F0FE83908A24"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
+
+	public static String hmacSHA256(String str, String key) throws Exception {
+		return hmacSHA256(str.getBytes("utf-8"), key);
+	}
+
 	
-
-    public static void panduan() throws Exception {
-
-        // get image format in a file
-        File file = new File("0_");
-
-        // create an image input stream from the specified file
-        ImageInputStream iis = ImageIO.createImageInputStream(file);
-
-        // get all currently registered readers that recognize the image format
-        Iterator<ImageReader> iter = ImageIO.getImageReaders(iis);
-
-        if (!iter.hasNext()) {
-            throw new RuntimeException("No readers found!");
-        }
-
-        // get the first reader
-        ImageReader reader = iter.next();
-
-        System.out.println("Format: " + reader.getFormatName());
-
-        // close stream
-        iis.close();
-
-    }
-
-
+//	public static String hmacSHA256(byte[] data, String key) throws Exception {
+//		String algorithm = "HmacSHA256";
+//		Mac mac = Mac.getInstance(algorithm);
+//		mac.init(new SecretKeySpec(key.getBytes("UTF-8"), algorithm));
+//		return new String(new Base64().encode(mac.doFinal(data)));
+//	}
 	public static String hmacSHA256(byte[] data, String key) throws Exception {
 		String algorithm = "HmacSHA256";
 		Mac mac = Mac.getInstance(algorithm);
 		mac.init(new SecretKeySpec(key.getBytes("UTF-8"), algorithm));
-		return new String(new Base64().encode(mac.doFinal(data)));
+		return new Base64().encodeToString(mac.doFinal(data));
 	}
+
+	public static void panduan() throws Exception {
+
+		// get image format in a file
+		File file = new File("0_");
+
+		// create an image input stream from the specified file
+		ImageInputStream iis = ImageIO.createImageInputStream(file);
+
+		// get all currently registered readers that recognize the image format
+		Iterator<ImageReader> iter = ImageIO.getImageReaders(iis);
+
+		if (!iter.hasNext()) {
+			throw new RuntimeException("No readers found!");
+		}
+
+		// get the first reader
+		ImageReader reader = iter.next();
+
+		System.out.println("Format: " + reader.getFormatName());
+
+		// close stream
+		iis.close();
+
+	}
+
+
 
 	public static String encodeSha512(byte[] data) throws Exception {
 		String algorithm = "SHA-512";
@@ -125,26 +143,26 @@ public class MainTest {
 	}
 
 	private String MD5(String s) {
-	    try {
-	        MessageDigest md = MessageDigest.getInstance("MD5");
-	        byte[] bytes = md.digest(s.getBytes("utf-8"));
-	        return toHex(bytes);
-	    }
-	    catch (Exception e) {
-	        throw new RuntimeException(e);
-	    }
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			byte[] bytes = md.digest(s.getBytes("utf-8"));
+			return toHex(bytes);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	private static String toHex(byte[] bytes) {
 
-	    final char[] HEX_DIGITS = "0123456789ABCDEF".toCharArray();
-	    StringBuilder ret = new StringBuilder(bytes.length * 2);
-	    for (int i=0; i<bytes.length; i++) {
-	        ret.append(HEX_DIGITS[(bytes[i] >> 4) & 0x0f]);
-	        ret.append(HEX_DIGITS[bytes[i] & 0x0f]);
-	    }
-	    return ret.toString();
+		final char[] HEX_DIGITS = "0123456789ABCDEF".toCharArray();
+		StringBuilder ret = new StringBuilder(bytes.length * 2);
+		for (int i = 0; i < bytes.length; i++) {
+			ret.append(HEX_DIGITS[(bytes[i] >> 4) & 0x0f]);
+			ret.append(HEX_DIGITS[bytes[i] & 0x0f]);
+		}
+		return ret.toString();
 	}
+
 	static void insertData() {
 		SqlSession session = SqlSessionFactoryUtils.openSession();
 		UserMapper userMapper = session.getMapper(UserMapper.class);

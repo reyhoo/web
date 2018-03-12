@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<bean id="role1" class="com.spring.ass.pojo.Role">
+		<property name="id" value="1"></property>
+		<property name="roleName" value="高级工程师"></property>
+		<property name="note" value="重要人员"></property>
+	</bean>
+	
+	<bean id="source" class="com.spring.ass.pojo.Source">
+		<property name="fruit" value="澄汁"></property>
+		<property name="size" value="大杯"></property>
+		<property name="sugar" value="少糖"></property>
+	</bean>
+	
+	<bean id="juiceMaker2" class="com.spring.ass.pojo.JuiceMaker2">
+		<property name="source" ref="source"></property>
+		<property name="beverageShop" value="贡茶"></property>
+	</bean>
+	
+	<bean id="complexAssembly" class="com.spring.ass.pojo.ComplexAssembly">
+		<property name="id" value="1"></property>
+		<property name="list">
+			<list>
+				<value>value-list-1</value>
+				<value>value-list-2</value>
+				<value>value-list-3</value>
+			</list>
+		</property>
+		<property name="map">
+			<map>
+				<entry key="key1" value="value-key-1"></entry>
+				<entry key="key2" value="value-key-2"></entry>
+				<entry key="key3" value="value-key-3">
+				</entry>
+			</map>
+		</property>
+		<property name="props">
+			<props>
+				<prop key="prop1">value-prop-1</prop>
+				<prop key="prop2">value-prop-2</prop>
+				<prop key="prop3">value-prop-3</prop>
+			</props>
+		</property>
+		<property name="set">
+			<set>
+			<value>value-set-1</value>
+			<value>value-set-2</value>
+			<value>value-set-3</value>
+			<value>value-set-3</value>
+			</set>
+		</property>
+		<property name="array">
+			<array>
+				<value>value-array-1</value>
+				<value>value-array-2</value>
+				<value>value-array-3</value>
+			</array>
+		</property>
+	</bean>
+	
+	
+</beans>
