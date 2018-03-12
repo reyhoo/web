@@ -7,7 +7,8 @@ import com.spring.ass.annotation.service.RoleServiceImpl;
 
 
 //@ComponentScan(basePackageClasses={Role.class,RoleServiceImpl.class})
-@ComponentScan(basePackages={"com.spring.ass.annotation.pojo","com.spring.ass.annotation.service"})
+@ComponentScan(basePackages={"com.spring.ass.annotation.pojo","com.spring.ass.annotation.service"
+		,"com.spring.ass.annotation.controller"})
 public class ApplicationConfig {
 
 	
