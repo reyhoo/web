@@ -6,8 +6,6 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import org.apache.commons.dbcp.BasicDataSource;
-
 public class ComplexAssembly {
 
 	private Long id;

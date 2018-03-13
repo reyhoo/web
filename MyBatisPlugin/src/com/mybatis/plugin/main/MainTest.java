@@ -88,7 +88,10 @@ public class MainTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		System.out.println(Base64.encodeBase64String("com.mysql.jdbc.Driver".getBytes()));
+		System.out.println(Base64.encodeBase64String("jdbc:mysql://localhost:3306/ssm?useUnicode=true&characterEncoding=utf8".getBytes()));
+		System.out.println(Base64.encodeBase64String("root".getBytes()));
+		System.out.println(Base64.encodeBase64String("123456".getBytes()));
 	}
 
 	public static String hmacSHA256(String str, String key) throws Exception {

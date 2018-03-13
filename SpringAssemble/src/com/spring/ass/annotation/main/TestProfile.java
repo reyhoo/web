@@ -13,7 +13,7 @@ public class TestProfile {
 		ApplicationContext cxt = new ClassPathXmlApplicationContext("profile-beans.xml");
 		
 		RoleDataSourceService service = cxt.getBean(RoleDataSourceService.class);
-		Role role = service.getRole(21l);
+		Role role = service.getRole(1l);
 		System.out.println(role);
 	}
 }

@@ -6,6 +6,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import com.spring.ass.exe.annotation.config.ApplicationConfig;
 import com.spring.ass.exe.annotation.controller.RoleController2;
 import com.spring.ass.exe.annotation.pojo.Role;
+import com.spring.ass.exe.annotation.service.RoleDataSourceService;
 
 public class AnnotationMain {
 
@@ -38,5 +39,10 @@ public class AnnotationMain {
 		
 		RoleController2 roleController2 = cxt.getBean(RoleController2.class);
 		roleController2.printRole(role);
+		
+//		RoleDataSourceService roleDataSourceService = cxt.getBean(RoleDataSourceService.class);
+		RoleDataSourceService roleDataSourceService = (RoleDataSourceService) cxt.getBean("roleDataSourceService2");
+		role = roleDataSourceService.getRole(1l);
+		System.out.println(role);
 	}
 }
