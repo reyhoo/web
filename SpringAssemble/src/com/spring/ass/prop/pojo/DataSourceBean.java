@@ -8,6 +8,7 @@ import org.apache.commons.dbcp.BasicDataSourceFactory;
 import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -23,6 +24,7 @@ public class DataSourceBean {
 	private String password=null;
 	
 	@Bean(name="dataSource")
+	@Conditional(DataSourceCondition.class)//如果不满足条件就不装配DataSource
 	public DataSource getDataSource(){
 		Properties prop = new Properties();
 		prop.put("driver", driver);

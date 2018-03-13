@@ -13,6 +13,8 @@ public class TestDataSource {
 	public static void main(String[] args) {
 		ApplicationContext cxt = new AnnotationConfigApplicationContext(ApplicationConfig.class);
 		RoleDataSourceService service = cxt.getBean(RoleDataSourceService.class);
+		RoleDataSourceService service2 = cxt.getBean(RoleDataSourceService.class);
+		System.out.println(service == service2);
 		Role role = service.getRole(1l);
 		System.out.println(role);
 	}
