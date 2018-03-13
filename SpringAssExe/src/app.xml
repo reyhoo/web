@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<bean id="role" class="com.spring.ass.exe.pojo.Role">
+		<property name="id" value="1"></property>
+		<property name="roleName" value="高级工程师"></property>
+		<property name="note" value="非常重要的人"></property>
+	</bean>
+	
+	<bean id="role1" class="com.spring.ass.exe.pojo.Role">
+		<constructor-arg index="0" value="2">
+		</constructor-arg>
+		<constructor-arg index="1" value="role_name_2"></constructor-arg>
+		<constructor-arg index="2" value="note_2"></constructor-arg>
+	</bean>
+	<bean id="source" class="com.spring.ass.exe.pojo.Source">
+		<property name="fruit" value="香蕉汁"></property>
+		<property name="sugar" value="无糖"></property>
+		<property name="size" value="小杯"></property>
+	</bean>
+	<bean id="juiceMaker2" class="com.spring.ass.exe.pojo.JuiceMaker2">
+		<property name="source" ref="source"></property>
+		<property name="beverageShop" value="一点点"></property>
+	</bean>
+	
+	
+	<bean id="complexAssembly" class="com.spring.ass.exe.pojo.ComplexAssembly">
+		<property name="id" value="1"></property>
+		<property name="list">
+			<list>
+				<value>value-list-1</value>
+				<value>value-list-2</value>
+				<value>value-list-3</value>
+			</list>
+		</property>
+		<property name="map">
+			<map>
+				<entry key="key-map-1"  value="value-map-1"></entry>
+				<entry key="key-map-2"  value="value-map-2"></entry>
+				<entry key="key-map-3"  value="value-map-3"></entry>
+			</map>
+		</property>
+		<property name="props">
+			<props>
+				<prop key="prop-key-1">prop-value-1</prop>
+				<prop key="prop-key-2">prop-value-2</prop>
+				<prop key="prop-key-3">prop-value-3</prop>
+			</props>
+		</property>
+		<property name="set">
+			<set>
+				<value>value-set-1</value>
+				<value>value-set-2</value>
+				<value>value-set-3</value>
+				<value>value-set-2</value>
+			</set>
+		</property>
+		<property name="array">
+			<array>
+				<value>value-array-1</value>
+				<value>value-array-2</value>
+				<value>value-array-3</value>
+				<value>value-array-2</value>
+			</array>
+		</property>
+	</bean>
+	
+	
+	
+</beans>

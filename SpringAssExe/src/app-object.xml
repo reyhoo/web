@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<bean id="role1" class="com.spring.ass.exe.pojo.Role">
+		<property name="id" value="1"></property>
+		<property name="roleName" value="role_name_1"></property>
+		<property name="note" value="note_1"></property>
+	</bean>
+	<bean id="role2" class="com.spring.ass.exe.pojo.Role">
+		<property name="id" value="2"></property>
+		<property name="roleName" value="role_name_2"></property>
+		<property name="note" value="note_2"></property>
+		<property name="user" ref="user1"></property>
+	</bean>
+
+	<bean id="user1" class="com.spring.ass.exe.pojo.User">
+		<property name="id" value="1"></property>
+		<property name="userName" value="user_name_1"></property>
+		<property name="note" value="note_1"></property>
+	</bean>
+	<bean id="user2" class="com.spring.ass.exe.pojo.User">
+		<property name="id" value="2"></property>
+		<property name="userName" value="user_name_2"></property>
+		<property name="note" value="note_2"></property>
+	</bean>
+	
+	<bean id="userRoleAssembly" class="com.spring.ass.exe.pojo.UserRoleAssembly">
+		<property name="id" value="1"></property>
+		<property name="list">
+			<list>
+				<ref bean="role1"/>
+				<ref bean="role2"/>
+			</list>
+		</property>
+		<property name="map">
+			<map>
+				<entry key-ref="role1" value-ref="user1"></entry>
+				<entry key-ref="role2" value-ref="user2"></entry>
+			</map>
+		</property>
+		<property name="set">
+			<set> 
+				<ref bean="role1"/>
+				<ref bean="role2"/>
+			</set>
+		</property>
+	</bean>
+
+</beans>

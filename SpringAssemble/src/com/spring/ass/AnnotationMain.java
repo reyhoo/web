@@ -7,6 +7,7 @@ import com.spring.ass.annotation.config.ApplicationConfig;
 import com.spring.ass.annotation.controller.RoleController;
 import com.spring.ass.annotation.controller.RoleController2;
 import com.spring.ass.annotation.pojo.Role;
+import com.spring.ass.annotation.service.RoleService;
 
 public class AnnotationMain {
 
@@ -38,5 +39,8 @@ public class AnnotationMain {
 		//装配带有构造参数的类
 		RoleController2 roleController2 = cxt.getBean(RoleController2.class);
 		roleController2.printRole(role1);
+		System.out.println("-----------------------------------------");
+		
+		
 	}
 }
