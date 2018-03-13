@@ -3,9 +3,24 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	<!-- 多个prop文件用逗号隔开 -->
+	<!-- <context:property-placeholder location="classpath:database-config.properties" 
+		/> -->
+		
+		
+	<!-- 第二种方法引用prop -->
 
-	<context:property-placeholder location="classpath:database-config.properties" />
+	<bean
+		class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
 
+		<property name="locations">
+			<array>
+				<value>classpath:database-config1.properties</value>
+				<value>classpath:database-config2.properties</value>
+			</array>
+		</property>
+		
+	</bean>
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		p:url="${jdbc.database.url}" p:driverClassName="${jdbc.database.driver}"
 		p:username="${jdbc.database.username}" p:password="${jdbc.database.password}"></bean>
