@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<properties resource="db.properties"></properties>
+	<settings>
+		<setting name="cacheEnabled" value="true"></setting>
+	</settings> 
+	<typeAliases>
+		<package name="com.mybatis.cache.pojo"/>
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="${database.driver}"/>
+				<property name="password" value="${database.password}"/>
+				<property name="username" value="${database.username}"/>
+				<property name="url" value="${database.url}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<package name="com.mybatis.cache.mapper"/>
+	</mappers>
+</configuration>

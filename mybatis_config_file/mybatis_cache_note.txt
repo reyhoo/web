@@ -1,0 +1,4 @@
+一级缓存：
+1.setting的cacheEnabled对一级缓存没有影响，即使设置为false（默认为true）也会有缓存。
+2.要想清除一级缓存在select标签里把flushCache设置为true或者调用SqlSession的clearCache方法,另外commit方法也会导致缓存消失。
+3.先执行select语句，再
