@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -17,7 +18,8 @@ import com.spring.ass.annotation.pojo.Role;
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)//每获取一次都是一个新的对象
 public class RoleDataSourceServiceImpl implements RoleDataSourceService {
 
-	@Autowired
+//	@Autowired
+	@Value("#{dataSource}")
 	private DataSource dataSource = null;
 	@Override
 	public Role getRole(Long id) {
