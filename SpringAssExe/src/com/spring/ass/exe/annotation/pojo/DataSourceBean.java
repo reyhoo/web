@@ -9,6 +9,7 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.dbcp.BasicDataSourceFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -23,7 +24,8 @@ public class DataSourceBean {
 	@Value("${jdbc.database.driver}")
 	private String driver;
 	
-	@Bean(name={"dataSource1","dataSource"})
+	@Bean(name="dataSource")
+//	@Conditional(DataSourceCondition.class)
 	public DataSource getDataSource(){
 		Properties prop = new Properties();
 		prop.put("username", new String(Base64.decodeBase64(username)));
