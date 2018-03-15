@@ -1,6 +1,10 @@
 package com.mybatis.cache.pojo;
 
-public class User {
+public class User
+
+implements java.io.Serializable
+
+{
 
 	
 	private Long id;

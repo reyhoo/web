@@ -6,3 +6,11 @@
 5.一级缓存针对的是session级别的，不同session的之间互不影响。
 6.select 标签里的 useCache属性是针对二级缓存的，对一级缓存没有影响。
 7.update,insert,delete标签里的flushCache属性，设置为true或false貌似都没有影响。
+
+二级缓存：
+1.要使二级缓存生效必须满足以下要求：
+       1.setting的cacheEnabled设置为true,默认为true
+	   2.select标签的useCache属性为true(默认为true)，flushCache="false"(默认为false)
+	   3.mapper.xml中要有<cache></cache>标签
+	   4.Sqlsession查询完后要commit
+	   5.缓存的对象要实现序列化接口

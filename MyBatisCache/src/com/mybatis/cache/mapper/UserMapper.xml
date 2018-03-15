@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.cache.mapper.UserMapper">
+<cache></cache>
 	<resultMap type="user" id="userMap">
 		<id property="id" column="id" />
 		<result property="userName" column="user_name" />
@@ -15,7 +16,7 @@
 	<select id="findAll" resultMap="userMap" flushCache="false">
 		select * from t_user
 	</select>
-	<select id="findById" resultMap="userMap" parameterType="long">
+	<select id="findById" resultMap="userMap" parameterType="long" flushCache="false" useCache="true">
 		select *
 		from t_user where id=#{id}
 	</select>
@@ -49,7 +50,7 @@
 		</trim>
 		where id=#{user.id}
 	</update>
-	<delete id="delete" flushCache="false">
+	<delete id="delete" flushCache="true">
 		delete from t_user
 		<trim prefix="where" prefixOverrides="and|or">
 			<if test="id != null and id > 0">

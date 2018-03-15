@@ -5,17 +5,17 @@
 <configuration>
 <properties resource="db.properties">
 </properties>
-	<settings>
+	<!-- <settings>
 		<setting name="cacheEnabled" value="true"></setting>
-	</settings> 
+	</settings>  -->
 	<typeAliases>
 		<package name="com.mybatis.cache.pojo"/>
 	</typeAliases>
 	<typeHandlers>
 		<typeHandler handler="com.mybatis.cache.handler.SexEnumTypeHandler" javaType="sexEnum" jdbcType="INTEGER"/>
 	</typeHandlers>
-	<environments default="oracle">
-		<environment id="mysql">
+	<environments default="dev">
+		<environment id="dev">
 			<transactionManager type="JDBC"></transactionManager>
 			<dataSource type="POOLED">
 				<property name="driver" value="${database.driver}"/>
@@ -24,7 +24,7 @@
 				<property name="url" value="${database.url}"/>
 			</dataSource>
 		</environment>
-		<environment id="oracle">
+	<!-- 	<environment id="oracle">
 		<transactionManager type="JDBC"></transactionManager>
 			<dataSource type="POOLED">
 				<property name="driver" value="${orcl.database.driver}"/>
@@ -32,7 +32,7 @@
 				<property name="username" value="${orcl.database.username}"/>
 				<property name="url" value="${orcl.database.url}"/>
 			</dataSource>
-		</environment>
+		</environment> -->
 	</environments>
 	<databaseIdProvider type="DB_VENDOR">
 		<property name="Oracle" value="oracle"/>
