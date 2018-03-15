@@ -3,7 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-<properties resource="oracle_db.properties"></properties>
+<properties resource="db.properties">
+</properties>
 	<settings>
 		<setting name="cacheEnabled" value="true"></setting>
 	</settings> 
@@ -13,14 +14,23 @@
 	<typeHandlers>
 		<typeHandler handler="com.mybatis.cache.handler.SexEnumTypeHandler" javaType="sexEnum" jdbcType="INTEGER"/>
 	</typeHandlers>
-	<environments default="development">
-		<environment id="development">
+	<environments default="oracle">
+		<environment id="mysql">
 			<transactionManager type="JDBC"></transactionManager>
 			<dataSource type="POOLED">
 				<property name="driver" value="${database.driver}"/>
 				<property name="password" value="${database.password}"/>
 				<property name="username" value="${database.username}"/>
 				<property name="url" value="${database.url}"/>
+			</dataSource>
+		</environment>
+		<environment id="oracle">
+		<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="${orcl.database.driver}"/>
+				<property name="password" value="${orcl.database.password}"/>
+				<property name="username" value="${orcl.database.username}"/>
+				<property name="url" value="${orcl.database.url}"/>
 			</dataSource>
 		</environment>
 	</environments>
