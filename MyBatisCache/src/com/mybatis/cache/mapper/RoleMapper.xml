@@ -28,7 +28,12 @@
 		</trim>
 		where id=#{role.id}
 	</update>
-	<delete id="delete" parameterType="long">
-		delete from t_role where id=#{id}
+	<delete id="delete" flushCache="true">
+		delete from t_role
+		<trim prefix="where" prefixOverrides="and|or">
+			<if test="id != null and id > 0">
+				and id=#{id}
+			</if>
+		</trim>
 	</delete>
 </mapper>

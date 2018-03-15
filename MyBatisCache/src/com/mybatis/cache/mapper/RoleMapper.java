@@ -13,5 +13,5 @@ public interface RoleMapper {
 	
 	int insertRole(@Param("role")Role role);
 	int updateRole(@Param("role")Role role);
-	int delete(Long id);
+	int delete(@Param("id")Long id);
 }

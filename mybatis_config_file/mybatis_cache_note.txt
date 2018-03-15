@@ -1,4 +1,8 @@
 一级缓存：
 1.setting的cacheEnabled对一级缓存没有影响，即使设置为false（默认为true）也会有缓存。
-2.要想清除一级缓存在select标签里把flushCache设置为true或者调用SqlSession的clearCache方法,另外commit方法也会导致缓存消失。
-3.先执行select语句，再
+2.要想清除一级缓存在select标签里把flushCache设置为true或者调用SqlSession的clearCache方法,另外commit方法和rollback方法也会导致缓存消失。
+3.先执行查询语句，再执行增、删、改操作，再次查询会重新执行查询SQL。跟操作影响的具体行没有关系，只要是针对同一表执行（增、删、改），即使没有影响到行的数据。当再次查询时也是重新执行查询SQL
+4.经过测试，3中所说的针对'同一表'现在更改为同一个session或者说数据库连接,也就是说对一个表的数据操作也会影响其它表的查询缓存。
+5.一级缓存针对的是session级别的，不同session的之间互不影响。
+6.select 标签里的 useCache属性是针对二级缓存的，对一级缓存没有影响。
+7.update,insert,delete标签里的flushCache属性，设置为true或false貌似都没有影响。

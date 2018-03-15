@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.mybatis.cache.mapper.RoleMapper;
+import com.mybatis.cache.mapper.UserMapper;
 import com.mybatis.cache.pojo.Role;
 import com.mybatis.cache.utils.SqlSessionFactoryUtils;
 
@@ -13,33 +14,34 @@ public class TestCache {
 	
 	public static void main(String[] args) {
 		SqlSession session1 = SqlSessionFactoryUtils.openSession();
-		RoleMapper roleMapper = session1.getMapper(RoleMapper.class);
-		Role role = roleMapper.findById(1l);
-//		 roleMapper.findById(1l);
-		System.out.println(role);
-		role.setRoleName("fadfadfa");
-		roleMapper.updateRole(role);
-//		session1.rollback();
-		System.out.println(roleMapper.findById(1l));
+		RoleMapper roleMapper1 = session1.getMapper(RoleMapper.class);
+		UserMapper userMapper1 = session1.getMapper(UserMapper.class);
 		
-		new Thread(){
-			public void run() {
-				SqlSession session1 = SqlSessionFactoryUtils.openSession();
-				RoleMapper roleMapper = session1.getMapper(RoleMapper.class);
-				Role role = new Role();
-				role.setId(1l);
-				role.setNote("note12121");
-				System.err.println("=================start=================");
-				roleMapper.updateRole(role);
-				System.err.println("=================end=================");
-				System.err.println(roleMapper.findById(1l));
-			}
-		}.start();
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-//		session1.close();
+		
+		SqlSession session2 = SqlSessionFactoryUtils.openSession();
+		RoleMapper roleMapper2 = session2.getMapper(RoleMapper.class);
+		UserMapper userMapper2 = session2.getMapper(UserMapper.class);
+		//
+		System.out.println("=======================================");
+		List<Role> list = roleMapper1.findAll();
+		System.out.println(list.size());
+		userMapper1.findAll();
+		System.out.println("=======================================");
+		roleMapper2.findAll();
+		userMapper2.findAll();
+		System.out.println("=======================================");
+		Role role = new Role();
+		role.setNote("yaoleinoet");
+		role.setRoleName("yyyyyaollllei");
+		roleMapper1.insertRole(role);
+		System.out.println(list.size());
+		list = roleMapper1.findAll();
+		System.out.println(list.size());
+		userMapper1.findAll();
+		System.out.println("=======================================");
+		roleMapper2.findAll();
+		userMapper2.findAll();
+		System.out.println("=======================================");
+		
 	}
 }
