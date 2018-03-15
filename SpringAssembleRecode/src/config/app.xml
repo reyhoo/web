@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	 http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd">
+
+<context:component-scan base-package="com.spring.ass.recode"></context:component-scan>
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<array>
+				<value>classpath:config/db.properties</value>
+			</array>
+		</property>
+	</bean>
+	<bean id="dataSource2" class="org.apache.commons.dbcp.BasicDataSource"
+	
+	 p:driverClassName="${database.driver}"
+	  p:url="${database.url}"
+	   p:username="${database.username}"
+	    p:password="${database.password}">
+		<!-- <property name="driverClassName" value="${database.driver}"></property>
+		<property name="url" value="${database.url}"></property>
+		<property name="username" value="${database.username}"></property>
+		<property name="password" value="${database.password}"></property> -->
+	</bean>
+	<bean id="roleService2" class="com.spring.ass.recode.service.RoleServiceImpl2" p:dataSource-ref="dataSource1"></bean>
+</beans> 
