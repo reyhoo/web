@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-<properties resource="db.properties"></properties>
+<properties resource="oracle_db.properties"></properties>
 	<settings>
 		<setting name="cacheEnabled" value="true"></setting>
 	</settings> 
@@ -24,6 +24,11 @@
 			</dataSource>
 		</environment>
 	</environments>
+	<databaseIdProvider type="DB_VENDOR">
+		<property name="Oracle" value="oracle"/>
+		<property name="MySQL" value="mysql"/>
+		<property name="DB2" value="db2"/>
+	</databaseIdProvider>
 	<mappers>
 		<package name="com.mybatis.cache.mapper"/>
 	</mappers>

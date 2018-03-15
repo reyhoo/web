@@ -33,7 +33,12 @@ public class TestCache {
 		Role role = new Role();
 		role.setNote("yaoleinoet");
 		role.setRoleName("yyyyyaollllei");
-		roleMapper1.insertRole(role);
+		role.setId(5l);
+		roleMapper1.updateRole(role);
+//		roleMapper1.delete(null);
+//		session1.commit();
+		session1.rollback();
+		System.out.println("id="+role.getId());
 		System.out.println(list.size());
 		list = roleMapper1.findAll();
 		System.out.println(list.size());

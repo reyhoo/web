@@ -13,8 +13,15 @@
 	<select id="findById" resultMap="roleMap" parameterType="long" flushCache="false">
 		select * from t_role where id=#{id}
 	</select>
-	<insert id="insertRole" useGeneratedKeys="true" keyProperty="role.id"  flushCache="true">
+	<insert databaseId="mysql" id="insertRole" useGeneratedKeys="true" keyProperty="role.id"  flushCache="true">
 		insert into t_role(role_name,note)values(#{role.roleName},#{role.note})
+	</insert>
+	
+	<insert  id="insertRole" useGeneratedKeys="true" keyProperty="role.id"  flushCache="true">
+		<selectKey keyProperty="role.id" order="BEFORE" resultType="long">
+			select id+1 from (select nvl(max(id),0) id from t_role) sub
+		</selectKey>
+		insert into t_role(id,role_name,note)values(#{role.id},#{role.roleName},#{role.note})
 	</insert>
 	<update id="updateRole">
 		update t_role

@@ -19,14 +19,12 @@ public class SexEnumTypeHandler implements TypeHandler<SexEnum> {
 
 	@Override
 	public SexEnum getResult(ResultSet arg0, int arg1) throws SQLException {
-		// TODO Auto-generated method stub
 		return SexEnum.getSexById(arg0.getInt(arg1));
 	}
 
 	@Override
 	public SexEnum getResult(CallableStatement arg0, int arg1)
 			throws SQLException {
-		// TODO Auto-generated method stub
 		return SexEnum.getSexById(arg0.getInt(arg1));
 	}
 
