@@ -26,30 +26,31 @@ public class TestCache {
 		List<Role> list = roleMapper1.findAll();
 		System.out.println(list.size());
 		userMapper1.findAll();
-		System.out.println("=======================================");
-		roleMapper2.findAll();
-		userMapper2.findAll();
-		System.out.println("=======================================");
-		Role role = new Role();
-		role.setNote("yaoleinoet");
-		role.setRoleName("tintintint");
-//		role.setId(2l);
-		roleMapper1.insertRole(role);
-//		roleMapper1.delete(null);
+//		System.out.println("=======================================");
+//		roleMapper2.findAll();
+//		userMapper2.findAll();
+//		System.out.println("=======================================");
+//		Role role = new Role();
+//		role.setNote("yaoleinoet");
+//		role.setRoleName("tintintint");
+////		role.setId(2l);
+//		roleMapper1.insertRole(role);
+////		roleMapper1.delete(null);
+//		
 		
-		list = roleMapper1.findAll();
-		System.out.println(list.size());
+//		System.out.println(list.size());
 		session1.commit();
-//		session1.rollback();
-		System.out.println("id="+role.getId());
-		System.out.println(list.size());
 		list = roleMapper1.findAll();
-		System.out.println(list.size());
+////		session1.rollback();
+//		System.out.println("id="+role.getId());
+//		System.out.println(list.size());
+//		list = roleMapper1.findAll();
+//		System.out.println(list.size());
 		userMapper1.findAll();
-		System.out.println("=======================================");
-		roleMapper2.findAll();
-		userMapper2.findAll();
-		System.out.println("=======================================");
+//		System.out.println("=======================================");
+//		roleMapper2.findAll();
+//		userMapper2.findAll();
+//		System.out.println("=======================================");
 		
 	}
 }
