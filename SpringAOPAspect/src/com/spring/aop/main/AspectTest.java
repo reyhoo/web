@@ -29,8 +29,5 @@ public class AspectTest {
 		}else{
 			System.out.println("不满足执行条件。。。。。。");
 		}
-		
-//		
-//		roleService.printRole(null);
 	}
 }

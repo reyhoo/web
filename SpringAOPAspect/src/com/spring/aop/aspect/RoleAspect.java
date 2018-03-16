@@ -56,6 +56,7 @@ public class RoleAspect {
 			jp.proceed();
 		} catch (Throwable e) {
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 		System.out.println("around after....");
 	}
