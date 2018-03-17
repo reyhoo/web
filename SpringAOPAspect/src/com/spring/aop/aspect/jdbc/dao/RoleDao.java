@@ -31,6 +31,7 @@ public class RoleDao extends JdbcTemplate {
 				role.setNote(rs.getString(index));
 				return role;
 			}});
+		return null;
 	}
 
 }
