@@ -7,11 +7,11 @@ import com.spring.aop.pojo.Role;
 @Component
 public class RoleServiceImpl
 
-implements RoleService
+//implements RoleService
 
 {
 
-	@Override
+//	@Override
 	public void printRole(Role role) {
 		role.getId();
 		System.out.println(role);

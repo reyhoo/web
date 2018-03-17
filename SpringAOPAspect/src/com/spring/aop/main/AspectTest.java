@@ -6,13 +6,14 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import com.spring.aop.config.AopConfig;
 import com.spring.aop.pojo.Role;
 import com.spring.aop.service.RoleService;
+import com.spring.aop.service.RoleServiceImpl;
 import com.spring.aop.verifier.RoleVerifier;
 
 public class AspectTest {
 
 	public static void main(String[] args) {
 		ApplicationContext cxt = new AnnotationConfigApplicationContext(AopConfig.class);
-		RoleService roleService = cxt.getBean(RoleService.class);
+		RoleServiceImpl roleService = cxt.getBean(RoleServiceImpl.class);
 		RoleVerifier roleVerifier = (RoleVerifier) roleService;
 		Role role = new Role();
 		role.setId(1l);
@@ -21,7 +22,6 @@ public class AspectTest {
 		if(roleVerifier.verify(role)){
 			roleService.printRole(role);
 		}
-		
 		System.out.println("##################################");
 		role = null;
 		if(roleVerifier.verify(role)){
