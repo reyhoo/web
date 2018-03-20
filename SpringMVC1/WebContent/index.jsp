@@ -9,5 +9,6 @@
 <body>
 <%=application.getRealPath("/") %>
 	<h1>你好spring mvc</h1>
+		<%session.setAttribute("userName", "Admin");%>
 </body>
 </html>

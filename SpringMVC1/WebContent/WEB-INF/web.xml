@@ -8,7 +8,7 @@
   <!-- 配置SpringIOC 配置文件路径 -->
   <context-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>/WEB-INF/applicationContext.xml</param-value>
+      <param-value>/WEB-INF/config/applicationContext.xml</param-value>
   </context-param>
   <!-- 配置ContextLoaderlistener用以初始化Spring Ioc容器 -->
   <listener>
