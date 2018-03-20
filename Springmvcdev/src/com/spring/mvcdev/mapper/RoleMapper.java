@@ -2,6 +2,7 @@ package com.spring.mvcdev.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.spring.mvcdev.pojo.Role;
@@ -18,5 +19,5 @@ public interface RoleMapper {
 	
 	List<Role> findRoles(Role roleParams);
 	
-	int deleteRoles(List<Long>id);
+	int deleteRoles(@Param("ids")List<Long>id);
 }

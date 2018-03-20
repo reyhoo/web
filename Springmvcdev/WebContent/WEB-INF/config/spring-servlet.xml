@@ -17,5 +17,9 @@
 		<property name="prefix" value="/WEB-INF/page/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
+	<mvc:resources mapping="/WEB-INF/js/**" location="/WEB-INF/resources/js"/>    
+<!--     <mvc:resources mapping="/styles/**" location="/static_resources/css/"/>    
+    <mvc:resources mapping="/images/**" location="/static_resources/images/"/>  -->   
+   <mvc:default-servlet-handler  />   
 	<tx:annotation-driven transaction-manager="transactionManager" />
 </beans>

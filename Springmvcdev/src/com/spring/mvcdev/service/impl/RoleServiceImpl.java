@@ -14,6 +14,7 @@ import com.spring.mvcdev.pojo.Role;
 import com.spring.mvcdev.service.RoleService;
 @Service
 public class RoleServiceImpl implements RoleService{
+	
 	@Autowired
 	private RoleMapper roleMapper;
 	
@@ -39,5 +40,20 @@ public class RoleServiceImpl implements RoleService{
 	public List<Role> findRoles(Role role) {
 		return roleMapper.findRoles(role);
 	}
-
+	
+	@Transactional(propagation=Propagation.REQUIRED,isolation=Isolation.READ_COMMITTED)
+	@Override
+	public int deleteRoles(List<Long> ids) {
+		return roleMapper.deleteRoles(ids);
+	}
+	@Transactional(propagation=Propagation.REQUIRED,isolation=Isolation.READ_COMMITTED)
+	@Override
+	public int addRoles(List<Role> roleList) {
+		int count = 0;
+		for (Role role : roleList) {
+			roleMapper.insertRole(role);
+			count++;
+		}
+		return count;
+	}
 }
