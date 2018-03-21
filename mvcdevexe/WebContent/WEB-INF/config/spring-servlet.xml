@@ -19,5 +19,20 @@
 		 <property name="prefix" value="/WEB-INF/page/"></property>   
 	    <property name="suffix" value=".jsp"></property>
 	</bean>
+	<mvc:interceptors>
+	    
+	    <mvc:interceptor>
+	        <mvc:mapping path="/role/*"/>
+	        <bean class="com.mvcdev.exe.interceptor.RoleInterceptor"></bean>
+	    </mvc:interceptor>
+	       <mvc:interceptor>
+	        <mvc:mapping path="/role/*"/>
+	        <bean class="com.mvcdev.exe.interceptor.RoleInterceptor2"></bean>
+	    </mvc:interceptor>
+	       <mvc:interceptor>
+	        <mvc:mapping path="/role/*"/>
+	        <bean class="com.mvcdev.exe.interceptor.RoleInterceptor3"></bean>
+	    </mvc:interceptor>
+	</mvc:interceptors>
 		<tx:annotation-driven transaction-manager="transactionManager" />
 </beans>
