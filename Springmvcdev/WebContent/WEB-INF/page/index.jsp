@@ -70,5 +70,7 @@ function request(url,data,contentType){
 	<button id="btn2">批量删除</button>
 	<button id="btn3">批量添加</button>
 	
+	<p>${requestScope.userAgent }
+	<p>${requestScope.jsessionid }
 </body>
 </html>

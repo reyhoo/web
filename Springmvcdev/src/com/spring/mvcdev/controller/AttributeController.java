@@ -2,7 +2,10 @@ package com.spring.mvcdev.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestAttribute;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -62,5 +65,12 @@ public class AttributeController {
 		}
 		mv.setView(new MappingJackson2JsonView());
 		return mv;
+	}
+	@RequestMapping("/getHeaderAndCookie")
+	public String testHeaderAndCookie(Model model,@RequestHeader(value="User-Agent",required=false,defaultValue="attribute") String userAgent,
+			@CookieValue(value="JSESSIONID",required=false,defaultValue="MyJsessionId")String jsessionid){
+		model.addAttribute("userAgent", userAgent);
+		model.addAttribute("jsessionid", jsessionid);
+		return "index";
 	}
 }
