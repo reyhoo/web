@@ -57,7 +57,7 @@ function request(url,data,contentType){
 		
 	<!-- 	  -->
 		
-		<form method="post" id="form" action="./params/addRole2.do">
+		<form method="post" id="form" action="./params/addRole3.do">
 			<label>角色名称</label><input type="text" name="roleName"><br><br> 
  		<!-- 	<label>角色名称</label><input type="text" name="role_name"><br><br> -->
 			<label>备注&nbsp;&nbsp;&nbsp;&nbsp;</label><input type="text" name="note"><br><br>

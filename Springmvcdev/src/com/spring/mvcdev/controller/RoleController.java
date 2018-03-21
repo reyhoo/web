@@ -2,14 +2,19 @@ package com.spring.mvcdev.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.spring.mvcdev.pojo.Role;
@@ -26,15 +31,16 @@ public class RoleController {
 	 * @param note
 	 * @return
 	 */
-	@RequestMapping("/commonParams")
+	@RequestMapping(value="/commonParams")
 //	public ModelAndView commonParams(String roleName,String note){
-	public ModelAndView commonParams(@RequestParam(name="roleName")String roleName,String note){
+	public ModelAndView commonParams(@RequestParam(name="roleName",required=false)String roleName
+			,@RequestParam(required=false)String note){
 		System.out.println("roleName => "+roleName);
 		System.out.println("note => "+note);
 		Role role = new Role();
 		role.setRoleName(roleName);
 		role.setNote(note);
-		roleService.addRole(role);
+//		roleService.addRole(role);
 		List<Role> roleList = roleService.getRoleList();
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("roleList");
@@ -116,8 +122,16 @@ public class RoleController {
 		return mv;
 	}
 	
+	@RequestMapping("/showRoleJsonInfo2")
+	public ModelAndView showRoleJsonInfo2(Role role){
+		ModelAndView mv = new ModelAndView();
+		mv.setView(new MappingJackson2JsonView());
+		mv.addObject("role", role);
+		return mv;
+	}
+	
 	/***
-	 * 重定向
+	 * 重定向方式一
 	 * @param model
 	 * @param roleName
 	 * @param note
@@ -134,6 +148,13 @@ public class RoleController {
 		model.addAttribute("id", role.getId());
 		return "redirect:showRoleJsonInfo.do";
 	}
+	/**
+	 * 重定向方式二
+	 * @param mv
+	 * @param roleName
+	 * @param note
+	 * @return
+	 */
 	@RequestMapping("/addRole2")
 	public ModelAndView addRole2(ModelAndView mv,String roleName,String note){
 		Role role = new Role();
@@ -143,9 +164,24 @@ public class RoleController {
 		mv.addObject("roleName", role.getRoleName());
 		mv.addObject("note", note);
 		mv.addObject("id", role.getId());
-		mv.setViewName("redirect:./showRoleJsonInfo.do");
+		mv.setViewName("redirect:./showRoleJsonInfo2.do");
 		return mv;
 	}
+	
+	/***
+	 * 方式一和方式二都在直接把参数拼在url后面，而这个方法是通过session实现的s
+	 * 给生定向传递参数
+	 * @param ra
+	 * @param role
+	 * @return
+	 */
+	@RequestMapping("/addRole3")
+	public String addRole3(RedirectAttributes ra,Role role){
+		roleService.addRole(role);
+		ra.addFlashAttribute("role", role);
+		return "redirect:./showRoleJsonInfo2.do";
+	}
+	
 	
 	
 }
