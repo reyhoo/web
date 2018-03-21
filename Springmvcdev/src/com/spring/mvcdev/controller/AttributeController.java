@@ -20,10 +20,18 @@ public class AttributeController {
 	private RoleService roleService;
 
 	@RequestMapping("/requestAttribute")
-	public ModelAndView reqAttr(@RequestAttribute(value = "id") Long id) {
+	public ModelAndView reqAttr(@RequestAttribute(value = "id",required=false) Long id) {
 		ModelAndView mv = new ModelAndView();
-		Role role = roleService.getRole(id);
 		mv.setView(new MappingJackson2JsonView());
+		if(id == null){
+			mv.addObject("info", "ID不能为空");
+			return mv;
+		}
+		Role role = roleService.getRole(id);
+		if(role == null){
+			mv.addObject("info", "未找到role");
+			return mv;
+		}
 		mv.addObject("role",role);
 		return mv;
 	}
