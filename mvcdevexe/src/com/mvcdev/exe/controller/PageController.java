@@ -19,4 +19,8 @@ public class PageController {
 	public String attr(){
 		return "attr";
 	}
+	@RequestMapping("/validate")
+	public String validate(){
+		return "validate";
+	}
 }

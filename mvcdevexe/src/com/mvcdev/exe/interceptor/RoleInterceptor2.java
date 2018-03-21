@@ -13,7 +13,7 @@ public class RoleInterceptor2 extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
 		System.err.println("preHandle2");
-		return false;
+		return true;
 	}
 	
 	@Override
