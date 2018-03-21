@@ -16,7 +16,7 @@ $(function(){
 <body>
 		
 
-	<form action="<c:url value='/params/requestPojo'></c:url>" method="post">
+	<form action="<c:url value='/redirect/addRole3'></c:url>" method="post">
 		<input type="text" name="roleName" ><br><br>
 	<!-- 	<input type="text" name="role_name" ><br><br>
 		 -->

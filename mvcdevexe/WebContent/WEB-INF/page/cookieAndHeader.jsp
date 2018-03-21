@@ -7,9 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-request.setAttribute("id", 93l);
-request.getRequestDispatcher("/attribute/requestAttribute").forward(request, response);
-%>
+${requestScope.userAgent }<br>
+${requestScope.jsessionid }<br>
 </body>
 </html>

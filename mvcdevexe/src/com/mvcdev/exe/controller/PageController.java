@@ -7,12 +7,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/page")
 public class PageController {
 
-	@RequestMapping("/requestParam")
+	@RequestMapping("/request")
 	public String request(){
 		return "request";
 	}
 	@RequestMapping("/sendJson")
 	public String sendJson(){
 		return "sendJson";
+	}
+	@RequestMapping("/attr")
+	public String attr(){
+		return "attr";
 	}
 }
