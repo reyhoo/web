@@ -10,12 +10,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
-import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @ComponentScan(basePackages = "com.mvc.annotation")
-@ImportResource("/WEB-INF/config/application-dao.xml")
-@PropertySource("/WEB-INF/config/db.properties")
+@ImportResource("/WEB-INF/config/applicationContext.xml")
 public class AppConfig {
 
 	@Value("${database.username}")

@@ -1,5 +1,8 @@
 package com.mvc.annotation.config;
 
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletRegistration.Dynamic;
+
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class MyWebAppInitializer extends
@@ -18,6 +21,14 @@ public class MyWebAppInitializer extends
 	@Override
 	protected String[] getServletMappings() {
 		return new String[]{"/"};
+	}
+	
+	@Override
+	protected void customizeRegistration(Dynamic registration) {
+		String filePath = "d:\\mvc\\uploads";
+		Long singleMax = (long) (5 * Math.pow(2, 20));
+		Long totalMax = (long) (10 * Math.pow(2, 20));
+		registration.setMultipartConfig(new MultipartConfigElement(filePath, singleMax, totalMax, 0));
 	}
 
 }

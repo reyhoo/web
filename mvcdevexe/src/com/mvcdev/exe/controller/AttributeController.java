@@ -61,7 +61,7 @@ public class AttributeController {
 	}
 	
 	@RequestMapping("/readSession")
-	public ModelAndView readSession(@SessionAttribute("id")Long id,@SessionAttribute("user")String user,@SessionAttribute("role")Role role){
+	public ModelAndView readSession(@SessionAttribute(value="id",required=false)Long id,@SessionAttribute(value="user",required=false)String user,@SessionAttribute(value="role",required=false)Role role){
 		ModelAndView mv = new ModelAndView();
 		mv.setView(new MappingJackson2JsonView());
 		mv.addObject("user", user);

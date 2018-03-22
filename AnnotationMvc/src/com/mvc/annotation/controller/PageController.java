@@ -10,4 +10,9 @@ public class PageController {
 	public String request(){
 		return "request";
 	}
+	
+	@RequestMapping("/upload")
+	public String upload(){
+		return "upload";
+	}
 }
