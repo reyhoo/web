@@ -13,21 +13,11 @@
 	 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
 	 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 	 http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
- 
-    <context:property-placeholder location="/WEB-INF/config/db.properties" />
-    
-   	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-   	    <property name="dataSource" ref="dataSource"></property>
-   	    <property name="configLocation" value="/WEB-INF/config/mybatis-config.xml"></property>
-   	</bean>
-    	 
-   	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-   	    <property name="annotationClass" value="org.springframework.stereotype.Repository"></property>
-   	    <property name="basePackage" value="com.mvc.annotation"></property>
-   	    <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
-   	</bean>
-   <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-   	     <property name="dataSource" ref="dataSource"></property>
-   	</bean>
-   <tx:annotation-driven transaction-manager="transactionManager" />
+    <mvc:interceptors>
+	    <mvc:interceptor>
+	        <mvc:mapping path="/role/*"/>
+	        <bean class="com.mvc.annotation.interceptor.RoleInterceptor"></bean>
+	    </mvc:interceptor>
+	    
+	</mvc:interceptors>
 </beans>
