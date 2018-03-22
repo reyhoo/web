@@ -1,10 +1,15 @@
 package com.spring.mvcdev.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,8 +22,13 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
+import sun.org.mozilla.javascript.internal.ast.ForInLoop;
+
+import com.spring.mvcdev.pojo.PageParams;
 import com.spring.mvcdev.pojo.Role;
 import com.spring.mvcdev.service.RoleService;
+import com.spring.mvcdev.view.ExcelExportService;
+import com.spring.mvcdev.view.ExcelView;
 @Controller
 @RequestMapping("/params")
 public class RoleController {
@@ -182,6 +192,42 @@ public class RoleController {
 		return "redirect:./showRoleJsonInfo2.do";
 	}
 	
+	@RequestMapping("/export")
+	public ModelAndView export(String fileName){
+		ModelAndView mv = new ModelAndView();
+		mv.setView(new ExcelView("所有角色.xls", excelExportService()));
+		Role role = new Role();
+		PageParams pageParams = new PageParams();
+		pageParams.setLimit(10000);
+		pageParams.setStart(0);
+		role.setPageParams(pageParams);
+		List<Role> list = roleService.findRoles(role);
+		mv.addObject("roleList", list);
+		return mv;
+	}
 	
+	private ExcelExportService excelExportService(){
+		return new ExcelExportService() {
+			
+			@Override
+			public void makeWorkBook(Map<String, Object> model, Workbook workbook) {
+				List<Role>list = (List<Role>) model.get("roleList");
+				Sheet sheet = workbook.createSheet("所有角色");
+				Row title = sheet.createRow(0);
+				title.createCell(0).setCellValue("编号");
+				title.createCell(1).setCellValue("名称");
+				title.createCell(2).setCellValue("备注");
+				
+				for (int i = 0; i < list.size(); i++) {
+					Role role = list.get(i);
+					int rowIdx = i+1;
+					Row row = sheet.createRow(rowIdx);
+					row.createCell(0).setCellValue(role.getId());
+					row.createCell(1).setCellValue(role.getRoleName());
+					row.createCell(2).setCellValue(role.getNote());
+				}
+			}
+		};
+	}
 	
 }
