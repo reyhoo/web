@@ -12,6 +12,5 @@ ${sessionScope.role.id }<br>
 ${sessionScope.role.roleName }<br>
 ${sessionScope.role.note }<br>
 ${sessionScope.user }<br>
-<%session.invalidate(); %>
 </body>
 </html>

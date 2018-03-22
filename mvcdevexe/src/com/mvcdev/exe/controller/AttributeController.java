@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
@@ -56,6 +57,16 @@ public class AttributeController {
 		mv.addObject("role", role);
 		mv.addObject("id", role.getId());
 		mv.addObject("user", role.getRoleName());
+		return mv;
+	}
+	
+	@RequestMapping("/readSession")
+	public ModelAndView readSession(@SessionAttribute("id")Long id,@SessionAttribute("user")String user,@SessionAttribute("role")Role role){
+		ModelAndView mv = new ModelAndView();
+		mv.setView(new MappingJackson2JsonView());
+		mv.addObject("user", user);
+		mv.addObject("id", id);
+		mv.addObject(role);
 		return mv;
 	}
 	@RequestMapping("/sessionAttr")
