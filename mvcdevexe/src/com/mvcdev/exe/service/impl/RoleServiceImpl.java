@@ -27,12 +27,6 @@ public class RoleServiceImpl implements RoleService{
 	@Transactional(propagation=Propagation.REQUIRED,isolation=Isolation.READ_COMMITTED)
 	@Override
 	public int addRole(Role role) {
-		String roleName = role.getRoleName();
-		String note=role.getNote();
-		if (roleName == null || "".equals(roleName.trim()) || note == null
-				|| "".equals(note.trim())) {
-			throw new RuntimeException("参数不能为空");
-		}
 		int count = roleMapper.insertRole(role);
 		return count;
 	}

@@ -36,6 +36,7 @@ public class Transaction {
 	private Double amount;
 	@Pattern(regexp="^([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)*@"
 			+ "([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\\.][A-Za-z]{2,3}([\\.][A-Za-z]{2})?$",message="不符合邮件格式")
+//	@NotNull
 	private String email;
 	@Size(min=0,max=255)
 	private String note;

@@ -1,8 +1,14 @@
 package com.mvcdev.exe.controller;
 
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -53,7 +59,7 @@ public class RedirectController {
 		return "redirect:/redirect/showRoleJsonInfo";
 	}
 	@RequestMapping("/addRole2")
-	public ModelAndView addRole(ModelAndView mv,Role role){
+	public ModelAndView addRole(ModelAndView mv,@Valid Role role){
 		roleService.addRole(role);
 		mv.addObject("roleName", role.getRoleName());
 		mv.addObject("note", role.getNote());
@@ -63,7 +69,14 @@ public class RedirectController {
 	}
 	
 	@RequestMapping("/addRole3")
-	public String addRole3(RedirectAttributes ra,Role role){
+	public String addRole3(RedirectAttributes ra,@Valid Role role,Errors errors){
+		if(errors.hasErrors()){
+			List<FieldError> errList = errors.getFieldErrors();
+			for (FieldError fieldError : errList) {
+				System.err.println("field:"+fieldError.getField()+";msg:"+fieldError.getDefaultMessage());
+			}
+			throw new RuntimeException("²ÎÊýÓÐÎó!");
+		}
 		roleService.addRole(role);
 		ra.addFlashAttribute("role", role);
 		return "redirect:/redirect/showRoleJsonInfo2";

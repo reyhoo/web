@@ -1,9 +1,16 @@
 package com.mvcdev.exe.pojo;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Role {
 
 	private Long id;
+	@NotNull
+	@Size(min=1,max=60)
 	private String roleName;
+	@NotNull
+	@Size(min=1,max=512)
 	private String note;
 	
 	private PageParams pageParams;

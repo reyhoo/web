@@ -30,6 +30,7 @@ public class ValidateController {
 		}else{
 			System.err.println("Ã»ÓĞ´íÎó:"+transaction);
 		}
+		System.out.println(transaction);
 		return "redirect:/role/list";
 	}
 //	@InitBinder

@@ -16,7 +16,7 @@ $(function(){
 <body>
 		
 
-	<form action="<c:url value='/validate/validator'></c:url>" method="post">
+	<form action="<c:url value='/validate/annotation'></c:url>" method="post">
 		productId:<input type="text" name="productId" ><br><br>
 		userId<input type="text" name="userId" ><br><br>
 		date<input type="text" name="date" ><br><br>
