@@ -4,6 +4,7 @@ import com.grade.mvc.pojo.Role;
 
 public interface RoleService {
 
-	int addRole(Role role);
+	Integer addRole(Role role);
 	Role getRole(Long id);
+	Integer updateRole(Role role);
 }

@@ -42,4 +42,17 @@
 	    </foreach>
 	    </trim>
 	</delete>
+	
+	<update id="updateRole" parameterType="role">
+	    update t_role
+	    <trim prefix="set" suffixOverrides=",">
+	        <if test="roleName!=null and roleName !=''">
+	            role_name=#{roleName},
+	        </if>
+	           <if test="note!=null and note !=''">
+	            note=#{note},
+	        </if>
+	    </trim>
+	    where id=#{id}
+	</update>
 </mapper>

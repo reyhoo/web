@@ -18,4 +18,6 @@ public interface RoleMapper {
 	List<Role> getAll();
 	
 	int deleteRoles(@Param("ids")List<Long>id);
+	
+	int updateRole(Role role);
 }

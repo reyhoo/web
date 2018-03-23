@@ -19,12 +19,17 @@ public class RoleServiceImpl implements RoleService {
 	
 	@Transactional(propagation=Propagation.REQUIRED)
 	@Override
-	public int addRole(Role role) {
+	public Integer addRole(Role role) {
 		return roleMapper.insertRole(role);
 	}
 
 	@Override
 	public Role getRole(Long id){
 		return roleMapper.getRoleById(id);
+	}
+	@Transactional(propagation=Propagation.REQUIRED)
+	@Override
+	public Integer updateRole(Role role) {
+		return roleMapper.updateRole(role);
 	}
 }
