@@ -1,6 +1,8 @@
 package com.grade.mvc.config;
 
 import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration.Dynamic;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -8,6 +10,12 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 public class MyWebAppInitializer extends
 		AbstractAnnotationConfigDispatcherServletInitializer {
 
+	@Override
+	public void onStartup(ServletContext servletContext)
+			throws ServletException {
+		// TODO Auto-generated method stub
+		super.onStartup(servletContext);
+	}
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		return new Class<?>[]{AppConfig.class};

@@ -1,5 +1,7 @@
 package com.grade.mvc.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -31,5 +33,10 @@ public class RoleServiceImpl implements RoleService {
 	@Override
 	public Integer updateRole(Role role) {
 		return roleMapper.updateRole(role);
+	}
+
+	@Override
+	public List<Role> getAll() {
+		return roleMapper.getAll();
 	}
 }

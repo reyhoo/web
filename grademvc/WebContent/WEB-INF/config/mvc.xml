@@ -17,7 +17,8 @@
            </list>
        </property>
    </bean>
-     
+   
+
    
    
    <!-- 用xml配置httpmessageconverter -->
