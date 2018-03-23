@@ -9,11 +9,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.ImportResource;
 
 @Configuration
 @ComponentScan(basePackages = "com.mvc.annotation")
 @ImportResource("/WEB-INF/config/applicationContext.xml")
+@EnableAspectJAutoProxy
 public class AppConfig {
 
 	@Value("${database.username}")

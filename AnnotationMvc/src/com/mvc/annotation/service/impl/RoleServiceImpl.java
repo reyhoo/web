@@ -43,12 +43,12 @@ public class RoleServiceImpl implements RoleService{
 	
 	@Transactional(propagation=Propagation.REQUIRED,isolation=Isolation.READ_COMMITTED)
 	@Override
-	public int deleteRoles(List<Long> ids) {
+	public Integer deleteRoles(List<Long> ids) {
 		return roleMapper.deleteRoles(ids);
 	}
 	@Transactional(propagation=Propagation.REQUIRED,isolation=Isolation.READ_COMMITTED)
 	@Override
-	public int addRoles(List<Role> roleList) {
+	public Integer addRoles(List<Role> roleList) {
 		int count = 0;
 		for (Role role : roleList) {
 			roleMapper.insertRole(role);

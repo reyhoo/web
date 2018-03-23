@@ -18,6 +18,6 @@ public interface RoleService {
 	
 	List<Role>findRoles(Role role);
 	
-	int deleteRoles(List<Long>id);
-	int addRoles(List<Role> roleList);
+	Integer deleteRoles(List<Long>id);
+	Integer addRoles(List<Role> roleList);
 }

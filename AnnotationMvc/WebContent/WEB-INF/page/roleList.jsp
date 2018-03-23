@@ -18,7 +18,7 @@
 	<table border=1 class="t">
 		<tr><td>角色编号</td><td>角色名称</td><td>角色备注</td></tr>
 		<%List<Role>roleList = (List<Role>)request.getAttribute("roleList");
-		System.out.println(roleList);
+		System.err.println(roleList);
 		%>
 		<c:forEach items="${roleList}" var="role">
 
