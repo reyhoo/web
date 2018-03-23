@@ -15,7 +15,7 @@ $(function(){
 		request( base_url+"json/findRoles", JSON.stringify(data), "application/json");
 	});
 	$("#btn2").click(function(){
-		var data=[1,2,3];
+		var data=[127,128,129,130,131,132];
 		request( base_url+"json/deleteBatch", JSON.stringify(data), "application/json");
 	});
 	$("#btn3").click(function(){

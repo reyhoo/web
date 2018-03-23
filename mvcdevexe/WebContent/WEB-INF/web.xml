@@ -36,6 +36,12 @@
           <param-value>/WEB-INF/config/spring-servlet.xml</param-value>
       </init-param>
       <load-on-startup>2</load-on-startup>
+      <multipart-config>
+		    <location>d:/mvc/uploads</location>
+		    <max-file-size>5242880</max-file-size>
+		    <max-request-size>10485760</max-request-size>
+		    <file-size-threshold>0</file-size-threshold>
+		</multipart-config>
   </servlet>
   <servlet-mapping>
       <servlet-name>mvcdev</servlet-name>
