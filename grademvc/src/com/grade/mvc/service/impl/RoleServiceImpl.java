@@ -15,10 +15,16 @@ public class RoleServiceImpl implements RoleService {
 
 	@Value("#{roleMapper}")
 	private RoleMapper roleMapper;
+	
+	
 	@Transactional(propagation=Propagation.REQUIRED)
 	@Override
 	public int addRole(Role role) {
 		return roleMapper.insertRole(role);
 	}
 
+	@Override
+	public Role getRole(Long id){
+		return roleMapper.getRoleById(id);
+	}
 }
