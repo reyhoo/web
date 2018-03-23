@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.grade.mvc.mapper.RoleMapper">
+	<insert id="insertRole" parameterType="role" useGeneratedKeys="true"
+	    keyProperty="id">
+		insert into t_role(role_name,note)values(#{roleName},#{note})
+	</insert>
+	<select id="getAll" resultType="role">
+		select id,role_name as roleName,note from t_role
+	</select>
+	<select id="getRoleById" resultType="role" parameterType="long">
+		select id,role_name as roleName,note from t_role where id=#{i}
+	</select>
+<!-- 	<select id="findRoles" resultType="role" parameterType="role">
+	    
+	    	select id,role_name as roleName,note from t_role
+	    	<trim prefix="where" prefixOverrides="and">
+	    	    <if test="roleName!=null and roleName !=''">
+	    	        <bind name="roleName_f" value="'%'+roleName+'%'"/>
+	    	        and role_name like #{roleName_f}
+	    	    </if>
+	    	    <if test="note!=null and note!=''" >
+	    	          <bind name="note_f" value="'%'+note+'%'"/>
+	    	         and note like #{note_f}
+	    	    </if>
+	    	    limit #{pageParams.start} , #{pageParams.limit}
+	    	</trim>
+	</select> -->
+	<!-- <delete id="deleteRoles">
+	    delete from t_role where id in
+	    <foreach collection="ids" item="id" open="(" close=")" separator=",">
+	        #{id}
+	    </foreach>
+	</delete> -->
+	<delete id="deleteRoles">
+	    delete from t_role where
+	    <trim prefix="" prefixOverrides="or">
+	      <foreach collection="ids" item="id">
+	       or id=#{id}
+	    </foreach>
+	    </trim>
+	</delete>
+</mapper>
