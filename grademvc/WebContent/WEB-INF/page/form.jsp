@@ -67,5 +67,6 @@ function request(url,data,contentType){
 	<button id="fieldAdd">fieldAdd</button><br><br>
 	<button id="bodyAdd">bodyAdd</button><br><br>
 	<button id="fieldConverterAdd">fieldConverterAdd</button><br>
+	<%System.err.println(session.getAttribute("roleList")); %>
 </body>
 </html>

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.HandlerAdapter;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
@@ -27,6 +28,7 @@ import com.grade.mvc.service.RoleService;
 
 @Controller
 @RequestMapping("/role")
+@SessionAttributes(names="roleList")
 public class RoleController {
 
 	@Autowired
@@ -60,15 +62,15 @@ public class RoleController {
 	
 	
 	/***
-	 * 访问格式 :http://localhost:8080/grademvc/role/updateRole?hello=164-helldfdfdfo-fafadsfadsfasd
+	 * 访问格式 :http://localhost:8080/grademvc/role/updateRole?role=125-helldfdfdfo-fafadsfadsfasd
 	 * @param r
 	 * @return
 	 */
 	@ResponseBody
 	@RequestMapping("/updateRole")
-	public Map<String, Object> updateRole(@RequestParam("hello")Role r){
+	public Map<String, Object> updateRole(Role role){
 		Map<String , Object>map = new HashMap<String, Object>();
-		Integer count = roleService.updateRole(r);
+		Integer count = roleService.updateRole(role);
 		map.put("total", count);
 		return map;
 	}
@@ -81,7 +83,7 @@ public class RoleController {
 			e.printStackTrace();
 		}
 		List<Role> list = roleService.getAll();
-		map.addAttribute(list);
+		map.addAttribute("roleList",list);
 		return "roleList";
 	}
 }
