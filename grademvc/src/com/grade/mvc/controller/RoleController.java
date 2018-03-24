@@ -1,5 +1,7 @@
 package com.grade.mvc.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,6 +64,7 @@ public class RoleController {
 	
 	
 	/***
+	 * 用自定义一对一数据转换器@StringToRoleConverter解析成Role对象
 	 * 访问格式 :http://localhost:8080/grademvc/role/updateRole?role=125-helldfdfdfo-fafadsfadsfasd
 	 * @param r
 	 * @return
@@ -74,6 +77,32 @@ public class RoleController {
 		map.put("total", count);
 		return map;
 	}
+	@ResponseBody
+	@RequestMapping("/updateRoleList")
+	public Map<String, Object>updateRoleList(@RequestParam(required=false)List<Role>roleList){
+		Map<String , Object>map = new HashMap<String, Object>();
+		if(roleList == null||roleList.isEmpty()){
+			map.put("total", 0);
+			return map;
+		}
+		Integer totle = roleService.updateRoleList(roleList);
+		map.put("total", totle);
+		return map;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/updateRoleArr")
+	public Map<String, Object>updateRoleArr(Role[] roleArr){
+		Map<String , Object>map = new HashMap<String, Object>();
+		if(roleArr == null||roleArr.length==0){
+			map.put("total", 0);
+			return map;
+		}
+		Integer totle = roleService.updateRoleList(Arrays.asList(roleArr));
+		map.put("total", totle);
+		return map;
+	}
+	
 	@RequestMapping("/list")
 	public String list(@RequestParam(required=false)String name,Role role,ModelMap map){
 		try {

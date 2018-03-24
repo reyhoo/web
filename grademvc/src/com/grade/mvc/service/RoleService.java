@@ -10,4 +10,6 @@ public interface RoleService {
 	Role getRole(Long id);
 	Integer updateRole(Role role);
 	List<Role> getAll();
+	
+	Integer updateRoleList(List<Role>roleList);
 }

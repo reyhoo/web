@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class RoleAspect {
 
-	@Pointcut("execution(* com.grade.mvc.service.impl.RoleServiceImpl.addRole(..))")
+	@Pointcut("execution(* com.grade.mvc.service.impl.RoleServiceImpl.*(..))")
 	public void print(){}
 	
 	@Before("print()")
@@ -46,7 +46,6 @@ public class RoleAspect {
 		} catch (Throwable e) {
 			System.err.println("环绕通知异常返回");
 			e.printStackTrace();
-			
 			//如果遇到的切点是某个有事务的方法，这里有一定要抛出异常。否则即使发生异常，也会提交事务。
 			throw new RuntimeException(e);
 			
