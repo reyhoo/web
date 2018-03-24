@@ -19,6 +19,9 @@ $(function(){
 	$("#fieldConverterAdd").click(function(){
 		request( base_url+"role/add", "role=0-我是fieldConverterAdd-我是fieldConverterAddnote", "application/x-www-form-urlencoded");
 	});
+	$("#submit2").click(function(){
+		request( base_url+"test/submit2", "role=0-我是fieldConverterAdd-我是fieldConverterAddnote", "application/json");
+	});
 	
 });
 function request(url,data,contentType){
@@ -64,9 +67,21 @@ function request(url,data,contentType){
 		</form>
 	</fieldset>
 	
+	
+		<fieldset>
+		<legend>两个input的name相同表单提交</legend>
+		<form action="<c:url value='/test/submit1'></c:url>" method="post">
+			name1:<input type="text" name="name"><br>
+			name2:<input type="text" name="name"><br>
+			
+			 <input type="submit"
+				value="提交">
+		</form>
+	</fieldset>
 	<button id="fieldAdd">fieldAdd</button><br><br>
 	<button id="bodyAdd">bodyAdd</button><br><br>
-	<button id="fieldConverterAdd">fieldConverterAdd</button><br>
-	<%System.err.println(session.getAttribute("roleList")); %>
+	<button id="fieldConverterAdd">fieldConverterAdd</button><br><br>
+	<button id="submit2">submit2</button><br>
+	
 </body>
 </html>

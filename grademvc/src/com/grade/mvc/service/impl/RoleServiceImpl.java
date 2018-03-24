@@ -39,4 +39,13 @@ public class RoleServiceImpl implements RoleService {
 	public List<Role> getAll() {
 		return roleMapper.getAll();
 	}
+	@Transactional(propagation=Propagation.REQUIRED)
+	@Override
+	public Integer updateRoleList(List<Role> roleList) {
+		int count = 0;
+		for (Role role : roleList) {
+			count += roleMapper.updateRole(role);
+		}
+		return count;
+	}
 }
