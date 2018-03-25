@@ -37,4 +37,41 @@
        	    </list>
        	</property> 
     </bean> -->
+    
+    
+    <!-- 国际化messageSource 下面两个选择一个-->
+  <!--   <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        
+        <property name="defaultEncoding" value="utf-8"></property>
+        <property name="basenames" value="msg"></property>
+    </bean>
+    
+      <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        
+        <property name="defaultEncoding" value="utf-8"></property>
+        <property name="basenames" value="msg"></property>
+        <property name="cacheSeconds" value="3600"></property>
+    </bean> -->
+    
+    <!-- 实现国际化的resolver 推荐使用SessionLocaleResolver,因为cookie会被禁用-->
+    <!-- <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <property name="cookieName" value="lang"></property>
+        <property name="cookieMaxAge" value="1800"></property>
+        <property name="defaultLocale" value="zh_CN"></property>
+    </bean>
+    
+     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+        <property name="defaultLocale" value="zh_CN"></property>
+    </bean> -->
+    
+   <mvc:interceptors>
+        
+        <mvc:interceptor>
+            <mvc:mapping path="/message/*"/>
+            <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+                <property name="paramName" value="language"></property>
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors> 
+    
 </beans>
