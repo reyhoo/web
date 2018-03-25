@@ -14,7 +14,7 @@ public interface RoleService {
 	
 	List<Role> getAll();
 	
-	int deleteRoles(@Param("ids")List<Long>id);
+	Integer deleteRoles(@Param("ids")List<Long>id);
 	
 	int updateRole(Role role);
 }

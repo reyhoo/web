@@ -16,13 +16,13 @@
 <body>
 		
 	<table border=1 class="t">
-		<tr><td>角色编号</td><td>角色名称</td><td>角色备注</td></tr>
+		<tr><td>角色编号</td><td>角色名称</td><td>角色备注</td><td>操作</td></tr>
 		<%List<Role>roleList = (List<Role>)request.getAttribute("roleList");
 		System.out.println(roleList);
 		%>
 		<c:forEach items="${roleList}" var="role">
 
-			<tr><td>${role.id}</td><td>${role.roleName}</td><td>${role.note}</td></tr>
+			<tr><td>${role.id}</td><td>${role.roleName}</td><td>${role.note}</td><td><a href='<c:url value="/role/delete?id=${role.id}"></c:url>'>delete</a></td></tr>
 		
 		</c:forEach>
 		</table>

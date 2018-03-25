@@ -46,6 +46,7 @@ public class RoleAspect {
 		} catch (Throwable e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
+			//有事务一定要抛出异常；否则会service会提交事务 
 		}
 		System.err.println("after around...");
 		return obj;

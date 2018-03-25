@@ -33,7 +33,7 @@ public class RoleServiceImpl implements RoleService{
 	}
 	@Transactional(propagation=Propagation.REQUIRED)
 	@Override
-	public int deleteRoles(List<Long> ids) {
+	public Integer deleteRoles(List<Long> ids) {
 		return roleMapper.deleteRoles(ids);
 	}
 	@Transactional(propagation=Propagation.REQUIRED)

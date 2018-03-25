@@ -1,9 +1,13 @@
 package com.gradle.mvc.controller;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,6 +33,20 @@ public class RoleController {
 		roleService.insertRole(role);
 		return role;
 	}
+	
+	@RequestMapping("/roleList")
+	public String roleList(Model model) {
+		List<Role> list = roleService.getAll();
+		model.addAttribute("roleList", list);
+		return "roleList";
+	}
+	
+	@RequestMapping("/delete")
+	public String delete(Long[] id) {
+		roleService.deleteRoles(Arrays.asList(id));
+		return "redirect:/role/roleList";
+	}
+	
 	
 	@ResponseBody
 	@RequestMapping("/update")
