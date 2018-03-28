@@ -43,4 +43,36 @@
 	    <property name="defaultSerializer" ref="stringRedisSerializer"></property>
 	    <property name="valueSerializer" ref="stringRedisSerializer"></property>
 	</bean>
+	
+	
+	<bean id="redisMsgListener" class="com.spring.redis.listener.RedisMessageListener">
+	    <property name="redisTemplate" ref="hashRedisTemplate"></property>
+	</bean>
+	
+	<bean id="topicContainer" destroy-method="destroy" class="org.springframework.data.redis.listener.RedisMessageListenerContainer">
+	    <!-- Redis连接工厂 -->
+	    <property name="connectionFactory" ref="connectionFactory"></property>
+	    <!-- 连接池，这里只要线程池生存，才能继续监听 -->
+	    <property name="taskExecutor">
+	        <bean class="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler">
+	            <property name="poolSize" value="3"></property>
+	        </bean>
+	    </property>
+	    <property name="messageListeners">
+	        <!-- 消息监听map -->
+	        <map>
+	             <!-- 配置监听者，key-ref和bean id定义一致 -->
+	            <entry key-ref="redisMsgListener">
+	                <bean class="org.springframework.data.redis.listener.ChannelTopic">
+	                    <constructor-arg value="chat"></constructor-arg>
+	                </bean>
+	            </entry>
+	            <entry key-ref="redisMsgListener">
+	                <bean class="org.springframework.data.redis.listener.ChannelTopic">
+	                    <constructor-arg value="change"></constructor-arg>
+	                </bean>
+	            </entry>
+	        </map>
+	    </property>
+	</bean>
 </beans>

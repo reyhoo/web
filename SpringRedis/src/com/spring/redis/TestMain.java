@@ -13,7 +13,7 @@ public class TestMain {
 
 	public static void main(String[] args) {
 		ApplicationContext cxt = new ClassPathXmlApplicationContext("applicationContext.xml");
-		RedisTemplate redisTemplate = cxt.getBean(RedisTemplate.class);
+		RedisTemplate redisTemplate = (RedisTemplate) cxt.getBean("redisTemplate");
 		final Role role = new Role();
 		role.setId(1l);
 		role.setRoleName("role_name_1");
