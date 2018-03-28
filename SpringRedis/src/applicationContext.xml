@@ -49,19 +49,19 @@
 	    <property name="redisTemplate" ref="hashRedisTemplate"></property>
 	</bean>
 	
-	<bean id="topicContainer" destroy-method="destroy" class="org.springframework.data.redis.listener.RedisMessageListenerContainer">
-	    <!-- Redis连接工厂 -->
+	<!-- <bean id="topicContainer" destroy-method="destroy" class="org.springframework.data.redis.listener.RedisMessageListenerContainer">
+	    Redis连接工厂
 	    <property name="connectionFactory" ref="connectionFactory"></property>
-	    <!-- 连接池，这里只要线程池生存，才能继续监听 -->
+	    连接池，这里只要线程池生存，才能继续监听
 	    <property name="taskExecutor">
 	        <bean class="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler">
 	            <property name="poolSize" value="3"></property>
 	        </bean>
 	    </property>
 	    <property name="messageListeners">
-	        <!-- 消息监听map -->
+	        消息监听map
 	        <map>
-	             <!-- 配置监听者，key-ref和bean id定义一致 -->
+	             配置监听者，key-ref和bean id定义一致
 	            <entry key-ref="redisMsgListener">
 	                <bean class="org.springframework.data.redis.listener.ChannelTopic">
 	                    <constructor-arg value="chat"></constructor-arg>
@@ -74,5 +74,5 @@
 	            </entry>
 	        </map>
 	    </property>
-	</bean>
+	</bean> -->
 </beans>
