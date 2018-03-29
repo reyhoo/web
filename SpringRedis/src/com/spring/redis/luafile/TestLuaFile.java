@@ -13,7 +13,10 @@ import org.springframework.data.redis.core.RedisTemplate;
 import redis.clients.jedis.Jedis;
 
 public class TestLuaFile {
-
+/***
+ * √¸¡Ó––÷¥––£∫redis-cli --eval C:\Users\dell\Desktop\test.lua key1 key2 , 2 4
+ * @param args
+ */
 	
 	public static void main(String[] args) {
 		
