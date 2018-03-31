@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.red.packet.mapper.RedPacketDao">
+
+	<resultMap type="redPacket" id="redPacketMap">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id"/>
+		<result property="amount" column="amount"/>
+		<result property="sendDate" column="send_date"/>
+		<result property="total" column="total"/>
+		<result property="unitAmount" column="unit_amount"/>
+		<result property="stock" column="stock"/>
+		<result property="version" column="version"/>
+		<result property="note" column="note"/>
+	</resultMap>
+	
+	
+	<select id="getRedPacket" parameterType="long" resultMap="redPacketMap">
+		select * from t_red_packet where id=#{id}
+	</select>
+	<!-- 这里使用主键查询，所以只会对行加锁，如果使用的是非主键查询，要考虑是否对全表加锁的问题，加锁后可能引发其他查询的阻塞 -->
+	<select id="getRedPacketForUpdate" parameterType="long" resultMap="redPacketMap">
+		select * from t_red_packet where id=#{id} for update
+	</select>
+	
+	<update id="decreaseRedRedPacket" parameterType="long" >
+		update t_red_packet set stock=stock-1 where id=#{id}
+	</update>
+	<update id="decreaseRedRedPacketForVersion">
+			update t_red_packet set stock=stock-1,version=version+1 where id=#{id} and version=#{version}
+	</update>
+</mapper>
