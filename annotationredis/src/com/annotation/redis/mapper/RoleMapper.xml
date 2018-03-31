@@ -10,7 +10,7 @@
 	</resultMap>
 	
 	<select id="getRole" parameterType="long" resultMap="roleMap">
-		select * from t_role where id=#{id}
+		select * from t_role where id=#{id} for update
 	</select>
 	
 	<delete id="deleteRole" parameterType="long">

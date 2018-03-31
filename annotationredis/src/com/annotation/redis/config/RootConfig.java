@@ -1,5 +1,6 @@
 package com.annotation.redis.config;
 
+import java.net.URL;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -7,11 +8,17 @@ import javax.sql.DataSource;
 import org.apache.commons.dbcp.BasicDataSourceFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.PathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -22,9 +29,20 @@ import org.springframework.transaction.annotation.TransactionManagementConfigure
 @Configuration
 @ComponentScan(basePackages="com.*")
 @EnableTransactionManagement
+@EnableAspectJAutoProxy
 public class RootConfig implements TransactionManagementConfigurer{
 
 	private DataSource dataSource;
+	
+	
+	@Value("${database.username}")
+	private String username;
+	@Value("${database.password}")
+	private String password;
+	@Value("${database.url}")
+	private String url;
+	@Value("${database.driver}")
+	private String driver;
 	
 	@Bean(name="dataSource")
 	public DataSource initDataSource() {
@@ -35,7 +53,7 @@ public class RootConfig implements TransactionManagementConfigurer{
 		prop.setProperty("driverClassName", "com.mysql.jdbc.Driver");
 		prop.setProperty("url", "jdbc:mysql://localhost:3306/ssm?useUnicode=true&characterEncoding=utf8");
 		prop.setProperty("username", "root");
-		prop.setProperty("password", "");
+		prop.setProperty("password", "123456");
 		try {
 			dataSource = BasicDataSourceFactory.createDataSource(prop);
 		} catch (Exception e) {
@@ -49,7 +67,7 @@ public class RootConfig implements TransactionManagementConfigurer{
 	public SqlSessionFactoryBean initSqlSessionFactory() {
 		SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
 		factoryBean.setDataSource(initDataSource());
-		Resource configLocation = new ClassPathResource("mybatis/mybatis-config.xml");
+		Resource configLocation = new ClassPathResource("mybatis-config.xml");
 		factoryBean.setConfigLocation(configLocation);
 		return factoryBean;
 	}

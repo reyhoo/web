@@ -25,7 +25,14 @@ public class RoleServiceImpl implements RoleService {
 	@Transactional(isolation = Isolation.READ_COMMITTED,propagation=Propagation.REQUIRED)
 	@Cacheable(value="redisCacheManager",key="'redis_role_'+#id")
 	public Role getRole(Long id) {
-		return roleDao.getRole(id);
+		Role role = roleDao.getRole(id);
+		
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return role;
 	}
 
 	@Override
@@ -37,6 +44,7 @@ public class RoleServiceImpl implements RoleService {
 	@Override
 	public Role insertRole(Role role) {
 		roleDao.insertRole(role);
+		
 		return role;
 	}
 	@Transactional(isolation = Isolation.READ_COMMITTED,propagation=Propagation.REQUIRED)
@@ -44,6 +52,11 @@ public class RoleServiceImpl implements RoleService {
 	@Override
 	public Role updateRole(Role role) {
 		roleDao.updateRole(role);
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		return role;
 	}
 
