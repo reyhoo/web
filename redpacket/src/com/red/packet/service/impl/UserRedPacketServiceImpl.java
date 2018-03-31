@@ -46,7 +46,7 @@ public class UserRedPacketServiceImpl implements UserRedPacketService {
 	@Override
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public int grapRedPacketForVersion(Long redPacketId, Long userId) {
-		//用次数设置重入限制
+		//用次数设置重入限制,提高成功率
 		
 		for (int i = 0; i < 3; i++) {
 			RedPacket redPacket = redPacketDao.getRedPacket(redPacketId);
@@ -91,7 +91,7 @@ public class UserRedPacketServiceImpl implements UserRedPacketService {
 //				return 0;
 //			}
 //		}
-		//乐观锁会导致失败率，用重入的方式可以提高失败率
+		//乐观锁会导致失败率，用重入的方式可以提高成功率
 //		RedPacket redPacket = redPacketDao.getRedPacket(redPacketId);
 //		if (redPacket.getStock() > 0) {
 //			int result = redPacketDao.decreaseRedRedPacketForVersion(redPacketId, redPacket.getVersion());
