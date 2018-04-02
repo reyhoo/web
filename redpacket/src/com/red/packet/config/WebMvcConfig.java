@@ -3,6 +3,7 @@ package com.red.packet.config;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executor;
 
 import org.apache.tools.ant.types.resources.comparators.FileSystem;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +16,10 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
+import org.springframework.scheduling.annotation.AsyncConfigurer;
+import org.springframework.scheduling.annotation.AsyncConfigurerSupport;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -28,7 +33,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan(value="com.*",includeFilters= {@Filter(type=FilterType.ANNOTATION,value=Controller.class)})
-public class WebMvcConfig {
+@EnableAsync
+public class WebMvcConfig extends AsyncConfigurerSupport{
 
 	@Bean(name="viewResolver")
 	public ViewResolver initViewResolver() {
@@ -59,5 +65,16 @@ public class WebMvcConfig {
 		converter.setSupportedMediaTypes(supportedMediaTypes );
 		adapter.getMessageConverters().add(converter);
 		return adapter;
+	}
+	
+	@Override
+	public Executor getAsyncExecutor() {
+		ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+		executor.setCorePoolSize(5);
+		executor.setMaxPoolSize(10);
+		executor.setQueueCapacity(200);
+		executor.initialize();
+		return executor;
+		
 	}
 }

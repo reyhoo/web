@@ -22,5 +22,8 @@ note varchar(256)not null,
 foreign key (red_packet_id) references t_red_packet(id)on delete restrict on update restrict
 );
 insert into t_red_packet(user_id,amount,send_date,total,unit_amount,stock,note)values(
-1,20000.00,now(),2000,10,2000,'2ä¸‡å…ƒé‡‘é¢ï¼Œ2åƒä¸ªå°çº¢åŒ…ï¼Œæ¯ä¸ª10å…ƒ'
+1,20000.00,now(),2000,10,2000,'2ÍòÔª½ğ¶î£¬2Ç§¸öĞ¡ºì°ü£¬Ã¿¸ö10Ôª'
+);
+insert into t_red_packet(user_id,amount,send_date,total,unit_amount,stock,note)values(
+2,200000.00,now(),20000,10,20000,'20ÍòÔª½ğ¶î£¬2Íò¸öĞ¡ºì°ü£¬Ã¿¸ö10Ôª'
 );

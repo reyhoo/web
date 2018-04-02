@@ -15,11 +15,17 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
+
+import redis.clients.jedis.JedisPoolConfig;
 
 @Configuration
 @ComponentScan(value="com.*",includeFilters= {@Filter(type=FilterType.ANNOTATION,value=Service.class)})
@@ -39,7 +45,7 @@ public class RootConfig implements TransactionManagementConfigurer{
 		prop.setProperty("driverClassName", "com.mysql.jdbc.Driver");
 		prop.setProperty("url", "jdbc:mysql://localhost:3306/ssm?useUnicode=true&characterEncoding=utf8");
 		prop.setProperty("username", "root");
-		prop.setProperty("password", "123456");
+		prop.setProperty("password", "");
 		prop.setProperty("maxActive", "200");
 		prop.setProperty("maxIdle", "20");
 		prop.setProperty("maxWait", "3000");
@@ -78,4 +84,26 @@ public class RootConfig implements TransactionManagementConfigurer{
 		return manager;
 	}
 
+	@Bean(name="redisTemplate")
+	public RedisTemplate initRedisTemplate() {
+		JedisPoolConfig poolConfig = new JedisPoolConfig();
+		poolConfig.setMaxIdle(50);
+		poolConfig.setMaxTotal(100);
+		poolConfig.setMaxWaitMillis(20000);
+		JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory();
+		jedisConnectionFactory.setPoolConfig(poolConfig);
+		jedisConnectionFactory.setHostName("localhost");
+		jedisConnectionFactory.setPort(6379);
+		jedisConnectionFactory.afterPropertiesSet();
+		
+		RedisSerializer stringRedisSerializer = new StringRedisSerializer();
+		RedisTemplate redisTemplate = new RedisTemplate();
+		redisTemplate.setConnectionFactory(jedisConnectionFactory);
+		redisTemplate.setDefaultSerializer(stringRedisSerializer);
+		redisTemplate.setKeySerializer(stringRedisSerializer);
+		redisTemplate.setValueSerializer(stringRedisSerializer);
+		redisTemplate.setHashKeySerializer(stringRedisSerializer);
+		redisTemplate.setHashValueSerializer(stringRedisSerializer);
+		return redisTemplate;
+	}
 }
