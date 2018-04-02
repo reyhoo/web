@@ -34,7 +34,7 @@
 		
 	$("#grap1").click(function(){
 			
-			var max = 3000;
+			var max = 30000;
 			for(var i = 1;i <= max; i++){
 				var url = base_url+"userRedPacket/grapRedPacketByRedis?redPacketId=1&userId="+i;
 				$.ajax({
