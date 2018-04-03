@@ -32,12 +32,6 @@ public class RootConfig implements TransactionManagementConfigurer{
 
 	private DataSource dataSource;
 	
-	
-	private String username;
-	private String password;
-	private String url;
-	private String driver;
-	
 	@Bean(name="dataSource")
 	public DataSource initDataSource() {
 		if(dataSource!=null) {
@@ -47,7 +41,7 @@ public class RootConfig implements TransactionManagementConfigurer{
 		prop.setProperty("driverClassName", "com.mysql.jdbc.Driver");
 		prop.setProperty("url", "jdbc:mysql://localhost:3306/ssm?useUnicode=true&characterEncoding=utf8");
 		prop.setProperty("username", "root");
-		prop.setProperty("password", "123456");
+		prop.setProperty("password", "");
 		try {
 			dataSource = BasicDataSourceFactory.createDataSource(prop);
 		} catch (Exception e) {

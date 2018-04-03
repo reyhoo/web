@@ -13,3 +13,5 @@ note varchar(256) not null
 insert into t_user(user_name,sex,posi,birthday,note)values('老张',1,3,'1987-3-6','总裁总裁总裁总裁');
 insert into t_user(user_name,sex,posi,birthday,note)values('lucy',2,1,'1997-3-10','普通职工普通职工普通职工普通职工');
 insert into t_user(user_name,sex,posi,birthday,note)values('tom',1,2,'1987-3-6','经理经理经理经理');
+
+select count(*) from t_user
