@@ -32,6 +32,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages="com.*",includeFilters= {@Filter(type=FilterType.ANNOTATION,value=Controller.class)})
+@ImportResource("/WEB-INF/config/mvc.xml")
 public class ServletConfig {
 
 	@Bean(name="viewResolver")
