@@ -31,7 +31,7 @@
 				note=#{note},
 			</if>
 		</trim>
-		where id=#{id}
+		where id=#{id} and user_id=#{userId}
 	</update>
 	<delete id="delete" parameterType="long">
 		delete from exe_role where id=#{id}

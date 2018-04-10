@@ -21,12 +21,13 @@
 			<c:url var="deleteUrl" value="/role/delete">
 				<c:param name="id" value="${role.id}"></c:param>
 			</c:url>
-			<c:url var="updateUrl" value="/role/update">
+			<c:url var="updateUrl" value="/role/toUpdate">
 				<c:param name="id" value="${role.id}"></c:param>
 			</c:url>
 			<a href="${deleteUrl }">删除</a>
 			<a href="${updateUrl }">更新</a>
 		</c:forEach>
 	</table>
+		<a href='<c:url value="/role/toAdd"></c:url>'>添加</a>
 </body>
 </html>

@@ -1,10 +1,18 @@
 package com.mvc.exe.pojo;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.springframework.web.bind.annotation.RequestParam;
+
 public class Role {
 
-	
 	private Long id;
+	@NotNull
+	@Size(min=1,max=60)
 	private String roleName;
+	@NotNull
+	@Size(min=1,max=100)
 	private String note;
 	private Long userId;
 	public Long getId() {
@@ -30,6 +38,10 @@ public class Role {
 	}
 	public void setUserId(Long userId) {
 		this.userId = userId;
+	}
+	@Override
+	public String toString() {
+		return "Role [id=" + id + ", roleName=" + roleName + ", note=" + note + ", userId=" + userId + "]";
 	}
 	
 	
