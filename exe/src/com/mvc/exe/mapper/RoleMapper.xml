@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mvc.exe.mapper.RoleMapper">
+
+	<resultMap type="role" id="roleMap">
+		<id column="id" property="id"/>
+		<result column="role_name" property="roleName"/>
+		<result column="note" property="note"/>
+		<result column="user_id" property="userId"/>
+	</resultMap>
+	
+	<select id="findByUserId" resultMap="roleMap" parameterType="long">
+		select * from exe_role where user_id=#{id}
+	</select>
+	<select id="findById" resultMap="roleMap" parameterType="long">
+		select * from exe_role where id=#{id}
+	</select>
+	
+	<insert id="add">
+		insert into exe_role (role_name,note,user_id) values(#{role.roleName},#{role.note},#{userId})
+	</insert>
+	
+	<update id="update" parameterType="role">
+		update exe_role
+		<trim prefix="set" suffixOverrides=",">
+			<if test="roleName!=null and roleName!=''">
+				role_name=#{roleName},
+			</if>
+			<if test="note!=null and note!=''">
+				note=#{note},
+			</if>
+		</trim>
+		where id=#{id}
+	</update>
+	<delete id="delete" parameterType="long">
+		delete from exe_role where id=#{id}
+	</delete>
+</mapper>
