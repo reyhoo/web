@@ -17,7 +17,9 @@
 		<tr><td>编号<td>角色名称<td>备注<td>操作
 		
 		<c:forEach var="role" items="${roleList }" varStatus="status">
-			<tr><td>${role.id }<td>${role.roleName }<td>${role.note }<td>
+			<tr><td>${role.id }<td>${role.roleName }<td>${role.note }
+			<td><img alt="" src="${role.pic }" style="height:100px;width: 100px;">
+		<td>
 			<c:url var="deleteUrl" value="/role/delete">
 				<c:param name="id" value="${role.id}"></c:param>
 			</c:url>

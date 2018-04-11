@@ -10,6 +10,7 @@ id bigint primary key auto_increment,
 role_name varchar(60) NOT NULL,
 note varchar(512) NOT NULL,
 user_id bigint not null,
+pic varchar(512),
 foreign key (user_id) references exe_user(id) on delete restrict on update restrict
 );
 

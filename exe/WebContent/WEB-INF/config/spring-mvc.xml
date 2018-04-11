@@ -69,6 +69,10 @@
 			</bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
+	
+	   <mvc:resources mapping="/img/**"
+   location="/img/"/> 
+
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 		<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 </beans>

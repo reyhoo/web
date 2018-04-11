@@ -8,6 +8,7 @@
 		<result column="role_name" property="roleName"/>
 		<result column="note" property="note"/>
 		<result column="user_id" property="userId"/>
+		<result column="pic" property="pic"/>
 	</resultMap>
 	
 	<select id="findByUserId" resultMap="roleMap" parameterType="long">
@@ -18,7 +19,7 @@
 	</select>
 	
 	<insert id="add">
-		insert into exe_role (role_name,note,user_id) values(#{role.roleName},#{role.note},#{userId})
+		insert into exe_role (role_name,note,pic,user_id) values(#{role.roleName},#{role.note},#{role.pic},#{userId})
 	</insert>
 	
 	<update id="update" parameterType="role">
@@ -30,10 +31,16 @@
 			<if test="note!=null and note!=''">
 				note=#{note},
 			</if>
+			<if test="pic!=null and pic!=''">
+				pic=#{pic},
+			</if>
 		</trim>
 		where id=#{id} and user_id=#{userId}
 	</update>
 	<delete id="delete" parameterType="long">
 		delete from exe_role where id=#{id}
 	</delete>
+	<update id="savePic" parameterType="role">
+		update exe_role set pic=#{pic} where id=#{id} and user_id=#{userId}
+	</update>
 </mapper>

@@ -38,5 +38,9 @@ public class RoleServiceImpl implements RoleService {
 	public Role findById(Long id) {
 		return roleMapper.findById(id);
 	}
+	@Override
+	public int uploadPic(Role role) {
+		return roleMapper.savePic(role);
+	}
 
 }

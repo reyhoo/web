@@ -20,4 +20,6 @@ public interface RoleMapper {
 	int delete(Long id);
 	
 	Role findById(Long id);
+	
+	int savePic(Role role);
 }
