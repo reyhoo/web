@@ -22,4 +22,6 @@ public interface RoleMapper {
 	Role findById(Long id);
 	
 	int savePic(Role role);
+	
+	List<String>getAllPic();
 }

@@ -19,4 +19,6 @@ public interface RoleService {
 	Role findById(Long id);
 	
 	int uploadPic(Role role);
+	
+	void deleteUselessPicFile();
 }

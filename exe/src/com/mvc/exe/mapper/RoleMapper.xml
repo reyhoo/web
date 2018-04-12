@@ -43,4 +43,7 @@
 	<update id="savePic" parameterType="role">
 		update exe_role set pic=#{pic} where id=#{id} and user_id=#{userId}
 	</update>
+	<select id="getAllPic" resultType="string">
+		select pic from exe_role where pic is not null and pic != ''
+	</select>
 </mapper>

@@ -1,4 +1,4 @@
-package com.mvc.exe.aspect;
+package com.mvc.exe.util;
 
 import java.util.Random;
 
