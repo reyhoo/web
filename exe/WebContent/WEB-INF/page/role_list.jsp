@@ -18,7 +18,7 @@
 		
 		<c:forEach var="role" items="${roleList }" varStatus="status">
 			<tr><td>${role.id }<td>${role.roleName }<td>${role.note }
-			<td><img alt="" src="${role.pic }" style="height:100px;width: 100px;">
+			<td><a href="${role.pic }"><img alt="" src="${role.pic }" style="height:100px;width: 100px;"></a>
 		<td>
 			<c:url var="deleteUrl" value="/role/delete">
 				<c:param name="id" value="${role.id}"></c:param>

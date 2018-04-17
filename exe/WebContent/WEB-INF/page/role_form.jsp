@@ -17,7 +17,7 @@ var base_url ;
 		$("#uploadBtn").click(function(){
 			
 			
-			
+			//alert(document.getElementById("file1").files[0].name);
 			 var formData = new FormData();
              formData.append("file", document.getElementById("file1").files[0]);   
              $.ajax({
@@ -86,7 +86,7 @@ var base_url ;
 			role_name:<input type="text" name="roleName" value="${requestScope.role.roleName }"><br><br>
 			note:<input type="text" name="note" value="${requestScope.role.note }"><br><br>
 	<input type="hidden" name="pic" id="pic" value="${requestScope.role.pic }">
-			<span id="uploadField">文件：<input type="file" name="file" id="file1" style="display: inline;">
+			<span id="uploadField">文件：<input type="file" name="file" id="file1" style="display: inline;" value="上传文件">
 		<input type="button" id="uploadBtn" value="上传"></input></span><br><br>
 		<a href="#" id=imgLink><img id="img1" alt="" ></a><br><br>
 			<input type="submit" value='${isUpdate ?"更新":"添加"}'>
