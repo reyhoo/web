@@ -16,6 +16,7 @@ public class Role {
 	private String note;
 	private Long userId;
 	private String pic;
+	private Sex sex;
 	
 	
 	public String getPic() {
@@ -50,11 +51,19 @@ public class Role {
 		this.userId = userId;
 	}
 
+	public Sex getSex() {
+		return sex;
+	}
+	public void setSex(Sex sex) {
+		this.sex = sex;
+	}
+
 	@Override
 	public String toString() {
 		return "Role [id=" + id + ", roleName=" + roleName + ", note=" + note + ", userId=" + userId + ", pic=" + pic
-				+ "]";
+				+ ", sex=" + sex + "]";
 	}
+	
 	
 	
 	

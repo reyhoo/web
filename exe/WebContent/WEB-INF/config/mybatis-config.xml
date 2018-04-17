@@ -7,6 +7,9 @@
       <typeAliases>
           <package name="com.mvc.exe.pojo"/>
       </typeAliases>
+      <typeHandlers>
+      	<typeHandler handler="com.mvc.exe.typehandler.SexTypeHandler"/>
+      </typeHandlers>
       <mappers>
           <package name="com.mvc.exe.mapper"/>
       </mappers>

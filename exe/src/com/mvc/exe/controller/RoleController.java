@@ -65,6 +65,7 @@ public class RoleController {
 	@RequestMapping("/update")
 	public String update(@Valid Role role,Errors errors,@SessionAttribute("loginUser") User user,Model model) {
 		if(errors.hasFieldErrors()) {
+			System.err.println(errors.getFieldError("sex"));
 			model.addAttribute("errInfo", "²ÎÊýÓÐÎó");
 			model.addAttribute("role", roleService.findById(role.getId()));
 			return "role_form";
