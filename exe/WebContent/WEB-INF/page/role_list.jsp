@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<spring:message code="welcome_pre"></spring:message> ${sessionScope.user.username}&nbsp;&nbsp;&nbsp;
+	<spring:message code="welcome_pre"></spring:message> ${sessionScope.loginUser.username}&nbsp;&nbsp;&nbsp;
 	<a href='<c:url value="/user/logout"></c:url>'>退出</a>
 	<table border="1">
 		<tr><td>编号<td>角色名称<td>备注<td>操作
