@@ -9,6 +9,7 @@
 		<result column="note" property="note"/>
 		<result column="user_id" property="userId"/>
 		<result column="pic" property="pic"/>
+		<result column="sex" property="sex" typeHandler="com.mvc.exe.typehandler.SexTypeHandler"/>
 	</resultMap>
 	
 	<select id="findByUserId" resultMap="roleMap" parameterType="long">
@@ -19,12 +20,15 @@
 	</select>
 	
 	<insert id="add">
-		insert into exe_role (role_name,note,pic,user_id) values(#{role.roleName},#{role.note},#{role.pic},#{userId})
+		insert into exe_role (role_name,note,pic,sex,user_id) values(#{role.roleName},#{role.note},#{role.pic},#{role.sex,typeHandler=com.mvc.exe.typehandler.SexTypeHandler},#{userId})
 	</insert>
 	
 	<update id="update" parameterType="role">
 		update exe_role
 		<trim prefix="set" suffixOverrides=",">
+			<if test="sex != null">
+				sex=#{sex,typeHandler=com.mvc.exe.typehandler.SexTypeHandler},
+			</if>
 			<if test="roleName!=null and roleName!=''">
 				role_name=#{roleName},
 			</if>
@@ -43,4 +47,7 @@
 	<update id="savePic" parameterType="role">
 		update exe_role set pic=#{pic} where id=#{id} and user_id=#{userId}
 	</update>
+	<select id="getAllPic" resultType="string">
+		select pic from exe_role where pic is not null and pic != ''
+	</select>
 </mapper>

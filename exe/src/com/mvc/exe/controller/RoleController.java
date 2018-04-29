@@ -22,11 +22,12 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.mvc.exe.aspect.CharacterUtil;
 import com.mvc.exe.pojo.Role;
 import com.mvc.exe.pojo.User;
 import com.mvc.exe.service.RoleService;
 import com.mvc.exe.service.UserService;
+import com.mvc.exe.util.CharacterUtil;
+import com.mvc.exe.util.Const;
 
 @Controller
 @RequestMapping("/role")
@@ -41,6 +42,7 @@ public class RoleController {
 	
 	@RequestMapping("/list")
 	public String list(@SessionAttribute("loginUser") User user,Model model) {
+		roleService.deleteUselessPicFile();
 		List<Role> roleList = userService.findById(user.getId()).getRoleList();
 		model.addAttribute("roleList", roleList);
 		return "role_list";
@@ -63,6 +65,7 @@ public class RoleController {
 	@RequestMapping("/update")
 	public String update(@Valid Role role,Errors errors,@SessionAttribute("loginUser") User user,Model model) {
 		if(errors.hasFieldErrors()) {
+			System.err.println(errors.getFieldError("sex"));
 			model.addAttribute("errInfo", "²ÎÊýÓÐÎó");
 			model.addAttribute("role", roleService.findById(role.getId()));
 			return "role_form";
@@ -107,7 +110,7 @@ public class RoleController {
 		}
 		System.err.println(file.getOriginalFilename());
 		String originalFilename = file.getOriginalFilename();
-		File pFile = new File("D:\\javaee\\apache-tomcat-7.0.85\\webapps\\image\\img");
+		File pFile = new File(Const.ROLE_PIC_FILE_DIR_PATH,"img");
 		String filename = CharacterUtil.getRandomString(10)+(originalFilename.lastIndexOf(".")>=0?originalFilename.substring(originalFilename.lastIndexOf(".")):"");
 		File f = new File(pFile,filename);
 		if(!f.getParentFile().exists()) {

@@ -14,11 +14,11 @@
 	<spring:message code="welcome_pre"></spring:message> ${sessionScope.loginUser.username}&nbsp;&nbsp;&nbsp;
 	<a href='<c:url value="/user/logout"></c:url>'>退出</a>
 	<table border="1">
-		<tr><td>编号<td>角色名称<td>备注<td>操作
+		<tr><td>编号<td>角色名称<td>性别<td>备注<td>图片<td>操作
 		
 		<c:forEach var="role" items="${roleList }" varStatus="status">
-			<tr><td>${role.id }<td>${role.roleName }<td>${role.note }
-			<td><img alt="" src="${role.pic }" style="height:100px;width: 100px;">
+			<tr><td>${role.id }<td>${role.roleName }<td>${role.sex.name }<td>${role.note }
+			<td><a href='${role.pic == null?"javascript:;":role.pic }'><img alt="" src="${role.pic }" style="height:100px;width: 100px;"></a>
 		<td>
 			<c:url var="deleteUrl" value="/role/delete">
 				<c:param name="id" value="${role.id}"></c:param>
