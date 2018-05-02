@@ -25,7 +25,7 @@
 	    				var jsonStr = xhr.responseText;
 	    				var data = JSON.parse(jsonStr);
 	    				if(data.result == "success"){
-	    					alert("邮箱发送成功！");
+	    					alert("验证码发送成功！");
 	    				}else{
 	    					alert(data.errInfo);
 	    				}
@@ -57,12 +57,12 @@
 </head>
 <body>
 	<input type="hidden"  id="base_url" value='<c:url value="/"></c:url>'>
+	<a href='<c:url value="/page/main"></c:url>'>首页</a>
 	<c:url value="/user/regist" var="registUrl"></c:url>
 	<form action="${registUrl }" style="margin: 0 auto;background-color: #cccccc;width: 300px;" method="post">
 		username<input name="username" type="text" id="username"><input type="button" value="获取验证码" id="getVerifyCode"><br><br>
 		password<input name="password" type="password"><br><br>
 		code<input name="emailCode" type="text"><br><br>
-		
 		
 		<input value="注册" type="submit"><br><br>${errInfo }
 	</form>

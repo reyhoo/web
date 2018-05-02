@@ -27,20 +27,16 @@ public class CommonsEmailUtils {
 
 	
 	public static String getVerifyCode(String email) {
-		EmailInfo emailInfo = verifyCodeMap.get(email);
+		EmailInfo emailInfo = verifyCodeMap.remove(email);
 		if(emailInfo == null) {
 			return null;
 		}
 		if(System.currentTimeMillis() - emailInfo.lastSendTime >= 1000l * 60 * 30) {
-			verifyCodeMap.remove(email);
 			return null;
 		}
-		verifyCodeMap.remove(email);
 		return emailInfo.verifyCode;
 	}
-	public static void removeVerifyCode(String email) {
-		verifyCodeMap.remove(email);
-	}
+	
 	/**
 	 * ·¢ËÍHtmlÓÊ¼þ
 	 * 

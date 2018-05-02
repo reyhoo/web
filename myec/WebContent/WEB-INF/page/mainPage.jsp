@@ -8,9 +8,20 @@
 <title>主页面</title>
 </head>
 <body>
-<c:url value="/page/regist" var="toRegistUrl"></c:url>
+
+<c:choose>
+	<c:when test="${sessionScope.loginUser != null}">
+		${sessionScope.loginUser.username}
+		<c:url value="/user/logout" var="toLogoutUrl"></c:url>
+		<a href="${toLogoutUrl}">退出登录</a>
+	</c:when>
+	<c:otherwise>
+	<c:url value="/page/regist" var="toRegistUrl"></c:url>
 <c:url value="/page/login" var="toLoginUrl"></c:url>
 <a href="${toRegistUrl}">注册</a>
 <a href="${toLoginUrl}">登录</a>
+	</c:otherwise>
+</c:choose>
+
 </body>
 </html>
