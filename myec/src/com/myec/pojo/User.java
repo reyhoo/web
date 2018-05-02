@@ -12,7 +12,8 @@ public class User {
 			message="ÓÃ»§Ãû¸ñÊ½´íÎó")
 	private String username;
 	@NotNull(message="ÃÜÂë²»ÄÜÎª¿Õ")
-	@Pattern(regexp= "^[a-zA-Z0-9]{6,20}$",message="ÃÜÂë¸ñÊ½´íÎó")
+	@Size(min=1,message="ÃÜÂë¸ñÊ½´íÎó")
+//	@Pattern(regexp= "^[a-zA-Z0-9]{6,20}$",message="ÃÜÂë¸ñÊ½´íÎó")
 	private String password;
 	public Long getId() {
 		return id;

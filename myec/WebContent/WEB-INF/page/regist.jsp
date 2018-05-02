@@ -11,6 +11,8 @@
 	src="https://code.jquery.com/jquery-3.2.0.js"></script>
 	  <script src="http://passport.cnblogs.com/scripts/jsencrypt.min.js"></script>
 <script type="text/javascript">
+
+	var encrypted = false;
 	$(function() {
 		$("#getVerifyCode").click(
 				function() {
@@ -39,8 +41,24 @@
 								alert("网络异常(" + xhr.status + ")");
 							});
 				});
+		
 		$("form").submit(function(){
+			if(encrypted){
+				encrypted = false;
+				return true;
+			}
 			
+	         if($("#password").val().trim()){
+	        		var encrypt = new JSEncrypt();
+		        	encrypt.setPublicKey($("#rsaPublicKey").val());
+	        	    var data = encrypt.encrypt($("#password").val().trim());
+	    			$("form input[name='password']").val(encodeURI(data).replace(/\+/g, '%2B'));
+	         }else{
+	        	 $("form input[name='password']").val("");
+	         }
+	     
+			$("form").submit();
+			encrypted = true;
 			return false;
 		});
 	});
@@ -73,7 +91,8 @@
 		method="post">
 		username<input name="username" type="text" id="username"><input
 			type="button" value="获取验证码" id="getVerifyCode"><br>
-		<br> password<input name="password" type="password"><br>
+		<br> password<input id="password" type="password"><br>
+		<input type="hidden" name="password" value="">
 		<br> code<input name="emailCode" type="text"><br>
 		<br> <input value="注册" type="submit"><br>
 		<br>${errInfo }
