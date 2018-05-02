@@ -3,12 +3,15 @@ package com.myec.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -25,8 +28,8 @@ import com.myec.util.MessageUtils;
 
 @Controller
 @RequestMapping("/user")
-@SessionAttributes(names="loginUser")
-public class UserController {
+//@SessionAttributes(names="loginUser")
+public class UserController extends BaseController{
 	@Autowired
 	private UserService userService;
 	
@@ -53,7 +56,10 @@ public class UserController {
 		}
 		return map;
 	}
-	
+//	@ModelAttribute
+//	public void populateModel(Model model){
+//		System.err.println("populateModel----");
+//	}
 	@RequestMapping("/regist")
 	public String regist(@Valid User user,Errors errors,String emailCode,RedirectAttributes ra) {
 		if(errors.hasFieldErrors()) {
@@ -104,12 +110,14 @@ public class UserController {
 			ra.addFlashAttribute("errInfo", "用户信息不正确");
 			return "redirect:/page/login";
 		}
-		model.addAttribute("loginUser", u);
+//		model.addAttribute("loginUser", u);
+		getSession().setAttribute("loginUser", u);
 		return "redirect:/page/main";
 	}
 	@RequestMapping("/logout")
 	public String logout() {
-		return "logout";
+		getSession().removeAttribute("loginUser");
+		return "redirect:/page/login";
 	}
 	
 }

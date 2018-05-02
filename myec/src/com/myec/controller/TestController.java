@@ -23,7 +23,7 @@ import com.myec.service.TestService;
 
 @Controller
 @RequestMapping("/test")
-public class TestController {
+public class TestController extends BaseController{
 
 	@Autowired
 	private TestService testService;

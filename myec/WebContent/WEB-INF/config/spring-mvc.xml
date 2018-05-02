@@ -20,7 +20,19 @@
 		<property name="prefix" value="/WEB-INF/page/"></property>
 	</bean>
 	
-	
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<array>
+				<value>/WEB-INF/locale/msg</value>
+			</array>
+		</property>
+		<!-- 0代表每次都从文件中读取；-1代码只加载一次，以后每次都从内存中读取 -->
+		<property name="cacheSeconds" value="-1"></property>
+		<property name="defaultEncoding" value="utf-8"></property>
+	</bean>
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="zh_CN"></property>
+	</bean>
 	<mvc:interceptors>
 		<mvc:interceptor>
 		<mvc:mapping path="/**"/>
@@ -30,6 +42,13 @@
 		<mvc:exclude-mapping path="/user/sendEmail"/>
 		<mvc:exclude-mapping path="/user/regist"/>
 			<bean class="com.myec.interceptor.LoginInterceptor"></bean>
+		</mvc:interceptor>
+		
+		<mvc:interceptor >
+		<mvc:mapping path="/**"/>
+			<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+				<property name="paramName" value="language"></property>
+			</bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
 	<tx:annotation-driven transaction-manager="transactionManager"/>

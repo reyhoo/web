@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+        <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,8 @@
 
 <c:choose>
 	<c:when test="${sessionScope.loginUser != null}">
-		${sessionScope.loginUser.username}
+	<spring:message code="welcome"></spring:message>
+		${sessionScope.loginUser.username} &nbsp;&nbsp;&nbsp;&nbsp;
 		<c:url value="/user/logout" var="toLogoutUrl"></c:url>
 		<a href="${toLogoutUrl}">退出登录</a>
 	</c:when>
