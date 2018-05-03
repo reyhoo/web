@@ -1,7 +1,10 @@
+drop table ec_user_addr;
+drop table ec_user;
 create table if not exists ec_user(
 	id bigint primary key auto_increment,
 	username  varchar(100) not null,
-	password varchar(255) not null
+	password varchar(255) not null,
+	balance double default 10000.00
 );
 create table if not exists ec_user_addr(
 	id bigint primary key auto_increment,

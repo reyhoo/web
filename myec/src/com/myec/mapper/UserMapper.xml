@@ -7,9 +7,12 @@
 		insert into ec_user (username,password) values (#{username},#{password})
 	</insert>
 	<select id="getForLogin" resultType="user">
-		select id,username from ec_user where username=#{username} and  password=#{password}
+		select id,username,balance from ec_user where username=#{username} and  password=#{password}
 	</select>
-	<select id="getByUsername" resultType="user">
+	<select id="getByUsername" resultType="user" parameterType="string">
 		select id from ec_user where username=#{username}
+	</select>
+	<select id="getById" resultType="user" parameterType="long">
+		select id,username,balance from ec_user where id=#{id}
 	</select>
 </mapper>

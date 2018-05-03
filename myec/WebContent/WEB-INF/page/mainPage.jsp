@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+        <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,8 @@
 <c:choose>
 	<c:when test="${sessionScope.loginUser != null}">
 	<spring:message code="welcome"></spring:message>
-		${sessionScope.loginUser.username} &nbsp;&nbsp;&nbsp;&nbsp;
+		${sessionScope.loginUser.username} &nbsp;&nbsp;&nbsp;&nbsp;余额:
+		<fmt:formatNumber value="${sessionScope.loginUser.balance }" type="number" pattern="#,##0.00"></fmt:formatNumber>&nbsp;&nbsp;&nbsp;&nbsp;
 		<c:url value="/user/logout" var="toLogoutUrl"></c:url>
 		<a href="${toLogoutUrl}">退出登录</a>
 	</c:when>

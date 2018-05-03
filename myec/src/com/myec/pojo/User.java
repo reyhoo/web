@@ -15,6 +15,8 @@ public class User {
 	@Pattern(regexp= "^\\*{6,20}$",message="ÃÜÂë¸ñÊ½´íÎó")
 //	@Pattern(regexp= "^[a-zA-Z0-9]{6,20}$",message="ÃÜÂë¸ñÊ½´íÎó")
 	private String password;
+	
+	private Double balance;
 	public Long getId() {
 		return id;
 	}
@@ -33,11 +35,17 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public Double getBalance() {
+		return balance;
+	}
+	public void setBalance(Double balance) {
+		this.balance = balance;
+	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", balance=" + balance + "]";
 	}
-	
 	
 	
 }
