@@ -54,49 +54,67 @@ public class UserController extends BaseController{
 //	public void populateModel(Model model){
 //		System.err.println("populateModel----");
 //	}
+	@ResponseBody
 	@RequestMapping("/regist")
-	public String regist(@Valid User user,Errors errors,String emailCode,RedirectAttributes ra) {
+	public Map<String, Object> regist(@Valid User user,Errors errors,String enPassword,String emailCode) {
+		Map<String, Object>map = new HashMap<>();
+		System.err.println(user);
 		if(errors.hasFieldErrors()) {
+			map.put("result", "fail");
 			String errInfo = "";
 			if(errors.hasFieldErrors("username")) {
 				errInfo = errors.getFieldError("username").getDefaultMessage();
 			}else if(errors.hasFieldErrors("password")) {
 				errInfo = errors.getFieldError("password").getDefaultMessage();
 			}
-			ra.addFlashAttribute("errInfo", errInfo);
-			return "redirect:/page/regist";
+//			ra.addFlashAttribute("errInfo", errInfo);
+//			return "redirect:/page/regist";
+			map.put("errInfo", errInfo);
+			return map;
 		}
-//		if(emailCode == null || "".equals(emailCode.trim())) {
+		if(emailCode == null || "".equals(emailCode.trim())) {
+			map.put("result", "fail");
+			map.put("errInfo", "验证码不能为空");
+			return map;
 //			ra.addFlashAttribute("errInfo", "验证码不能为空");
 //			return  "redirect:/page/regist";
-//		}
-//		String code = CommonsEmailUtils.getVerifyCode(user.getUsername());
-//		if(code == null || !emailCode.equals(code)) {
+		}
+		
+		if(!CommonsEmailUtils.verify(user.getUsername(), emailCode)) {
+			map.put("result", "fail");
+			map.put("errInfo", "验证码不正确或邮箱未验证");
+			return map;
 //			ra.addFlashAttribute("errInfo", "验证码不正确或邮箱未验证");
 //			return  "redirect:/page/regist";
-//		}
+		}
 		synchronized (user.getUsername().intern()) {
 			User u = userService.getByUsername(user.getUsername());
 			if(u != null) {
-				ra.addFlashAttribute("errInfo", "用户已经存在");
-				return  "redirect:/page/regist";
+				map.put("result", "fail");
+				map.put("errInfo", "用户已经存在");
+				return map;
+//				ra.addFlashAttribute("errInfo", "用户已经存在");
+//				return  "redirect:/page/regist";
 			}
 			String privateKey = (String)getSession().getAttribute("privateKey");
 			try {
-				byte[] pass = RSACoder.decryptByPrivateKey(Base64.decodeBase64(user.getPassword().replaceAll("%2B", "+")), privateKey);
+				byte[] pass = RSACoder.decryptByPrivateKey(Base64.decodeBase64(enPassword.replaceAll("%2B", "+")), privateKey);
 				user.setPassword(new String(pass,"utf-8"));
-				System.err.println(user.getPassword());
 			} catch (Exception e) {
 				e.printStackTrace();
+				throw new RuntimeException("解密失败", e);
 			}
 			user.setPassword(MessageUtils.md5(user.getPassword()));
 			userService.regist(user);
-			return "redirect:/page/login";
+			map.put("result", "success");
+			map.put("errInfo", "注册成功");
+			return map;
+//			return "redirect:/page/login";
 		}
 		
 	}
 	@RequestMapping("/login")
-	public String login(@Valid User user,Errors errors,RedirectAttributes ra,Model model) {
+	public String login(@Valid User user,Errors errors,String enPassword,RedirectAttributes ra,Model model) {
 		if(errors.hasFieldErrors()) {
 			String errInfo = "";
 			if(errors.hasFieldErrors("username")) {
@@ -106,6 +124,14 @@ public class UserController extends BaseController{
 			}
 			ra.addFlashAttribute("errInfo", errInfo);
 			return "redirect:/page/login";
+		}
+		String privateKey = (String)getSession().getAttribute("privateKey");
+		try {
+			byte[] pass = RSACoder.decryptByPrivateKey(Base64.decodeBase64(enPassword.replaceAll("%2B", "+")), privateKey);
+			user.setPassword(new String(pass,"utf-8"));
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("解密失败", e);
 		}
 		User u = userService.login(user.getUsername(), MessageUtils.md5(user.getPassword()));
 		if(u == null) {

@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.commons.mail.EmailAttachment;
-import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 import org.apache.commons.mail.MultiPartEmail;
 import org.apache.commons.mail.SimpleEmail;
@@ -26,15 +25,22 @@ public class CommonsEmailUtils {
 	private static Map<String, EmailInfo> verifyCodeMap = new ConcurrentHashMap<>();
 
 	
-	public static String getVerifyCode(String email) {
-		EmailInfo emailInfo = verifyCodeMap.remove(email);
-		if(emailInfo == null) {
-			return null;
+	public static boolean verify(String email,String code) {
+		synchronized (email.intern()) {
+			EmailInfo emailInfo = verifyCodeMap.get(email);
+			if(emailInfo == null) {
+				return false;
+			}
+			if(System.currentTimeMillis() - emailInfo.lastSendTime >= 1000l * 60 * 30) {
+				verifyCodeMap.remove(email);
+				return false;
+			}
+			boolean result = code.equals(emailInfo.verifyCode);
+			if(result) {
+				verifyCodeMap.remove(email);
+			}
+			return result;
 		}
-		if(System.currentTimeMillis() - emailInfo.lastSendTime >= 1000l * 60 * 30) {
-			return null;
-		}
-		return emailInfo.verifyCode;
 	}
 	
 	/**
