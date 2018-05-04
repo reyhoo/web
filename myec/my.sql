@@ -53,7 +53,7 @@ insert into ec_user(username,password) values('670870716@qq.com','e10adc3949ba59
 insert into ec_user(username,password) values('13032162523@163.com','e10adc3949ba59abbe56e057f20f883e');
 insert into ec_user(username,password) values('571888977@qq.com','e10adc3949ba59abbe56e057f20f883e');
 
-insert into ec_user_addr(nickname,addr,mobile,user_id)values('姚磊','哈雷路','15129237121',1);
-insert into ec_user_addr(nickname,addr,mobile,user_id)values('姚磊reyhoo','北艾路1200弄','15129237121',2);
+insert into ec_user_addr(nickname,addr,mobile,user_id)values('姚磊','哈雷路','17602131139',1);
+insert into ec_user_addr(nickname,addr,mobile,user_id)values('姚磊reyhoo','北艾路1200弄','17602131139',2);
 insert into ec_user_addr(nickname,addr,mobile,user_id)values('魏碧云','北艾路1200弄','13032162523',4);
 insert into ec_user_addr(nickname,addr,mobile,user_id)values('魏碧云','公司地址我不知道','13032162523',5);
