@@ -7,7 +7,11 @@
       <typeAliases>
           <package name="com.myec.pojo"/>
       </typeAliases>
-   
+   <typeHandlers>
+   		<typeHandler handler="com.myec.typehandler.OrderStatusEnumTypeHandler"
+   		javaType="orderStatusEnum" jdbcType="VARCHAR"
+   		/>
+   </typeHandlers>
       <mappers>
           <package name="com.myec.mapper"/>
       </mappers>

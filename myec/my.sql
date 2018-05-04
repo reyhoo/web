@@ -34,7 +34,9 @@ create table ec_product(
 	id bigint primary key auto_increment,
 	product_name varchar(50) not null,
 	stock int not null default 0,
-	price double not null
+	price double not null,
+	merchant_id bigint not null,
+	foreign key (merchant_id) references ec_user(id) on delete restrict on update restrict
 );
 create table ec_order_product(
 	id bigint primary key auto_increment,
@@ -57,3 +59,7 @@ insert into ec_user_addr(nickname,addr,mobile,user_id)values('姚磊','哈雷路','17
 insert into ec_user_addr(nickname,addr,mobile,user_id)values('姚磊reyhoo','北艾路1200弄','17602131139',2);
 insert into ec_user_addr(nickname,addr,mobile,user_id)values('魏碧云','北艾路1200弄','13032162523',4);
 insert into ec_user_addr(nickname,addr,mobile,user_id)values('魏碧云','公司地址我不知道','13032162523',5);
+
+insert into ec_product(product_name,stock,price,merchant_id)values('computer',2,23.2,3);
+insert into ec_product(product_name,stock,price,merchant_id)values('desk',10,1209,4);
+insert into ec_product(product_name,stock,price,merchant_id)values('phone',1000,3000.01,1);

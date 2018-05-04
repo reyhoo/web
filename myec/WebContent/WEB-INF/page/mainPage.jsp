@@ -11,21 +11,7 @@
 </head>
 <body>
 
-<c:choose>
-	<c:when test="${sessionScope.loginUser != null}">
-	<spring:message code="welcome"></spring:message>
-		${sessionScope.loginUser.username} &nbsp;&nbsp;&nbsp;&nbsp;余额:
-		<fmt:formatNumber value="${sessionScope.loginUser.balance }" type="number" pattern="#,##0.00"></fmt:formatNumber>&nbsp;&nbsp;&nbsp;&nbsp;
-		<c:url value="/user/logout" var="toLogoutUrl"></c:url>
-		<a href="${toLogoutUrl}">退出登录</a>
-	</c:when>
-	<c:otherwise>
-	<c:url value="/page/regist" var="toRegistUrl"></c:url>
-<c:url value="/page/login" var="toLoginUrl"></c:url>
-<a href="${toRegistUrl}">注册</a>
-<a href="${toLoginUrl}">登录</a>
-	</c:otherwise>
-</c:choose>
-
+	<c:import url="/WEB-INF/page/header.jsp"></c:import>
+	主界面
 </body>
 </html>

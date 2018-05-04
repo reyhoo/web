@@ -5,6 +5,7 @@ public class Address {
 	private Long id;
 	private String addr;
 	private String mobile;
+	private String nickname;
 	private Long userId;
 	
 	public Long getId() {
@@ -32,6 +33,14 @@ public class Address {
 	}
 	public void setUserId(Long userId) {
 		this.userId = userId;
+	}
+	
+	public String getNickname() {
+		return nickname;
+	}
+	
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 	
 }

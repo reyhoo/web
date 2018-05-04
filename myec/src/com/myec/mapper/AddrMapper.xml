@@ -7,6 +7,7 @@
 		<id column="id" property="id"/>
 		<result column="addr" property="addr" />
 		<result column="mobile" property="mobile"/>
+		<result column="nickname" property="nickname"/>
 		<result column="user_id" property="userId" />
 	</resultMap>
 	
@@ -17,6 +18,6 @@
 		select * from ec_user_addr where id=#{id}
 	</select>
 	<insert id="add" parameterType="address">
-		insert into ec_user_addr (addr,mobile,user_id) values(#{addr},#{mobile},#{userId})
+		insert into ec_user_addr (nickname,addr,mobile,user_id) values(#{nickname},#{addr},#{mobile},#{userId})
 	</insert>
 </mapper>
