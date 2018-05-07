@@ -10,5 +10,9 @@ public interface AddrService {
 	
 	Address getAddress(Long id);
 	
+	Address getAddress(Long id,Long userId);
+	
 	int add(Address address);
+	
+	int delete(Long id,Long userId);
 }

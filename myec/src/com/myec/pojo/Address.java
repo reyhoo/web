@@ -1,10 +1,20 @@
 package com.myec.pojo;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class Address {
 
 	private Long id;
+	@NotNull
+	@Size(min=1,max=100)
 	private String addr;
+	@NotNull
+	@Pattern(regexp="^((17[0-9])|(14[0-9])|(13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$",message="手机号格式错误")
 	private String mobile;
+	@NotNull
+	@Size(min=1,max=100)
 	private String nickname;
 	private Long userId;
 	

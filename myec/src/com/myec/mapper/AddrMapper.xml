@@ -17,7 +17,13 @@
 	<select id="getById" parameterType="long" resultMap="addrMap">
 		select * from ec_user_addr where id=#{id}
 	</select>
+	<select id="getByIdAndUserId" resultMap="addrMap">
+		select * from ec_user_addr where id=#{id} and user_id=#{userId}
+	</select>
 	<insert id="add" parameterType="address">
 		insert into ec_user_addr (nickname,addr,mobile,user_id) values(#{nickname},#{addr},#{mobile},#{userId})
 	</insert>
+	<delete id="delete">
+		delete from ec_user_addr where id=#{id} and user_id=#{userId}
+	</delete>
 </mapper>

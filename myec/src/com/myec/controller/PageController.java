@@ -36,4 +36,8 @@ public class PageController extends BaseController{
 		getSession().setAttribute("loginUser", userService.getById(user.getId()));
 		return "mainPage";
 	}
+	@RequestMapping("/addrForm")
+	public String addrForm() {
+		return "addrForm";
+	}
 }

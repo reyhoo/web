@@ -10,15 +10,18 @@
 <meta charset="UTF-8">
 </head>
 <body>
-	<c:import url="/WEB-INF/page/header.jsp"></c:import>
+	<c:import url="/WEB-INF/page/header.jsp">
+	<c:param name="currPage" value="1"></c:param>
+	</c:import>
 	<table style="width: 80%; margin: 20px auto; border: 1px solid black;">
 		<tr>
 			<td>名字
 			<td>地址
 			<td>电话
 			<td>操作
-		<tr>
+		
 			<c:forEach items="${addrList }" var="addr">
+			<tr>
 				<td>${addr.nickname }
 				<td>${addr.addr }
 				<td>${addr.mobile }
@@ -29,5 +32,6 @@
 				<a href="${modifyUrl} ">修改</a>
 			</c:forEach>
 	</table>
+	<a href='<c:url value="/page/addrForm"></c:url>'>添加</a>
 </body>
 </html>

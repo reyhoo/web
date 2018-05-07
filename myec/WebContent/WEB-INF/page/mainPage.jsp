@@ -11,7 +11,9 @@
 </head>
 <body>
 
-	<c:import url="/WEB-INF/page/header.jsp"></c:import>
+	<c:import url="/WEB-INF/page/header.jsp">
+		<c:param name="currPage" value="0"></c:param>
+	</c:import>
 	主界面
 </body>
 </html>

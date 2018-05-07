@@ -2,6 +2,7 @@ package com.myec.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.myec.pojo.Address;
@@ -12,5 +13,9 @@ public interface AddrMapper {
 	
 	Address getById(Long id);
 	
+	Address getByIdAndUserId(@Param("id")Long id,@Param("userId")Long userId);
+	
 	int add(Address address);
+	
+	int delete(@Param("id")Long id,@Param("userId")Long userId);
 }

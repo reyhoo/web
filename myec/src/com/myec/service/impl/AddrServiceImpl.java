@@ -29,8 +29,18 @@ public class AddrServiceImpl implements AddrService {
 	@Transactional
 	@Override
 	public int add(Address address) {
-		
 		return addrMapper.add(address);
+	}
+
+	@Override
+	public Address getAddress(Long id, Long userId) {
+		return addrMapper.getByIdAndUserId(id, userId);
+	}
+	
+	@Transactional
+	@Override
+	public int delete(Long id, Long userId) {
+		return addrMapper.delete(id, userId);
 	}
 
 }
