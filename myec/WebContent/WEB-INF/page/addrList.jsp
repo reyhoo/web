@@ -6,8 +6,16 @@
 <head>
 <title>地址管理</title>
 <style type="text/css">
+	.curr{
+		color:red;
+	}
 </style>
 <meta charset="UTF-8">
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.2.0.js"></script>
+	<script type="text/javascript">
+		
+	</script>
 </head>
 <body>
 	<c:import url="/WEB-INF/page/header.jsp">

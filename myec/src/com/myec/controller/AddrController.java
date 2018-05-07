@@ -63,4 +63,10 @@ public class AddrController extends BaseController{
 		addrService.delete(id, user.getId());
 		return "redirect:/addr/list";
 	}
+	@RequestMapping("/modify")
+	public String modify(@SessionAttribute("loginUser") User user,@Valid Address address,Errors errors) {
+		System.err.println(address);
+		return "redirect:/addr/list";
+	}
+	
 }

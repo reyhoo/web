@@ -8,6 +8,15 @@
 <head>
 <meta charset="utf-8">
 <title>主页面</title>
+<style type="text/css">
+.curr{
+		color:red;
+	}
+</style>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.2.0.js"></script>
+<script type="text/javascript">
+</script>
 </head>
 <body>
 

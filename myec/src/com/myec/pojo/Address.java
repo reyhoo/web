@@ -52,5 +52,12 @@ public class Address {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
+	@Override
+	public String toString() {
+		return "Address [id=" + id + ", addr=" + addr + ", mobile=" + mobile + ", nickname=" + nickname + ", userId="
+				+ userId + "]";
+	}
+	
+	
 	
 }

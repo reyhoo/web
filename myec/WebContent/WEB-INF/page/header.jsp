@@ -13,9 +13,9 @@
 				type="number" pattern="#,##0.00"></fmt:formatNumber>
 				<c:url value="/page/main" var="mainUrl">
 				</c:url>
-				<a href='${mainUrl }'>主界面</a>
+				<a href='${mainUrl }' id="main">主界面</a>
 				<c:url value="/addr/list" var="listUrl"></c:url>
-				<a href='${listUrl }'>地址管理</a>
+				<a href='${listUrl }' id="addr">地址管理</a>
 		<c:url value="/user/logout" var="toLogoutUrl"></c:url>
 			<a href="${toLogoutUrl}">退出登录</a>
 		</c:when>
