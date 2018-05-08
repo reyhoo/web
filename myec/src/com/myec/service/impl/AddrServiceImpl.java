@@ -43,4 +43,9 @@ public class AddrServiceImpl implements AddrService {
 		return addrMapper.delete(id, userId);
 	}
 
+	@Override
+	public int modify(Address address) {
+		return addrMapper.modify(address);
+	}
+
 }

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>全部商品</title>
+<title>我的产品</title>
 <style type="text/css">
 	.curr{
 		color:red;

@@ -18,4 +18,6 @@ public interface AddrMapper {
 	int add(Address address);
 	
 	int delete(@Param("id")Long id,@Param("userId")Long userId);
+	
+	int modify(Address address);
 }

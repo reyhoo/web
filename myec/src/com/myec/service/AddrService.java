@@ -15,4 +15,6 @@ public interface AddrService {
 	int add(Address address);
 	
 	int delete(Long id,Long userId);
+	
+	int modify(Address address);
 }

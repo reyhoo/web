@@ -13,9 +13,11 @@
 				type="number" pattern="#,##0.00"></fmt:formatNumber>
 				<c:url value="/page/main" var="mainUrl">
 				</c:url>
-				<a href='${mainUrl }' id="main">主界面</a>
+				<a href='${mainUrl }' id="main">全部商品</a>
 				<c:url value="/addr/list" var="listUrl"></c:url>
 				<a href='${listUrl }' id="addr">地址管理</a>
+				<a href='<c:url value="/order/list"></c:url>'>我的订单</a>
+				<a href='<c:url value="/product/list"></c:url>'>我的产品</a>
 		<c:url value="/user/logout" var="toLogoutUrl"></c:url>
 			<a href="${toLogoutUrl}">退出登录</a>
 		</c:when>

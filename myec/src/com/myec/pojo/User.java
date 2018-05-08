@@ -17,6 +17,8 @@ public class User {
 	private String password;
 	
 	private Double balance;
+	
+	private Integer version;
 	public Long getId() {
 		return id;
 	}
@@ -42,10 +44,19 @@ public class User {
 	public void setBalance(Double balance) {
 		this.balance = balance;
 	}
+	
+	public Integer getVersion() {
+		return version;
+	}
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", balance=" + balance + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", balance=" + balance
+				+ ", version=" + version + "]";
 	}
+	
 	
 	
 }

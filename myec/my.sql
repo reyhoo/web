@@ -7,7 +7,8 @@ create table if not exists ec_user(
 	id bigint primary key auto_increment,
 	username  varchar(100) not null unique,
 	password varchar(255) not null,
-	balance double default 10000.00 not null
+	balance double default 10000.00 not null,
+	version int default 1 not null
 );
 create table if not exists ec_user_addr(
 	id bigint primary key auto_increment,
@@ -26,9 +27,7 @@ create table ec_order(
 	mobile varchar(50) not null,
 	nickname varchar(50)not null,
 	consume_id bigint not null,
-	merchant_id bigint not null,
-	foreign key (consume_id) references ec_user(id) on delete restrict on update restrict,
-	foreign key (merchant_id) references ec_user(id) on delete restrict on update restrict
+	foreign key (consume_id) references ec_user(id) on delete restrict on update restrict
 );
 create table ec_product(
 	id bigint primary key auto_increment,
@@ -36,6 +35,7 @@ create table ec_product(
 	stock int not null default 0,
 	price double not null,
 	merchant_id bigint not null,
+	version int default 1 not null,
 	foreign key (merchant_id) references ec_user(id) on delete restrict on update restrict
 );
 create table ec_order_product(

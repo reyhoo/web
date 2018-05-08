@@ -13,6 +13,6 @@
 		select id from ec_user where username=#{username}
 	</select>
 	<select id="getById" resultType="user" parameterType="long">
-		select id,username,balance from ec_user where id=#{id}
+		select id,username,balance,version from ec_user where id=#{id}
 	</select>
 </mapper>

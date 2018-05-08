@@ -26,4 +26,19 @@
 	<delete id="delete">
 		delete from ec_user_addr where id=#{id} and user_id=#{userId}
 	</delete>
+	<update id="modify" parameterType="address">
+		update ec_user_addr
+		<trim prefix="set" suffixOverrides=",">
+			<if test="addr != null and addr != ''">
+				addr=#{addr},
+			</if>
+			<if test="mobile != null and mobile != ''">
+				mobile=#{mobile},
+			</if>
+			<if test="nickname != null and nickname != ''">
+				nickname=#{nickname},
+			</if>
+		</trim>
+		where id=#{id} and user_id=#{userId}
+	</update>
 </mapper>

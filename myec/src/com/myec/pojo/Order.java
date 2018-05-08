@@ -11,7 +11,6 @@ public class Order {
 	private String mobile;
 	private String nickname;
 	private Long consumeId;
-	private Long merchantId;
 	
 	public Long getId() {
 		return id;
@@ -60,12 +59,6 @@ public class Order {
 	}
 	public void setConsumeId(Long consumeId) {
 		this.consumeId = consumeId;
-	}
-	public Long getMerchantId() {
-		return merchantId;
-	}
-	public void setMerchantId(Long merchantId) {
-		this.merchantId = merchantId;
 	}
 
 	

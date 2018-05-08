@@ -50,7 +50,8 @@ public class AddrController extends BaseController{
 		return "redirect:/addr/list";
 	}
 	@RequestMapping("/toModify")
-	public String toModify(@SessionAttribute("loginUser") User user,@RequestParam Long id,Model model) {
+	public String toModify(@SessionAttribute("loginUser") User user,
+			@RequestParam(defaultValue="-1") Long id,Model model) {
 		Address addr = addrService.getAddress(id,user.getId());
 		if(addr == null) {
 			throw new RuntimeException("未找到信息");
@@ -64,8 +65,12 @@ public class AddrController extends BaseController{
 		return "redirect:/addr/list";
 	}
 	@RequestMapping("/modify")
-	public String modify(@SessionAttribute("loginUser") User user,@Valid Address address,Errors errors) {
+	public String modify(@SessionAttribute("loginUser") User user,@Valid Address address) {
 		System.err.println(address);
+		if(!user.getId().equals(address.getUserId())) {
+			throw new RuntimeException("用户和地址不一致");
+		}
+		addrService.modify(address);
 		return "redirect:/addr/list";
 	}
 	

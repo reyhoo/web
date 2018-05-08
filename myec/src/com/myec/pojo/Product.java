@@ -6,7 +6,8 @@ public class Product {
 	private String productName;
 	private Integer stock;
 	private Double price;
-	private Long merchantId;
+	private User merchant;
+	private Integer version;
 	
 	public Long getId() {
 		return id;
@@ -40,19 +41,26 @@ public class Product {
 		this.price = price;
 	}
 
-	public Long getMerchantId() {
-		return merchantId;
+	public User getMerchant() {
+		return merchant;
+	}
+	public void setMerchant(User merchant) {
+		this.merchant = merchant;
 	}
 
-	public void setMerchantId(Long merchantId) {
-		this.merchantId = merchantId;
+	public Integer getVersion() {
+		return version;
+	}
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", productName=" + productName + ", stock=" + stock + ", price=" + price
-				+ ", merchantId=" + merchantId + "]";
+				+ ", merchant=" + merchant + ", version=" + version + "]";
 	}
+
 
 
 	

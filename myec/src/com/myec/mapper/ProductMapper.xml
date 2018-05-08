@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myec.mapper.ProductMapper">
+	<resultMap type="product" id="productMap">
+		<id property="id" column="id"/>
+		<result property="productName" column="product_name"/>
+		<result property="stock" column="stock"/>
+		<result property="price" column="price"/>
+		<result property="version" column="version"/>
+		<association property="merchant"  javaType="user">
+			<id property="id" column="uid"/>
+			<result property="username" column="uusername"/>
+		</association>
+	</resultMap>
+	<select id="getAll" resultMap="productMap">
+		select p.*,u.id uid,u.username uusername from ec_product p left join ec_user u on u.id=p.merchant_id
+	</select>
+	<select id="getByMerchantId" resultMap="productMap" parameterType="long">
+		select p.*,u.id uid,u.username uusername from ec_product p left join ec_user u on u.id=p.merchant_id where u.id=#{id}
+	</select>
+	<select id="getById" resultMap="productMap" parameterType="long">
+		select p.*,u.id uid,u.username uusername from ec_product p left join ec_user u on u.id=p.merchant_id where p.id=#{id}
+	</select>
+	<update id="decrementStock">
+		update ec_product set stock=stock-1,version=version+1 where version=#{version} and id=#{id}
+	</update>
+		<update id="incrementStock">
+		update ec_product set stock=stock+1,version=version+1 where version=#{version} and id=#{id}
+	</update>
+</mapper>
