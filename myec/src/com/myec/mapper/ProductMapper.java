@@ -16,7 +16,7 @@ public interface ProductMapper {
 	
 	Product getById(Long id);
 	
-	int decrementStock(@Param("id")Long id,@Param("version")Integer version);
+	int decrementStock(@Param("id")Long id,@Param("num")Integer num,@Param("version")Integer version);
 	
-	int incrementStock(@Param("id")Long id,@Param("version")Integer version);
+	int incrementStock(@Param("id")Long id,@Param("num")Integer num);
 }

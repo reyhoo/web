@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>全部商品</title>
+<title>地址管理</title>
 <style type="text/css">
 	.curr{
 		color:red;
@@ -23,24 +23,21 @@
 	</c:import>
 	<table style="width: 80%; margin: 20px auto; border: 1px solid black;">
 		<tr>
-			<td>产品名称
-			<td>库存
-			<td>价格
-			<td>商家
+			<td>名字
+			<td>地址
+			<td>电话
 			<td>操作
 		
-			<c:forEach items="${productList }" var="product">
+			<c:forEach items="${addrList }" var="addr">
 			<tr>
-				<td>${product.productName }
-				<td>${product.stock }
-				<td>${product.price }
-				<td>${product.merchant.username }
-			<td>	<c:choose>
-					<c:when test="${product.merchant.id eq loginUser.id }">
-					</c:when>
-					<c:otherwise><a href='<c:url value="/order/selectAddr?productId=${product.id }"></c:url>'>购买</a></c:otherwise>
-				</c:choose>
-				
+				<td>${addr.nickname }
+				<td>${addr.addr }
+				<td>${addr.mobile }
+				<c:url value="/order/buy" var="buyUrl">
+					<c:param name="productId" value="${productId }"></c:param>
+					<c:param name="addrId" value="${addr.id }"></c:param>
+				</c:url>
+				<td><a href="${buyUrl }">选择</a>
 			</c:forEach>
 	</table>
 </body>

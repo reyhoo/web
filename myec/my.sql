@@ -22,6 +22,7 @@ create table ec_order(
 	id bigint primary key auto_increment,
 	create_time datetime not null,
 	pay_time datetime,
+	total_amount double not null,
 	status varchar(10) not null,
 	addr  varchar(100) not null,
 	mobile varchar(50) not null,

@@ -8,12 +8,13 @@ import org.springframework.stereotype.Service;
 import com.myec.mapper.ProductMapper;
 import com.myec.pojo.Product;
 import com.myec.service.ProductService;
+
 @Service
 public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	private ProductMapper productMapper;
-	
+
 	@Override
 	public List<Product> getAllProductList() {
 		return productMapper.getAll();
@@ -30,13 +31,13 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public int decrementStock(Long id, Integer version) {
-		return productMapper.decrementStock(id, version);
+	public int decrementStock(Long id, Integer num, Integer version) {
+		return productMapper.decrementStock(id, num, version);
 	}
 
 	@Override
-	public int incrementStock(Long id, Integer version) {
-		return productMapper.incrementStock(id, version);
+	public int incrementStock(Long id, Integer num) {
+		return productMapper.incrementStock(id,num);
 	}
 
 }

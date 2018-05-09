@@ -12,8 +12,8 @@ public interface ProductService {
 	
 	Product getProductById(Long id);
 	
-	int decrementStock(Long id,Integer version);
+	int decrementStock(Long id,Integer num,Integer version);
 	
-	int incrementStock(Long id,Integer version);
+	int incrementStock(Long id,Integer num);
 	
 }

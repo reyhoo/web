@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myec.mapper.OrderMapper">
+	<resultMap type="order" id="orderMap">
+		<id column="id" property="id"/>
+		<result column="create_time" property="createTime"/>
+		<result column="pay_time" property="payTime"/>
+		<result column="status" property="status" typeHandler="com.myec.typehandler.OrderStatusEnumTypeHandler"/>
+		<result column="addr" property="addr"/>
+		<result column="mobile" property="mobile"/>
+		<result column="nickname" property="nickname"/>
+		<result column="total_amount" property="totalAmount"/>
+		<result column="consume_id" property="consumeId"/>
+		<collection property="productList" ofType="orderProduct">
+			<id column="opid" property="id"/>
+			<result column="product_name" property="productName"/>
+			<result column="product_unit_price" property="productUnitPrice"/>
+			<result column="product_quantity" property="productQuantity"/>
+			<result column="product_amount" property="productAmount"/>
+			<result column="id" property="orderId"/>
+			<association property="product" javaType="product">
+				<id column="product_id" property="id"/>
+				<result column="product_name" property="productName"/>
+				<result column="stock" property="stock"/>
+				<result column="price" property="price"/>
+				<result column="version" property="version"/>
+				<association property="merchant" javaType="user">
+					<id column="merchant_id" property="id"/>
+					<result column="username" property="username"/>
+				</association>
+			</association>
+		</collection>
+	</resultMap>
+	<select id="getOrderByUserId" parameterType="long" resultMap="orderMap">
+		select o.*,op.id opid,op.product_id,op.product_name,op.product_quantity,op.product_amount,op.product_unit_price,
+		p.stock,p.merchant_id,p.price,p.version,
+		u.username
+		from ec_order o left join ec_order_product op on o.id=op.order_id
+		left join ec_product p on p.id=op.product_id 
+		left join ec_user u on u.id=p.merchant_id
+		where o.consume_id=#{id}
+	</select>
+	<select id="getById"  parameterType="long" resultMap="orderMap">
+		select o.*,op.id opid,op.product_id,op.product_name,op.product_quantity,op.product_amount,op.product_unit_price,
+		p.stock,p.merchant_id,p.price,p.version,
+		u.username
+		from ec_order o left join ec_order_product op on o.id=op.order_id
+		left join ec_product p on p.id=op.product_id 
+		left join ec_user u on u.id=p.merchant_id
+		where o.id=#{id} and o.consume_id=#{userId}
+	</select>
+	<update id="updateOrderStatus">
+		update ec_order set status=#{orderStatus,typeHandler=com.myec.typehandler.OrderStatusEnumTypeHandler} where status='unpaid' and id=#{id}
+	</update>
+	<insert id="addOrder" parameterType="order" useGeneratedKeys="true" keyProperty="id">
+		insert into ec_order(create_time,status,total_amount,addr,mobile,nickname,consume_id)values(now(),'unpaid'
+		,#{totalAmount},#{addr},#{mobile},#{nickname},#{consumeId})
+	</insert>
+	<insert id="addOrderProduct" parameterType="orderProduct">
+		insert into ec_order_product(product_id,product_name,product_unit_price,product_quantity,product_amount,order_id)
+		values(#{product.id},#{productName},#{productUnitPrice},#{productQuantity},#{productAmount},#{orderId})
+	</insert>
+</mapper>
