@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>地址管理</title>
+<title>我的订单</title>
 <style type="text/css">
 	.curr{
 		color:red;
