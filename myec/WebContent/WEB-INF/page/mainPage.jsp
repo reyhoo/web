@@ -14,7 +14,15 @@
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.0.js"></script>
 	<script type="text/javascript">
-		
+	// /myec/order/buy?productId=1&addrId=2
+			$(function(){
+				$("button").click(function(){
+					for(var i = 0;i < 10000;i ++){
+						$.get("/myec/order/buy?productId=1&addrId=2");
+					}
+					
+				});
+			});
 	</script>
 </head>
 <body>
@@ -43,5 +51,6 @@
 				
 			</c:forEach>
 	</table>
+	<button onclick="">批量</button>
 </body>
 </html>

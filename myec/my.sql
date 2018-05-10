@@ -62,6 +62,6 @@ insert into ec_user_addr(nickname,addr,mobile,user_id)values('Ò¦ÀÚreyhoo','±±°¬Â
 insert into ec_user_addr(nickname,addr,mobile,user_id)values('Îº±ÌÔÆ','±±°¬Â·1200Åª','13032162523',4);
 insert into ec_user_addr(nickname,addr,mobile,user_id)values('Îº±ÌÔÆ','¹«Ë¾µØÖ·ÎÒ²»ÖªµÀ','13032162523',5);
 
-insert into ec_product(product_name,stock,price,merchant_id)values('computer',2,23.2,3);
+insert into ec_product(product_name,stock,price,merchant_id)values('computer',2000,23.2,3);
 insert into ec_product(product_name,stock,price,merchant_id)values('desk',10,1209,4);
 insert into ec_product(product_name,stock,price,merchant_id)values('phone',1000,3000.01,1);
