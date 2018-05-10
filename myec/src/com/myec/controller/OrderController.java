@@ -60,7 +60,13 @@ public class OrderController {
 		if(addr == null) {
 			throw new RuntimeException("未找到信息");
 		}
-		orderService.createOrder(user.getId(),2,productId, addr);
+		int count = orderService.createOrder(user.getId(),1,productId, addr);
+		if(count == -1) {
+			throw new RuntimeException("订单创建失败");
+		}
+		if(count == 0) {
+			throw new RuntimeException("订单创建失败，请重试");
+		}
 		return "redirect:/order/list";
 	}
 	@RequestMapping("/list")
@@ -74,7 +80,24 @@ public class OrderController {
 		if(id == null) {
 			throw new RuntimeException("orderId is null");
 		}
-		orderService.pay(id, user.getId());
+		int result = orderService.pay(id, user.getId());
+		if(result <= 0) {
+			throw new RuntimeException("支付失败");
+		}
+		return "redirect:/order/list";
+	}
+	@RequestMapping("/cancel")
+	public String cancel(@SessionAttribute("loginUser")User user,Long id) {
+		if(id == null) {
+			throw new RuntimeException("orderId is null");
+		}
+		int result = orderService.cancel(id, user.getId());
+		if(result == 0) {
+			throw new RuntimeException("取消失败，请重试");
+		}
+		if(result == -1) {
+			throw new RuntimeException("取消失败，订单状态已经改变");
+		}
 		return "redirect:/order/list";
 	}
 }

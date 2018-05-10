@@ -13,7 +13,9 @@ import com.myec.mapper.UserMapper;
 import com.myec.pojo.Address;
 import com.myec.pojo.Order;
 import com.myec.pojo.OrderProduct;
+import com.myec.pojo.OrderStatusEnum;
 import com.myec.pojo.Product;
+import com.myec.pojo.User;
 import com.myec.service.OrderService;
 
 @Service
@@ -33,7 +35,7 @@ public class OrderServiceImpl implements OrderService {
 				return -1;
 			}
 			if(product.getStock()< num) {
-				return 0;
+				return -1;
 			}
 //			User user = userMapper.getById(userId);
 //			if(user.getBalance() < product.getPrice()) {
@@ -74,12 +76,67 @@ public class OrderServiceImpl implements OrderService {
 	@Transactional
 	@Override
 	public int pay(Long orderId, Long userId) {
-		Order order = orderMapper.getById(orderId, userId);
-		if(order == null) {
-			throw new RuntimeException("未找到订单");
+		int count = updateOrderStatus(orderId,userId,OrderStatusEnum.PAID);
+		if(count > 0) {
+			Order order = orderMapper.getById(orderId, userId);
+			int decrementUpdate = decrementUserBalance(userId,order.getTotalAmount());
+			if(decrementUpdate <= 0) {
+				throw new RuntimeException("扣款失败");
+			}
+			for (OrderProduct orderProduct : order.getProductList()) {
+				userMapper.incrementBalance(orderProduct.getProduct().getMerchant().getId(), orderProduct.getProductAmount());
+			}
 		}
-		System.err.println(order);
+		return count;
+	}
+	@Transactional
+	@Override
+	public int cancel(Long orderId, Long userId) {
+		int count = updateOrderStatus(orderId,userId,OrderStatusEnum.CANCELLED);
+		if(count > 0) {
+			Order order = orderMapper.getById(orderId, userId);
+			List<OrderProduct> productList = order.getProductList();
+			for (OrderProduct orderProduct : productList) {
+				productMapper.incrementStock(orderProduct.getProduct().getId(), orderProduct.getProductQuantity());
+			}
+		}
+		return count;
+	}
+	
+	private int decrementUserBalance(Long userId,Double amount) {
+		for (int i = 0; i < 3; i++) {
+			User user = userMapper.getById(userId);
+			if(user.getBalance() < amount) {
+				return -1;
+			}
+			int count = userMapper.decrementBalance(userId, amount, user.getVersion());
+			if(count == 0) {
+				System.err.println("扣款并发");
+				continue;
+			}
+			System.err.println("扣款成功");
+			return count;
+		}
 		return 0;
 	}
-
+	private int updateOrderStatus(Long orderId, Long userId,OrderStatusEnum orderStatusEnum) {
+		for (int i = 0; i < 3; i++) {
+			Order order = orderMapper.getById(orderId, userId);
+			if(order == null) {
+				throw new RuntimeException("未找到订单");
+			}
+			System.err.println(order);
+			if(!order.getStatus().equals(OrderStatusEnum.UNPAID)) {
+				return -1;
+			}
+			int count = orderMapper.updateOrderStatus(order.getId(), order.getVersion(), orderStatusEnum);
+			if(count == 0) {
+				System.err.println("更新订单状态并发："+orderStatusEnum);
+				continue;
+			}
+			System.err.println("更新订单状态成功："+orderStatusEnum);
+			return count;
+		}
+		return 0;
+	}
 }

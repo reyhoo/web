@@ -21,5 +21,5 @@ public interface OrderMapper {
 
 	Order getById(@Param("id")Long id,@Param("userId")Long userId);
 	
-	int updateOrderStatus(@Param("id")Long id,@Param("orderStatus")OrderStatusEnum orderStatus);
+	int updateOrderStatus(@Param("id")Long id,@Param("version")Integer version,@Param("orderStatus")OrderStatusEnum orderStatus);
 }

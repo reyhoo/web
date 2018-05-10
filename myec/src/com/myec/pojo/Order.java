@@ -16,6 +16,14 @@ public class Order {
 
 	private List<OrderProduct> productList;
 
+	private Integer version;
+	
+	public Integer getVersion() {
+		return version;
+	}
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -94,11 +102,12 @@ public class Order {
 	public void setTotalAmount(Double totalAmount) {
 		this.totalAmount = totalAmount;
 	}
-
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", createTime=" + createTime + ", payTime=" + payTime + ", status=" + status
 				+ ", addr=" + addr + ", mobile=" + mobile + ", nickname=" + nickname + ", consumeId=" + consumeId
-				+ ", productList=" + productList + "]";
+				+ ", totalAmount=" + totalAmount + ", productList=" + productList + ", version=" + version + "]";
 	}
+
+	
 }

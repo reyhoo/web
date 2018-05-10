@@ -14,4 +14,6 @@ public interface OrderService {
 	Order getById(Long orderId,Long userId);
 	
 	int pay(Long orderId,Long userId) ;
+	
+	int cancel(Long orderId, Long userId);
 }

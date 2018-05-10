@@ -28,6 +28,7 @@ create table ec_order(
 	mobile varchar(50) not null,
 	nickname varchar(50)not null,
 	consume_id bigint not null,
+	version int default 1 not null,
 	foreign key (consume_id) references ec_user(id) on delete restrict on update restrict
 );
 create table ec_product(

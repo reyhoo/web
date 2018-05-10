@@ -15,4 +15,10 @@
 	<select id="getById" resultType="user" parameterType="long">
 		select id,username,balance,version from ec_user where id=#{id}
 	</select>
+	<update id="incrementBalance">
+		update ec_user set balance=balance+#{amount},version=version+1 where id=#{userId}
+	</update>
+	<update id="decrementBalance">
+		update ec_user set balance=balance-#{amount},version=version+1 where id=#{userId} and version=#{version}
+	</update>
 </mapper>

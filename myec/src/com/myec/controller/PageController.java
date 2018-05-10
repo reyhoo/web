@@ -40,8 +40,6 @@ public class PageController extends BaseController{
 	}
 	@RequestMapping("/main")
 	public String main(Model model) {
-		User user = (User) getSession().getAttribute("loginUser");
-		getSession().setAttribute("loginUser", userService.getById(user.getId()));
 		List<Product> list = productService.getAllProductList();
 		model.addAttribute("productList", list);
 		return "mainPage";

@@ -12,6 +12,7 @@
 		<result column="nickname" property="nickname"/>
 		<result column="total_amount" property="totalAmount"/>
 		<result column="consume_id" property="consumeId"/>
+		<result column="version" property="version"/>
 		<collection property="productList" ofType="orderProduct">
 			<id column="opid" property="id"/>
 			<result column="product_name" property="productName"/>
@@ -51,7 +52,19 @@
 		where o.id=#{id} and o.consume_id=#{userId}
 	</select>
 	<update id="updateOrderStatus">
-		update ec_order set status=#{orderStatus,typeHandler=com.myec.typehandler.OrderStatusEnumTypeHandler} where status='unpaid' and id=#{id}
+		update ec_order 
+		<trim prefix="set" suffixOverrides=",">
+			<if test="orderStatus != null">
+				status=#{orderStatus,typeHandler=com.myec.typehandler.OrderStatusEnumTypeHandler},
+			</if>
+			<if test="orderStatus != null">
+				version=version+1,
+			</if>
+			<if test="orderStatus != null and orderStatus.value == 'paid'">
+				pay_time=now(),
+			</if>
+		</trim>
+		where id=#{id} and status='unpaid' and version=#{version}
 	</update>
 	<insert id="addOrder" parameterType="order" useGeneratedKeys="true" keyProperty="id">
 		insert into ec_order(create_time,status,total_amount,addr,mobile,nickname,consume_id)values(now(),'unpaid'

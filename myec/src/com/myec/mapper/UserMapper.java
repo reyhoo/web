@@ -12,4 +12,7 @@ public interface UserMapper {
 	User getForLogin(@Param("username") String username,@Param("password")String password);
 	User getByUsername(String username);
 	User getById(Long id);
+	int incrementBalance(@Param("userId")Long userId,@Param("amount")Double amount);
+	int decrementBalance(@Param("userId")Long userId,@Param("amount")Double amount,@Param("version")Integer version);
+	
 }
