@@ -17,7 +17,7 @@
 	// /myec/order/buy?productId=1&addrId=2
 			$(function(){
 				$("button").click(function(){
-					for(var i = 0;i < 10000;i ++){
+					for(var i = 0;i < 8000;i ++){
 						$.get("/myec/order/buy?productId=1&addrId=2");
 					}
 					

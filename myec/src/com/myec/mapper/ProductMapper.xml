@@ -23,7 +23,7 @@
 		select p.*,u.id uid,u.username uusername from ec_product p left join ec_user u on u.id=p.merchant_id where p.id=#{id}
 	</select>
 	<update id="decrementStock">
-		update ec_product set stock=stock-#{num},version=version+1 where version=#{version} and id=#{id}
+		update ec_product set stock=stock-#{num},version=version+1 where id=#{id} and version=#{version}
 	</update>
 		<update id="incrementStock">
 		update ec_product set stock=stock+#{num},version=version+1 where id=#{id}
