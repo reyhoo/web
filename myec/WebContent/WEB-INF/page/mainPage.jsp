@@ -11,8 +11,9 @@
 	}
 </style>
 <meta charset="UTF-8">
+
 <script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.2.0.js"></script>
+	src="<c:url value='/js/jquery-3.2.0.js'></c:url>"></script>
 	<script type="text/javascript">
 	// /myec/order/buy?productId=1&addrId=2
 			$(function(){

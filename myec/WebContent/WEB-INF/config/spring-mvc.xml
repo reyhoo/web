@@ -42,6 +42,7 @@
 		<mvc:exclude-mapping path="/page/regist"/>
 		<mvc:exclude-mapping path="/user/sendEmail"/>
 		<mvc:exclude-mapping path="/user/regist"/>
+		<mvc:exclude-mapping path="/js/**"/>
 			<bean class="com.myec.interceptor.LoginInterceptor"></bean>
 		</mvc:interceptor>
 		
@@ -52,6 +53,7 @@
 			</bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
+	<mvc:resources location="/WEB-INF/js/" mapping="/js/**" />
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
 </beans>

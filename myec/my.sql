@@ -1,8 +1,8 @@
-drop table ec_order_product;
-drop table ec_product;
-drop table ec_order;
-drop table ec_user_addr;
-drop table ec_user;
+drop table if exists ec_order_product;
+drop table if exists  ec_product;
+drop table if exists  ec_order;
+drop table if exists  ec_user_addr;
+drop table if exists  ec_user;
 create table if not exists ec_user(
 	id bigint primary key auto_increment,
 	username  varchar(100) not null unique,

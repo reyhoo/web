@@ -11,8 +11,8 @@
 <meta charset="utf-8">
 <title>登录页面</title>
 <script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.2.0.js"></script>
-	  <script src="http://passport.cnblogs.com/scripts/jsencrypt.min.js"></script>
+	src="<c:url value='/js/jquery-3.2.0.js'></c:url>"></script>
+	  <script src="<c:url value='/js/jsencrypt.min.js'></c:url>"></script>
 	  <script type="text/javascript">
 	  var encrypted = false;
 	  	$(function(){
