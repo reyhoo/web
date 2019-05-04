@@ -92,7 +92,7 @@ public class RootConfig implements TransactionManagementConfigurer{
 		poolConfig.setMaxWaitMillis(20000);
 		JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory();
 		jedisConnectionFactory.setPoolConfig(poolConfig);
-		jedisConnectionFactory.setHostName("localhost");
+		jedisConnectionFactory.setHostName("192.168.1.104");
 		jedisConnectionFactory.setPort(6379);
 		jedisConnectionFactory.afterPropertiesSet();
 		

@@ -33,8 +33,10 @@
 		});
 		
 	$("#grap1").click(function(){
-			
-			var max = 30000;
+			//调用前需要在redis里设置初始参数：
+			//hset red_packet_1 stock 2000
+			//hset red_packet_1 unit_amount 10
+			var max = 2010;
 			for(var i = 1;i <= max; i++){
 				var url = base_url+"userRedPacket/grapRedPacketByRedis?redPacketId=1&userId="+i;
 				$.ajax({
